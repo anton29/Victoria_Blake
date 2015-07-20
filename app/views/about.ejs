@@ -1,0 +1,76 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchProduct">
+<head>
+<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>The Victoria Blake Collection</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link href="../css/boilerplate.css" rel="stylesheet" type="text/css">
+	<link href="../css/style.css" rel="stylesheet" type="text/css">
+	<link href="../css/navigation.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+	<script type="text/javascript" src="application.js"></script>
+	<!--<script type="text/javascript" src="/lib/angular/angular.js"></script>-->
+	<script src="../js/respond.min.js"></script>
+
+	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="../js/services/products.js"></script> <!-- load our product service -->
+	<script src="../js/core.js"></script> <!-- load our main application -->
+
+	<!--google fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+</head>
+<body ng-controller="mainController">
+
+<section id="wrapper">
+
+<header>
+	<% include header %>
+</header>
+<nav>
+	<% include nav %>
+</nav>
+
+<section id="content">
+	
+<div id="picture">
+	<span id="image"><img src="img/me.jpg" /></span>
+</div><!--end of picture-->
+<div id="about_desc">
+	<h3>About</h3>
+	<p>I was inspired to start Victoria Blake Collection in 2012 based on a conversation that I had with a mentor of mine. He asked me what was the legacy that I was going to leave for my daughter. I knew that I wanted to instill in her a strong work ethic and a passion for learning, but the question he asked left an unsettling feeling in my stomach. Were these attributes that I was instilling in her enough for her to succeed on her own. I knew that I needed to create a company that would provide her with many opportunities to be creative, discover a new world and to shine in it. I also knew that for it to be successful it would have to be created now by me, while she was still young.</p>
+	<p> I have always had a desire to work with materials that are a part of nature and I strongly wanted to be able to create a healthy environment with spiritually healthy people.  So it gave me great pleasure to create a company whose emphasis would be to re-design and co- create your jewelry, so that you can carry your memories with you or pass these treasures on to a loved one. I believe that this would be in harmony with sustainability that in turn would help our environment and create a positive global effect. </p>
+	<p>The vision oVictoria Blake Collection is to provide the unique service of re-designing your antique or modern heirloom jewelry into multi generational keepsakes that transcends physical space, age and time using natural gemstones and sustainable materials.</p>
+	<p>It is our mission to build a social media platform that broadens the education of consumers and direct retailers about sustainable materials. It is  also our sincere desire to provide quality services for the customer so that every treasure big or small can be re-transformed into a lasting heirloom for generations to come.</p>
+</div><!--end of about_desc-->
+
+</section><!--end of content-->
+
+<footer>
+	<div id="copyRight"><p>&copy;Copyright</p></div>
+<div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+<div id="SkypeButton_Call_abdulrahman_bah_1">
+  <script type="text/javascript">
+    Skype.ui({
+      "name": "call",
+      "element": "SkypeButton_Call_abdulrahman_bah_1",
+      "participants": ["abdulrahman_bah"],
+      "imageSize": 32
+    });
+  </script>
+</div>
+</div><!--end of skype-->
+</footer><!--end of footer-->
+</section><!--end of wrapper-->
+</body>
+</html>

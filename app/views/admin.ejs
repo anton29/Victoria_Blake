@@ -1,0 +1,101 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchProduct">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Node/Angular Product App</title>
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+	<script type="text/javascript" src="application.js"></script>
+	<!--<script type="text/javascript" src="/lib/angular/angular.js"></script>-->
+	<script src="../js/respond.min.js"></script>
+
+	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="../js/services/products.js"></script> <!-- load our product service -->
+	<script src="../js/core.js"></script> <!-- load our main application -->
+
+	<!--google fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+	<!--slideshow-->
+     <link rel="stylesheet" href="../css/responsiveslides.css">
+  <!--<link rel="stylesheet" href="demo.css">-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="../js/responsiveslides.min.js"></script>
+  <script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+
+      // Slideshow 1
+      $("#slider1").responsiveSlides({
+        maxwidth: 1200,
+        speed: 800
+      });
+    });
+</script>
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+
+<section id="wrapper">
+
+<header>
+	<% include header %>
+</header>
+
+		<!-- FORM TO CREATE Products -->
+		<div id="product-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<!-- Temp simple way of adding data will not be used -->
+						<input type="name" class="form-control input-lg text-center"  placeholder="Name" ng-model="formData.name">
+
+						<input type="text" class="form-control input-lg text-center" placeholder="Description" ng-model="formData.text">
+
+						<input type ="text" class="form-control input-lg text-center" placeholder="Price"  ng-model="formData.price">
+
+						<input type ="text" class="form-control input-lg text-center" placeholder="Photo"  ng-model="formData.photo">
+
+						<input type ="text" class="form-control input-lg text-center" placeholder="category"  ng-model="formData.category">
+
+					</div>
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createProducts()">Add</button>
+				</form>
+
+
+			<div ng-repeat="product in products">
+					<ol>
+						<p>{{product.name}} </p>
+						<p>{{product.price}}</p>
+						<p>{{product.text}}</p>
+						<p>{{product._id}}</p>
+						<p><img src="{{product.photo}}"><p>
+						<p>Delete {{product.name}}<input type="checkbox" ng-click="deleteProduct(product._id)"> </P>
+
+					</ol>	
+				</div>
+			</div>
+		</div>
+
+		<div class="text-center text-muted">
+<!-- 			<p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
+			<p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-product-app-with-node-and-angular">tutorial</a>.</p> -->
+		</div>
+
+	</div>
+</div><!--end of stuff_to_move-->
+
+</section><!--end of content-->
+
+</section><!--end of wrapper-->
+</body>
+</html>

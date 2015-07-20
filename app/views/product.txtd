@@ -1,0 +1,102 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchProduct">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>Node/Angular Product App</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <link href="../css/boilerplate.css" rel="stylesheet" type="text/css">
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<!--le>
+        html                    { overflow-y:scroll; }
+        body                    { padding-top:50px; }
+        #product-list               { margin-bottom:30px; }
+        #product-form               { margin-bottom:50px; }
+    </style>-->
+
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+    <script type="text/javascript" src="application.js"></script>
+    <!--<script type="text/javascript" src="/lib/angular/angular.js"></script>-->
+    <script src="../js/respond.min.js"></script>
+
+    <script src="../js/controllers/main.js"></script> <!-- load up our controller -->
+    <script src="../js/services/products.js"></script> <!-- load our product service -->
+    <script src="../js/core.js"></script> <!-- load our main application -->
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+
+        <section id="wrapper">
+
+         <h1><%= title %></h1>
+
+                   <% if(userFullName) { %>
+            <p> you are loged in </p>
+           <%} else{%>
+            <p> No One is loged in </p>
+        <%}%>
+
+    <div class="container">
+
+        <!-- HEADER AND Products COUNT -->
+        <div class="jumbotron text-center">
+            <h1>Product Tester <span class="label label-info">{{ products.length }}</span></h1>
+        </div>
+
+        <!-- Products LIST -->
+        <div id="product-list" class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+
+                
+
+                <!-- LOOP OVER THE Products IN $scope.products -->
+                <div class="checkbox" ng-repeat="product in products">
+                    <label>
+                        <p> {{product.name}}</p>
+                        <p> {{product.price}}</p>
+                        <p> {{product.text}}</p>
+                        <img src="{{product.photo}}"> 
+                        <p>{{product._id}}</p>
+                        <input type="checkbox" ng-click="deleteProduct(product._id)"> 
+                        <a href="/product/{{product._id}}">Test Button</a>
+                        <!-- {{ product.text }} -->
+                    </label>
+                </div>
+
+<!--                <div ng-repeat="product in products">
+                    <ol>
+                        <li>{{product.name}} </li>
+                        <li>{{product.price}}</li>
+                        <li>{{product.text}}<li>
+                        <li>{{product._id}}</li>
+                        <li><img src="{{product.photo}}"></li>
+                    </ol>   
+                </div> -->
+
+                <p class="text-center" ng-show="loading">
+                    <span class="fa fa-spinner fa-spin fa-3x"></span>
+                </p>
+
+            </div>
+        </div>
+
+        </div>
+
+        <div class="text-center text-muted">
+<!--            <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
+            <p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-product-app-with-node-and-angular">tutorial</a>.</p> -->
+        </div>
+
+    </div>
+</section><!--end of wrapper-->
+</body>
+</html>

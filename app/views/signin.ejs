@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+    <title><%= title %></title>
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <link href="../css/boilerplate.css" rel="stylesheet" type="text/css">
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link href="../css/navigation.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+    <script type="text/javascript" src="application.js"></script>
+    <!--<script type="text/javascript" src="/lib/angular/angular.js"></script>-->
+    <script src="../js/respond.min.js"></script>
+
+    <script src="../js/controllers/main.js"></script> <!-- load up our controller -->
+    <script src="../js/services/products.js"></script> <!-- load our product service -->
+    <script src="../js/core.js"></script> <!-- load our main application -->
+
+    <!--google fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<section id="wrapper">
+
+<header>
+    <div id="logo"><img src="img/logo.png" /></div><!--end of logo-->
+    <div id="title"><h1><%= title %></h1></div><!--end of title-->
+</header><!--end of header-->
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/product">Products</a></li>
+        <li><a href="/testimonial">Testimonials</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="content">  
+<div id="forms">   
+    <% for (var i in messages) {%>
+    <div class="flash"><%= messages[i] %></div>
+     <% } %>
+    <form action="/signin" method="post">
+        <div id="username">
+            <!--<label>Username:</label>-->
+            <input type="text" name="username" placeholder="Username" class="bg" />
+        </div>
+        <div id="password">
+            <!--<label>Password:</label>-->
+            <input type="password" name="password" placeholder="Password" class="bg" />
+        </div>
+        <div id="button">
+            <input type="submit" value="Sign in" id="btn" />
+        </div>
+    </form>
+    <!--    
+    <a href="/oauth/facebook">Sign in with Facebook</a>
+    <a href="/oauth/google">Sign in with Google</a>
+    -->
+</div><!--end of forms--> 
+</section><!--end of content-->
+
+<footer>
+    <div id="copyRight"><p>&copy;Copyright</p></div>
+<div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+<div id="SkypeButton_Call_abdulrahman_bah_1">
+  <script type="text/javascript">
+    Skype.ui({
+      "name": "call",
+      "element": "SkypeButton_Call_abdulrahman_bah_1",
+      "participants": ["abdulrahman_bah"],
+      "imageSize": 32
+    });
+  </script>
+</div>
+</div><!--end of skype-->
+</footer><!--end of footer-->
+</section><!--end of wrapper-->
+</body>
+</html>

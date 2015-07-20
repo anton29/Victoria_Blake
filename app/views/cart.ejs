@@ -1,0 +1,88 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchProduct">
+<head>
+<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>The Victoria Blake Collection</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link href="../css/boilerplate.css" rel="stylesheet" type="text/css">
+	<link href="../css/style.css" rel="stylesheet" type="text/css">
+	<link href="../css/navigation.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+
+	<script src="../js/simpleCart.js" type="text/javascript" charset="utf-8"></script>
+	
+
+	<script type="text/javascript" src="application.js"></script>
+	<!--<script type="text/javascript" src="/lib/angular/angular.js"></script>-->
+	<script src="../js/respond.min.js"></script>
+
+	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="../js/services/products.js"></script> <!-- load our product service -->
+	<script src="../js/core.js"></script> <!-- load our main application -->
+
+	<script type="text/javascript">
+		simpleCart = new cart("brett@wojodesign.com");
+	</script>
+
+	<!--google fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+	<style>
+		.cartHeaders,.totalRow{display:none;}
+	</style>
+
+<body>
+<header>
+	<% include header %>
+</header>
+<nav>
+	<% include nav %>
+</nav>
+
+<section id="content">
+
+<div id="sidebar">
+				<h2>Your Cart</h2>
+				
+				
+				<!--Add a Div with the class "simpleCart_items" to show your shopping cart area.-->
+				<div class="simpleCart_items" >
+				</div>
+
+				<!--Here's the Links to Checkout and Empty Cart-->
+				<a href="#" class="simpleCart_empty">empty cart</a>
+				<a href="#" class="simpleCart_checkout">Checkout</a>
+
+</div>
+
+</section><!--end of content-->
+
+<footer>
+	<div id="copyRight"><p>&copy;Copyright</p></div>
+<div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+<div id="SkypeButton_Call_abdulrahman_bah_1">
+  <script type="text/javascript">
+    Skype.ui({
+      "name": "call",
+      "element": "SkypeButton_Call_abdulrahman_bah_1",
+      "participants": ["abdulrahman_bah"],
+      "imageSize": 32
+    });
+  </script>
+</div>
+</div><!--end of skype-->
+</footer><!--end of footer-->
+</body>
+</html>
