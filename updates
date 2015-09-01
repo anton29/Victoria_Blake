@@ -1,0 +1,49 @@
+8/28
+	-can search for products(buged shows any product that has anything to do with the search)
+	-code for links to product pages based on catergory
+	-shopping cart updates
+
+8/29-8/30
+	-fixed search now only shows things based on name 
+	-removed Skype for now
+	-added pages for:
+		-semi precious stone jewelry
+		-statement necklaces
+		-pearl childrens jewelry
+		-jeweled message candles
+	-added twitter follow button
+	-added commercial
+	-added instagram feed link
+	-updated contacts form
+	-changed cart
+		-added paypal link
+		-removed checkout for now (still needs testing)
+	-code cleaning
+		-removed outdated links pages:
+						-test.ejs
+						-productServerController.js
+						-old models.js
+	-fixed some style problems(page overflow)
+	-setting up a new Google Cloud Platform:
+		-Create a project in the Google Developers Console (done)
+		-Enable billing for project (not done yet but get a free 60days when done)
+		-Install the Google Cloud SDK(done)
+		-Deploy the app to Google Cloud Platform
+			** not done but can be done once billing is enabled dont want to wast any of the free 60days **
+
+Major ToDO's:
+	FaceBook feed link
+	inventory management
+	payment system testing
+	more user friendly admin GUI (works but requires you know the file path for any thing you want to add to the site)
+
+Other ToDo's:
+	divide testimonials page ?
+	Color, style
+	
+	
+	
+	
+	
+
+

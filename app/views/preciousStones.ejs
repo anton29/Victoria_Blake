@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html ng-app="scotchProduct">
+<head>
+   <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+    <title><%= title %></title>
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <link href="../css/boilerplate.css" rel="stylesheet" type="text/css">
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link href="../css/navigation.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+    <script type="text/javascript" src="application.js"></script>
+    <!--<script type="text/javascript" src="/lib/angular/angular.js"></script>-->
+    <script src="../js/respond.min.js"></script>
+
+    <script src="../js/controllers/main.js"></script> <!-- load up our controller -->
+    <script src="../js/services/products.js"></script> <!-- load our product service -->
+    <script src="../js/core.js"></script> <!-- load our main application -->
+
+            <!-- twitter needs its on js -->
+    <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+ 
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+ 
+        return t;
+    }(document, "script", "twitter-wjs"));</script>
+
+<!--twitter script end -->  
+
+
+    <!--google fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+</head>
+<body ng-controller="mainController">
+<section id="wrapper">
+
+<header>
+    <% include header %>
+</header>
+<nav>
+    <% include nav %>
+</nav>
+
+<section id="content">
+
+<div id="product-list">
+<div class="categories">
+        <form class="form-inline">
+      <input ng-model="query" type="text"
+        placeholder="Filter by" autofocus>
+    </form>
+<div class="checkbox" ng-repeat="product in products | filter:{ name: query } | filter:{category: 'preciousStones'}:true |  orderBy: 'name' ">
+<div class="product_disp">
+    <%if (product.name == 'test') {%>  TEXT PRINTED  <%}%>
+
+
+    <h4>Name: {{product.name}}</h4>
+    <h4>Price: ${{product.price}}</h4>
+    <h4>Description: {{product.text}}</h4>
+    <div class="product_img"><img src="{{product.photo}}"></div> 
+    <!--<p>{{product._id}}</p>
+    <input type="checkbox" ng-click="deleteProduct(product._id)"> -->
+    <h3><a href="/product/p?p={{product._id}}">Details</a></h3>
+    <!-- {{ product.text }} -->
+</div>
+</div>
+    <!-- LOOP OVER THE Products IN $scope.products -->
+    
+
+<!--                <div ng-repeat="product in products">
+        <ol>
+            <li>{{product.name}} </li>
+            <li>{{product.price}}</li>
+            <li>{{product.text}}<li>
+            <li>{{product._id}}</li>
+            <li><img src="{{product.photo}}"></li>
+        </ol>   
+    </div> -->
+
+    <p class="text-center" ng-show="loading">
+        <span class="fa fa-spinner fa-spin fa-3x"></span>
+    </p>
+
+</div><!--end of categories-->
+</div><!--end of product-list-->
+
+</section><!--end of content-->
+<footer>
+    <div id="copyRight"><p>&copy;Copyright</p></div><!-- 
+<div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+<div id="SkypeButton_Call_abdulrahman_bah_1">
+  <script type="text/javascript">
+    Skype.ui({
+      "name": "call",
+      "element": "SkypeButton_Call_abdulrahman_bah_1",
+      "participants": ["abdulrahman_bah"],
+      "imageSize": 32
+    });
+  </script>
+</div>
+</div> --><!--end of skype-->
+</footer><!--end of footer-->
+</section><!--end of wrapper-->
+</body>
+</html>
