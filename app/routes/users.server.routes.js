@@ -57,6 +57,21 @@ module.exports = function(app){
     app.route('/cart')
         .get(users.renderCart)
 
+    // app.route('/testCategory')
+    //     .get(users.renderProductCategory)
+
+    app.route('/messageCandles')
+        .get(users.renderMessageCandles) 
+
+    app.route('/pearlJewelry')
+        .get(users.renderPearlJewelry)
+
+    app.route('/preciousStones')
+        .get(users.renderPreciousStones) 
+
+    app.route('/statementNecklaces')
+        .get(users.renderStatementNecklaces)  
+
     app.route('/signup')
         .get(users.renderSignup)
         .post(users.signup);

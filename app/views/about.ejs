@@ -26,9 +26,32 @@
 	<script src="../js/services/products.js"></script> <!-- load our product service -->
 	<script src="../js/core.js"></script> <!-- load our main application -->
 
+		    <!-- twitter needs its on js -->
+    <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+ 
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+ 
+        return t;
+    }(document, "script", "twitter-wjs"));</script>
+
+<!--twitter script end -->  
+
+
 	<!--google fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+
 </head>
 <body ng-controller="mainController">
 
@@ -57,8 +80,13 @@
 </section><!--end of content-->
 
 <footer>
-	<div id="copyRight"><p>&copy;Copyright</p></div>
-<div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+	<!-- <div id="copyRight"><p>&copy;Copyright</p></div> -->
+    <div id ="twitter">
+    <a class="twitter-follow-button"
+        href="https://twitter.com/seeuniqueness">
+        Follow @Griffina blake</a>
+    </div>
+<!-- <div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
 <div id="SkypeButton_Call_abdulrahman_bah_1">
   <script type="text/javascript">
     Skype.ui({
@@ -69,7 +97,7 @@
     });
   </script>
 </div>
-</div><!--end of skype-->
+</div> --><!--end of skype-->
 </footer><!--end of footer-->
 </section><!--end of wrapper-->
 </body>

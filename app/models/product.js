@@ -24,6 +24,11 @@ var Product = mongoose.Schema({
 		default : 0
 	},
 
+	amount : {
+		type: Number,
+		default : 1
+	},
+
 	photo : { 
 		type : String
 	},

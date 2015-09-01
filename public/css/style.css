@@ -857,17 +857,31 @@ span#image{
 		background-color: #fa8b60;
 	}
 
-	#copyRight{
+/*	#copyRight{
 		width: 20%;
 		float: left;
 		margin-left: 3%;
 		margin-top: 2%;
-	}
+	}*/
 
 	#skype{
 		width: 20%;
 		float: right;
 		margin-top: -1%;
+		margin-right: 3%;
+	}
+
+/*	#facebook{
+		width:20%;
+		float: left;
+		margin-top: -1%;
+		margin-right: 3%;
+	}*/
+
+	#twitter{
+		width:20%;
+		float: left;
+		margin-top: 3%;
 		margin-right: 3%;
 	}
 

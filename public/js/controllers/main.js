@@ -35,6 +35,10 @@ angular.module('productController', [])
 			}
 		};
 
+		$scope.filterFunction = function(element) {
+    		return element.name.match(/^Ma/) ? true : false;
+  		};
+
 		// DELETE ==================================================================
 		// delete a todo after checking it
 		$scope.deleteProduct = function(id) {

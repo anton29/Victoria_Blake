@@ -81,7 +81,7 @@ exports.renderSignup = function(req, res, next){
     }
 };
 exports.renderProduct = function(req, res, next){
-        console.log('render Product is was called')
+       // console.log('render Product is was called')
         res.render('product',{
             title: 'The Victoria Blake Collection',
             userFullName: req.user ? req.user.fullName : ''
@@ -104,6 +104,99 @@ exports.renderProductId = function(req, res, next){
         }   
      })
 };
+
+// exports.renderProductCategory = function(req, res, next){
+//     console.log('render Product Category');
+//     // Product.find({Category:"test"}).toArray(function(err, results){
+//     Product.find({category:"test"}, function(err, result){
+
+//         if (err) {
+//             res.send(err);
+//         } else {
+
+//                 res.render('testCategory', {
+//                 product: result, 
+//                 title:'The Victoria Blake Collection', 
+//                 userFullName: req.user ? req.user.fullName : ''
+//             });
+                 
+//         } 
+//          console.log(result); // output all records
+//     });
+// };
+
+ exports.renderMessageCandles = function(req, res, next){
+    Product.find({category:"messageCandles"}, function(err, result){
+
+        if (err) {
+            res.send(err);
+        } else {
+
+                res.render('messageCandles', {
+                product: result, 
+                title:'The Victoria Blake Collection', 
+                userFullName: req.user ? req.user.fullName : ''
+            });
+                 
+        } 
+         console.log(result); // output all records
+    });
+};
+
+ exports.renderPreciousStones = function(req, res, next){
+    Product.find({category:"preciousStones"}, function(err, result){
+
+        if (err) {
+            res.send(err);
+        } else {
+
+                res.render('preciousStones', {
+                product: result, 
+                title:'The Victoria Blake Collection', 
+                userFullName: req.user ? req.user.fullName : ''
+            });
+                 
+        } 
+         console.log(result); // output all records
+    });
+};
+
+ exports.renderPearlJewelry = function(req, res, next){
+    Product.find({category:"messageCandles"}, function(err, result){
+
+        if (err) {
+            res.send(err);
+        } else {
+
+                res.render('messageCandles', {
+                product: result, 
+                title:'The Victoria Blake Collection', 
+                userFullName: req.user ? req.user.fullName : ''
+            });
+                 
+        } 
+         console.log(result); // output all records
+    });
+};
+
+ exports.renderStatementNecklaces = function(req, res, next){
+    Product.find({category:"statementNecklaces"}, function(err, result){
+
+        if (err) {
+            res.send(err);
+        } else {
+
+                res.render('statementNecklaces', {
+                product: result, 
+                title:'The Victoria Blake Collection', 
+                userFullName: req.user ? req.user.fullName : ''
+            });
+                 
+        } 
+         console.log(result); // output all records
+    });
+};
+
 
 exports.renderTest= function(req,res,next){
     console.log('render Product Id was called')

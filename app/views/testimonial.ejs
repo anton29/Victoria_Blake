@@ -29,8 +29,29 @@
 	<!--google fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+    <!-- twitter needs its on js -->
+    <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+ 
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+ 
+        return t;
+    }(document, "script", "twitter-wjs"));</script>
+
+<!--twitter script end -->  
 </head>
 <body ng-controller="mainController">
+
 
 <section id="wrapper">
 
@@ -44,7 +65,13 @@
 <section id="content">
 
 <div class="testimonials">
-    <div class="test_img"><img src="img/test.jpg" /><br />
+    <!-- 
+     <iframe src="https://www.facebook.com/Microsoft" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:px"></ifram>  -->
+
+<!--         <iframe width="420" height="315" src="https://www.youtube.com/embed/hqiNL4Hn04A?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+
+         <iframe src="https://player.vimeo.com/video/134153810?autoplay=1&loop=1&title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    
         <h4>habitant morbi</h4>
     </div><!--end of test_img-->
     <div class="test_bio">
@@ -78,11 +105,23 @@
         <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
     </div><!--end of test_bio-->
 </div><!--end of testimonials-->
+
+<!-- SnapWidget -->
+<script src="http://snapwidget.com/js/snapwidget.js"></script>
+<iframe src="http://snapwidget.com/in/?u=dmljdG9yaWFibGFrZWNvbGxlY3Rpb258aW58MTI1fDN8M3x8bm98NXxmYWRlT3V0fG9uU3RhcnR8eWVzfHllcw==&ve=310815" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="yes" style="border:none; overflow:hidden; width:100%;"></iframe>
+
 
 </section><!--end of content-->
 <footer>
-    <div id="copyRight"><p>&copy;Copyright</p></div>
-<div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+    <!-- <div id="copyRight"><p>&copy;Copyright</p></div> -->
+    <div id ="twitter">
+    <a class="twitter-follow-button"
+        href="https://twitter.com/seeuniqueness">
+        Follow @Griffina blake</a>
+    </div>
+
+
+<!-- <div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
 <div id="SkypeButton_Call_abdulrahman_bah_1">
   <script type="text/javascript">
     Skype.ui({
@@ -93,7 +132,7 @@
     });
   </script>
 </div>
-</div><!--end of skype-->
+</div> --><!--end of skype-->
 </footer><!--end of footer-->
 </section><!--end of wrapper-->
 </body>

@@ -63,6 +63,8 @@
 
 						<input type ="text" class="form-control input-lg text-center" placeholder="Price"  ng-model="formData.price">
 
+						<input type ="text" class="form-control input-lg text-center" placeholder="amount"  ng-model="formData.amount">
+
 						<input type ="text" class="form-control input-lg text-center" placeholder="Photo"  ng-model="formData.photo">
 
 						<input type ="text" class="form-control input-lg text-center" placeholder="category"  ng-model="formData.category">
@@ -76,7 +78,9 @@
 					<ol>
 						<p>{{product.name}} </p>
 						<p>{{product.price}}</p>
+						<p>{{product.amount}}</p>
 						<p>{{product.text}}</p>
+						<p>{{product.category}}</p>
 						<p>{{product._id}}</p>
 						<p><img src="{{product.photo}}"><p>
 						<p>Delete {{product.name}}<input type="checkbox" ng-click="deleteProduct(product._id)"> </P>

@@ -47,9 +47,30 @@
     });
 </script>
 
+    <!-- twitter needs its on js -->
+    <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+ 
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+ 
+        return t;
+    }(document, "script", "twitter-wjs"));</script>
+
+<!--twitter script end -->  
+
 </head>
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
+
 
 <section id="wrapper">
 <!-- how to check if someOne is loged in 
@@ -73,10 +94,10 @@
 	</ul>
 </section><!--end of slideshow-->
 <section id="top_row">
-	<div class="top_img"><h4><a href="/product">Preciuous Stone</a></h4><img src="img/im1.jpg" /></div><!--end of top_img-->
-	<div class="top_img"><h4><a href="/product">Goldstone</a></h4><img src="img/img2.jpg" /></div></div><!--end of top_img-->
-	<div class="top_img"><h4><a href="/product">Pearl</a></h4><img src="img/img3.jpg" /></div></div><!--end of top_img-->
-	<div class="top_img"><h4><a href="/product">Coral</a></h4><img src="img/img4.jpg" /></div></div><!--end of top_img-->
+	<div class="top_img"><h4><a href="/preciousStones">semi precious stone </a></h4><img src="img/stones.png" /></div><!--end of top_img-->
+	<div class="top_img"><h4><a href="/statementNecklaces">statement necklaces</a></h4><img src="img/statement.JPG" /></div></div><!--end of top_img-->
+	<div class="top_img"><h4><a href="/pearlJewelry">pearl childrens jewelry</a></h4><img src="img/Cnecklaces.jpg" /></div></div><!--end of top_img-->
+	<div class="top_img"><h4><a href="/messageCandles">jeweled message candles</a></h4><img src="img/candles.png" /></div></div><!--end of top_img-->
 </section><!--end of top_row-->
 <section id="bottom_row">
 	<h4><a href="/product">Custom Statement Neclaces</a></h4>
@@ -97,11 +118,12 @@
            <div id="stuff_to_move">
             <!-- image demo showing how to add images from a file --> 
 
-            <p>you can upload a image from a file or url see line ~61</p>
-           <img src="img/traincube-logo.png" alt="Logo" width="900px" height="200px">
+<!--             <p>you can upload a image from a file or url see line ~61</p>
+           <img src="img/traincube-logo.png" alt="Logo" width="900px" height="200px"> -->
 
 
 	<div class="container">
+
 
 		<!-- HEADER AND Products COUNT -->
 		<div class="jumbotron text-center">
@@ -180,17 +202,25 @@
 		</div>
 
 		<div class="text-center text-muted">
+
 <!-- 			<p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
 			<p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-product-app-with-node-and-angular">tutorial</a>.</p> -->
 		</div>
 
+
 	</div>
 </div><!--end of stuff_to_move-->
 
+
 </section><!--end of content-->
 <footer>
-	<div id="copyRight"><p>&copy;Copyright</p></div>
-<div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+    <div id ="twitter">
+    <a class="twitter-follow-button"
+        href="https://twitter.com/seeuniqueness">
+        Follow @Griffina blake</a>
+    </div>
+	<!-- <div id="copyRight"><p>&copy;Copyright</p></div> -->
+<!-- <div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
 <div id="SkypeButton_Call_abdulrahman_bah_1">
   <script type="text/javascript">
     Skype.ui({
@@ -201,7 +231,7 @@
     });
   </script>
 </div>
-</div><!--end of skype-->
+</div> --><!--end of skype-->
 </footer><!--end of footer-->
 </section><!--end of wrapper-->
 </body>

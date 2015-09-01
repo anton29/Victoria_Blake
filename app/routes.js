@@ -32,7 +32,9 @@ module.exports = function(app) {
 			text : req.body.text,
 			name : req.body.name,
 			price : req.body.price,
+			amount : req.body.amount,
 			photo : req.body.photo,
+			category : req.body.category,
 			done : false
 		}, function(err, product) {
 			if (err)
