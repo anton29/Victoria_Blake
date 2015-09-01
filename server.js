@@ -33,7 +33,7 @@ var passport = passport();
 // API routes
 require('./app/routes.js')(app);
 
-app.listen(3000);
+app.listen(8080);
 module.exports = app;
 
-console.log('server is running on localhost:3000');
+console.log('server is running on localhost:8080');
