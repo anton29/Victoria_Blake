@@ -27,7 +27,6 @@ module.exports = function(app) {
 		// create a product, information comes from AJAX request from Angular
 
 		//name was added
-
 		Product.create({
 			text : req.body.text,
 			name : req.body.name,
@@ -62,12 +61,6 @@ module.exports = function(app) {
 		Product.find({_id: req.params.product_id},function (err, products) {
 			res.json(products);
 		});
-});
+	});
 
-
-
-	// application -------------------------------------------------------------
-	// app.get('*', function(req, res) {
-	// 	res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-	// });
 };

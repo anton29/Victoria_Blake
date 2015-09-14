@@ -435,6 +435,14 @@ span#image{
 	color: #ef6d38;
 	margin-left: 3%;
 }
+.checking img{
+	width: 5%;
+	height: 50px;
+}
+.simpleCart_items img{
+	width: 5%;
+	height: 50px;
+}
 
 .empty a{
 	margin-top: 3%;
@@ -772,6 +780,11 @@ span#image{
 	#checking h3{
 		color: #ef6d38;
 		margin-left: 3%;
+	}
+
+	.checking img{
+	width: 5%;
+	height: 50px;
 	}
 
 	.empty a{
@@ -1140,6 +1153,11 @@ span#image{
 	#checking h3{
 		color: #ef6d38;
 		margin-left: 3%;
+	}
+
+	.checking img{
+		width: 5%;
+		height: 50px;
 	}
 
 	.empty a{

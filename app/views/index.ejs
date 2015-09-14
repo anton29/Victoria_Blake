@@ -1,7 +1,7 @@
 <!doctype html>
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="scotchProduct">
+<html ng-app="griffinaProduct">
 <head>
 	<!-- META -->
 	<meta charset="utf-8">
@@ -104,112 +104,15 @@
 	<div class="bot_img"><img src="img/img5.jpg" /></div></div><!--end of bot_img-->
 	<div class="bot_img"><img src="img/img6.jpg" /></div></div><!--end of bot_img-->
 	<div class="home_testi"> 
-		<h4>Testimonial</h4>
+
+		<iframe src="https://player.vimeo.com/video/134153810?autoplay=1&loop=1&title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		
+		<!-- <h4>Testimonial</h4>
 		<div class="testi_img"><img src="img/testimo.jpg" align="left" /></div> 
-		<div class="testi_bio"><h3>habitant morbi</h3><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p></div>
+		<div class="testi_bio"><h3>habitant morbi</h3><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p></div> -->
 	</div><!--end of home_testi-->
 </section><!--end of bottom_row-->
-       
-<!--        <section>
-            <input type="text" id="text1" ng-model="name">
-            <input type="text" id="text2" ng-model="name">
-        </section> -->
-    
-           <div id="stuff_to_move">
-            <!-- image demo showing how to add images from a file --> 
 
-<!--             <p>you can upload a image from a file or url see line ~61</p>
-           <img src="img/traincube-logo.png" alt="Logo" width="900px" height="200px"> -->
-
-
-	<div class="container">
-
-
-		<!-- HEADER AND Products COUNT -->
-		<div class="jumbotron text-center">
-			<h1>Product Tester <span class="label label-info">{{ products.length }}</span></h1>
-		</div>
-
-		<!-- Products LIST -->
-		<div id="product-list" class="row">
-			<div class="col-sm-4 col-sm-offset-4">
-
-				
-
-				<!-- LOOP OVER THE Products IN $scope.products -->
-				<div class="checkbox" ng-repeat="product in products">
-					<label>
-						<p> {{product.name}}</p>
-						<p> {{product.price}}</p>
-						<p> {{product.text}}</p>
-						<img src="{{product.photo}}"> 
-						<p>{{product._id}}</p>
-						<input type="checkbox" ng-click="deleteProduct(product._id)"> 
-						<!-- {{ product.text }} -->
-					</label>
-				</div>
-
-<!-- 				<div ng-repeat="product in products">
-					<ol>
-						<li>{{product.name}} </li>
-						<li>{{product.price}}</li>
-						<li>{{product.text}}<li>
-						<li>{{product._id}}</li>
-						<li><img src="{{product.photo}}"></li>
-					</ol>	
-				</div> -->
-
-				<p class="text-center" ng-show="loading">
-					<span class="fa fa-spinner fa-spin fa-3x"></span>
-				</p>
-
-			</div>
-		</div>
-
-		<!-- FORM TO CREATE Products -->
-		<div id="product-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form enctype="multipart/form-data">
-					<div class="form-group">
-
-						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<!-- Temp simple way of adding data will not be used -->
-						<input type="name" class="form-control input-lg text-center"  placeholder="Name" ng-model="formData.name">
-
-						<input type="text" class="form-control input-lg text-center" placeholder="Description" ng-model="formData.text">
-
-						<input type ="text" class="form-control input-lg text-center" placeholder="Price"  ng-model="formData.price">
-
-						<input type ="text" class="form-control input-lg text-center" placeholder="Photo"  ng-model="formData.photo">
-					</div>
-
-<!-- 
-		<div ng-controller="ExampleController">
- 				 <form novalidate class="simple-form">
-    				Name: <input type="text" ng-model="user.name" /><br />
-    				E-mail: <input type="email" ng-model="user.email" /><br />
-   			 		Gender: <input type="radio" ng-model="user.gender" value="male" />male
-   					<input type="submit" ng-click="update(user)" value="Save" />
-  				</form>
-  			<pre>form = {{user | json}}</pre>
-  			<pre>master = {{master | json}}</pre>
-		</div> -->
-
-					<!-- createProducts() WILL CREATE NEW Products -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createProducts()">Add</button>
-				</form>
-			</div>
-		</div>
-
-		<div class="text-center text-muted">
-
-<!-- 			<p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
-			<p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-product-app-with-node-and-angular">tutorial</a>.</p> -->
-		</div>
-
-
-	</div>
-</div><!--end of stuff_to_move-->
 
 
 </section><!--end of content-->

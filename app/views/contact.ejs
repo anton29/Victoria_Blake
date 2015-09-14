@@ -1,7 +1,7 @@
 <!doctype html>
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="scotchProduct">
+<html ng-app="griffinaProduct">
 <head>
 <!-- META -->
 	<meta charset="utf-8">
@@ -47,6 +47,49 @@
 
 <!--twitter script end -->  
 
+<!-- email script -->
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script>// <![CDATA[
+            $(document).ready(function(){
+                var from,to,subject,text,phone;
+                $("#send_email").click(function(){      
+                to= "griblake@gmail.com";
+                subject=$("#subject").val();
+                //text1=$("#content").val()
+                firstName=$("#firstName").val();
+                lastName=$("#lastName").val();
+                address=$("#address").val();
+                city=$("#city").val();
+                zip=$("#zip").val();
+                phone=$("#phone").val();
+
+                //email body starts
+                text =  "Name: "    + firstName +" " + lastName + '\n' +
+                    "address: " + address + '\n' +
+                    "city: "    + city + '\n' + 
+                    "zip: "     + zip + '\n' +
+                    "phone: "   + phone +'\n' +
+                    "email: "   + subject ;
+                //email body ends
+                //alert("Sending E-mail...Please wait");
+
+                //$("#message").text("Sending E-mail...Please wait");
+               // $.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+               // $.get(“/send”,{to:to,subject:subject,text:text},function(data){
+                $.get("/send",{to:to,subject:subject,text:text},function(data){
+
+                    if(data=="sent")
+                {
+                    alert("Email has been sent to "+to+" . Thank You");
+                   // $("#message").empty().html("Email has been sent to "+to+" . Please check inbox !");
+                }
+
+            });
+                });
+            });
+        </script>
+
+<!--email script end -->
+
 
 	<!--google fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
@@ -64,6 +107,34 @@
 </nav>
 
 <section id="content">
+
+
+<div id="contact_form">
+    <h4>Contact</h4>   
+    <form>
+        <!-- <input id="to" type="text" placeholder="PayPal User Name" class="contact_bg" required autofocus/> -->
+
+        <input id="subject" type="email" placeholder="Email" class="contact_bg" required/>
+
+        <input id ="firstName" type="text" placeholder = "First Name" class="contact_bg" required/>
+
+        <input id = "lastName" type="text" placeholder = "Last Name" class="contact_bg" required/>
+
+        <textarea id="address" cols="40" rows="5" placeholder="Address" class="contact_details" required></textarea>
+
+        <input id = "city" type="text" placeholder = "City" class="contact_bg" required/>
+
+        <input id = "zip" type="text" placeholder = "zip" class="contact_bg" required/>
+
+        <input id = "phone" type="text" placeholder = "phone"  class="contact_bg"required/>
+
+        <!-- <button  name="submit" id="send_email">Send Email</button> -->
+        <input type="submit" name="submit" value="Send" id="send_email" />
+    </form>
+<span id="message"></span>
+</div>
+</div>
+
 
 <div id="contact_form">
 <h4>Contact</h4>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="scotchProduct">
+<html ng-app="griffinaProduct">
 <head>
    <!-- META -->
     <meta charset="utf-8">
@@ -69,7 +69,6 @@
 <div class="product_disp">
     <%if (product.name == 'test') {%>  TEXT PRINTED  <%}%>
 
-
     <h4>Name: {{product.name}}</h4>
     <h4>Price: ${{product.price}}</h4>
     <h4>Description: {{product.text}}</h4>
@@ -80,18 +79,6 @@
     <!-- {{ product.text }} -->
 </div>
 </div>
-    <!-- LOOP OVER THE Products IN $scope.products -->
-    
-
-<!--                <div ng-repeat="product in products">
-        <ol>
-            <li>{{product.name}} </li>
-            <li>{{product.price}}</li>
-            <li>{{product.text}}<li>
-            <li>{{product._id}}</li>
-            <li><img src="{{product.photo}}"></li>
-        </ol>   
-    </div> -->
 
     <p class="text-center" ng-show="loading">
         <span class="fa fa-spinner fa-spin fa-3x"></span>

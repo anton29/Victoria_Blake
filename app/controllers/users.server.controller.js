@@ -90,40 +90,42 @@ exports.renderProduct = function(req, res, next){
        
 };
 
+exports.renderTakeForm = function(req,res,next){
+    res.render('takeform')
+}
+
 exports.renderProductId = function(req, res, next){
-     console.log('render ProductId was called ' + req.query.p);
-     console.log(req.param('p'))
      <!--//console.log('id was found' + req.product ? req.product._id:'');-->
      Product.findOne({_id: req.query.p}, function(err, product) {
 
         if (err) {
             res.send(err);
         } else {
-            res.render('test', {product: product, title:'The Victoria Blake Collection', userFullName: req.user ? req.user.fullName : ''});
+            res.render('test', {
+                product: product, 
+                title:'The Victoria Blake Collection', 
+                userFullName: req.user ? req.user.fullName : ''
+            });
                  
         }   
      })
 };
 
-// exports.renderProductCategory = function(req, res, next){
-//     console.log('render Product Category');
-//     // Product.find({Category:"test"}).toArray(function(err, results){
-//     Product.find({category:"test"}, function(err, result){
-
+//update ===========================================================
+// exports.updateProduct = function (req, res){
+//     //res.send("product updated");
+//     Product.update({_id: req.params.productId}, {
+//         amount: 0;
+//     }, function(err, num, raw){
 //         if (err) {
 //             res.send(err);
 //         } else {
-
-//                 res.render('testCategory', {
-//                 product: result, 
-//                 title:'The Victoria Blake Collection', 
-//                 userFullName: req.user ? req.user.fullName : ''
-//             });
-                 
-//         } 
-//          console.log(result); // output all records
+//             console.log("successfully updated");
+//             res.json(num);
+//         };
 //     });
 // };
+//==================================================================
 
  exports.renderMessageCandles = function(req, res, next){
     Product.find({category:"messageCandles"}, function(err, result){
@@ -214,6 +216,23 @@ exports.renderContact = function(req, res){
         {title: 'The Victoria Blake Collection', 
         userFullName: req.user ? req.user.fullName : ''})
 };
+
+exports.renderReserve = function(req, res){
+     Product.findOne({_id: req.query.p}, function(err, product) {
+
+        if (err) {
+            res.send(err);
+        } else {
+            res.render('reserve', {
+                product: product, 
+                title:'The Victoria Blake Collection', 
+                userFullName: req.user ? req.user.fullName : ''
+            });
+                 
+        }   
+     })
+};
+
 
 exports.renderTestimonial = function(req, res){
     res.render('testimonial', 

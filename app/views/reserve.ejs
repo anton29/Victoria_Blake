@@ -1,0 +1,182 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="griffinaProduct">
+<head>
+<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>The Victoria Blake Collection</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link href="../css/boilerplate.css" rel="stylesheet" type="text/css">
+	<link href="../css/style.css" rel="stylesheet" type="text/css">
+	<link href="../css/navigation.css" rel="stylesheet" type="text/css"> 
+	<link href="../css/contact_form.css" rel="stylesheet" type="text/css">
+
+	<!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> -->
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+
+	<script src="../js/simpleCart.js" type="text/javascript" charset="utf-8"></script>
+	
+
+	<script type="text/javascript" src="application.js"></script>
+	<!--<script type="text/javascript" src="/lib/angular/angular.js"></script>-->
+	<script src="../js/respond.min.js"></script>
+
+	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="../js/services/products.js"></script> <!-- load our product service -->
+	<script src="../js/core.js"></script> <!-- load our main application -->
+
+	
+
+	<script type="text/javascript">
+		simpleCart = new cart("brett@wojodesign.com");
+	</script>
+
+	<!-- email script -->
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script>// <![CDATA[
+            $(document).ready(function(){
+                var from,to,subject,text,phone;
+                $("#send_email").click(function(){      
+                to= "abr8892@yahoo.com";
+                subject=$("#subject").val();
+                //text1=$("#content").val()
+                firstName=$("#firstName").val();
+                lastName=$("#lastName").val();
+                address=$("#address").val();
+                city=$("#city").val();
+                zip=$("#zip").val();
+                phone=$("#phone").val();
+                products=$("#products").val();
+
+                //email body starts
+                text =  "Name: "    + firstName +" " + lastName + '\n' +
+                    "products: "+ products + '\n' +
+                    "address: " + address + '\n' +
+                    "city: "    + city + '\n' + 
+                    "zip: "     + zip + '\n' +
+                    "phone: "   + phone +'\n' +
+                    "email: "   + subject ;
+                //email body ends
+
+                //$("#message").text("Sending E-mail...Please wait");
+               // $.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+               // $.get(“/send”,{to:to,subject:subject,text:text},function(data){
+                $.get("/send",{to:to,subject:subject,text:text},function(data){
+
+                    if(data=="sent")
+                {
+                   // $("#message").empty().html("Email has been sent to "+to+" . Please check inbox !");
+                }
+
+            });
+                });
+            });
+        </script>
+
+<!--email script end -->
+
+	<!--google fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		.cartHeaders, .totalRow{display: none;}
+	</style>
+</head>
+<body ng-controller="mainController">
+
+<section id="wrapper">
+
+<header>
+<div id="logo"><img src="../img/logo.png" /></div><!--end of logo-->
+<div id="title"><h1><%= title %></h1></div><!--end of title-->
+<!-- <div id="login">
+	<% if(userFullName) { %>
+	<h2>Log In Works, <%=userFullName%></h2>
+	<a href="/signout">Sign Out</a>
+	<%} else{%>
+	<a href="/signup" class="signs">Sign Up</a>
+	<a href="/signin" class="signs">Sign In</a>
+	<%}%>
+</div> --><!--end of login-->
+</header>
+<nav><% include nav %></nav>
+
+<section id="content">
+
+<!-- <div id="productItem">
+
+	<ul id="catalog">
+				
+		<li>
+			<div class="the_name"><h4>Name: <%= product.name %></h4></div>
+			<div class="the_photo"><img src="../<%=product.photo%>" alt="<%= product.name %>" /></div>
+			<div class="price"><h4>Price: $<%= product.price %></h4></div>
+			<h4><a href="#" onclick="simpleCart.add('name=<%= product.name %>','price=<%=product.price %>','image=../<%=product.photo%>');return false;"> add to cart</a></h4>
+		</li>
+	</ul> -->
+
+	<section id="content">
+
+
+<div id="contact_form">
+    <h4>Reserve <%= product.name %> </h4>   
+    <form>
+        <input id="to" type="text" placeholder="PayPal User Name" class="contact_bg" required autofocus/>
+
+        <input id="subject" type="email" placeholder="Email" class="contact_bg" required/>
+
+        <input id ="firstName" type="text" placeholder = "First Name" class="contact_bg" required/>
+
+        <input id = "lastName" type="text" placeholder = "Last Name" class="contact_bg" required/>
+
+        <textarea id="address" cols="40" rows="5" placeholder="Address" class="contact_details" required></textarea>
+
+        <input id = "city" type="text" placeholder = "City" class="contact_bg" required/>
+
+        <input id = "zip" type="text" placeholder = "zip" class="contact_bg" required/>
+
+        <input id = "phone" type="text" placeholder = "phone"  class="contact_bg"required/>
+
+        <input id = "product" type="text" class="contact_bg"required value= "<%= product.name %>"/>
+
+
+        <!-- <button  name="submit" id="send_email">Send Email</button> -->
+        <input type="submit" name="submit" value="Send" id="send_email" />
+    </form>
+<span id="message"></span>
+</div>
+</div>
+
+
+
+</section><!--end of content-->
+<footer>
+	<!-- <div id="copyRight"><p>&copy;Copyright</p></div> -->
+    <div id ="twitter">
+    <a class="twitter-follow-button"
+        href="https://twitter.com/seeuniqueness">
+        Follow @Griffina blake</a>
+    </div>
+<div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+<div id="SkypeButton_Call_abdulrahman_bah_1">
+  <script type="text/javascript">
+    Skype.ui({
+      "name": "call",
+      "element": "SkypeButton_Call_abdulrahman_bah_1",
+      "participants": ["abdulrahman_bah"],
+      "imageSize": 32
+    });
+  </script>
+</div>
+</div><!--end of skype-->
+</footer><!--end of footer-->
+</section><!--end of wrapper-->
+</body>
+</html>

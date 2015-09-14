@@ -1,6 +1,6 @@
 angular.module('productController', [])
 
-	// inject the Todo service factory into our controller
+	// inject the product service factory into our controller
 	.controller('mainController', ['$scope','$http','Products', function($scope, $http, Products) {
 		$scope.formData = {};
 		$scope.loading = true;
@@ -40,10 +40,8 @@ angular.module('productController', [])
   		};
 
 		// DELETE ==================================================================
-		// delete a todo after checking it
 		$scope.deleteProduct = function(id) {
 			$scope.loading = true;
-
 			Products.delete(id)
 				// if successful creation, call our get function to get all the new products
 				.success(function(data) {

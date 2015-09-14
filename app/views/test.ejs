@@ -1,7 +1,7 @@
 <!doctype html>
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="scotchProduct">
+<html ng-app="griffinaProduct">
 <head>
 <!-- META -->
 	<meta charset="utf-8">
@@ -31,8 +31,10 @@
 	<script src="../js/services/products.js"></script> <!-- load our product service -->
 	<script src="../js/core.js"></script> <!-- load our main application -->
 
+
+
 	<script type="text/javascript">
-		simpleCart = new cart("brett@wojodesign.com");
+		simpleCart = new cart("griblake@gmail.com");
 	</script>
 
 	<!--google fonts-->
@@ -49,7 +51,7 @@
 <header>
 <div id="logo"><img src="../img/logo.png" /></div><!--end of logo-->
 <div id="title"><h1><%= title %></h1></div><!--end of title-->
-<div id="login">
+<!-- <div id="login">
 	<% if(userFullName) { %>
 	<h2>Log In Works, <%=userFullName%></h2>
 	<a href="/signout">Sign Out</a>
@@ -57,7 +59,7 @@
 	<a href="/signup" class="signs">Sign Up</a>
 	<a href="/signin" class="signs">Sign In</a>
 	<%}%>
-</div><!--end of login-->
+</div> --><!--end of login-->
 </header>
 <nav><% include nav %></nav>
 
@@ -69,24 +71,11 @@
 				
 		<li>
 			<div class="the_name"><h4>Name: <%= product.name %></h4></div>
-			<div class="the_photo"><img src="<%=product.photo%>" alt="<%= product.name %>" /></div>
+			<div class="the_photo"><img src="../<%=product.photo%>" alt="<%= product.name %>" /></div>
 			<div class="price"><h4>Price: $<%= product.price %></h4></div>
-			<h4><a href="#" onclick="simpleCart.add('name=<%= product.name %>','price=<%=product.price %>');return false;"> add to cart</a></h4>
-			<!-- ,'image=images/thumbs/redShoe.jpg' -->
+			<h4><a href="#" onclick="simpleCart.add('name=<%= product.name %>','price=<%=product.price %>','image=../<%=product.photo%>');return false;"> add to cart</a></h4>
 		</li>
 	</ul>
-	<!--
-	<div class="details"> <h5><%= product.name %> </h5> </div>
-	<div class="details"> <h5>$<%=product.price %> </h5></div><
-	<div class="details"><img src="<%=product.photo%>"> </div>
-	<div class="details"><p> <%=product.text%></p></div>
-
-	<div class="details"><button type="submit" id="cart_btn">Add to Cart</button></div><!--end of details-->
-
-	<!--<p> add the new ejs page to views </p>
-	<p>for a new page add new function to user.server.controller</p>
-	<p> add a new route to user.server.routes</p>
-	<p> note  userFullName: req.user ? req.user.fullName : '' has to be added to controller for log in checking </p>-->
 
 	<div id="sidebar" class="checking">
 				<h3>Your Cart</h3>
@@ -99,11 +88,13 @@
 				
 				<!--Here's the Links to Checkout and Empty Cart-->
 				<div class="empty"><a href="#" class="simpleCart_empty">Empty Cart</a></div>
-
+				<div class="checkout"><a href="/cart">Checkout</a></div>
+				<h1> show this "<%= product.id %>" </h1>
+				<div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div>
 				<!-- off for now -->
 				<!--
 				<div class="checkout"><a href="#" class="simpleCart_checkout">Checkout</a></div>
-				-->
+				
 				
 			</div>
 	</div><!--end of productItem-->

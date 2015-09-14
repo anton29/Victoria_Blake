@@ -1,23 +1,26 @@
 var users = require('../../app/controllers/users.server.controller');
-var product = require('../../app/controllers/product.server.controller');
 var passport = require('passport');
+// var core = require('../controllers/core.server.controller');
+//var core = require('../controllers/core.server.controller');
+var nodemailer = require("nodemailer");
 
+/*-----------------SMPT----------------------------------*/
 
+var smtpTransport = nodemailer.createTransport("SMTP",{
+    service: "Gmail",
+    auth: {
+        user: "test128892@gmail.com",
+        pass: "test?1992"
+    }
+});
 
+/*------------------SMTP End-----------------------------*/
 
-
+    // var index = function(req, res){
+    //     res.render('index.ejs');
+    // };
 
 module.exports = function(app){
-    //app.set('views', __dirname + 'app/views');
-    //app.set('view engine', 'ejs');  
-    // app.engine('html', require('ejs').renderFile);
-    // app.route('/product')
-    //     .get('/product', function (req, res)
-    // {
-    //     res.render('product.html');
-    // });
-
-
     app.route('/users')
         .post(users.create)     //post to create
         .get(users.list);       //get to find the list of users
@@ -45,8 +48,12 @@ module.exports = function(app){
     app.route('/about')
         .get(users.renderAbout)
 
-    app.route('/contact')
+    // addede .post(core.sendMail);
+    app.route('/contact')//.post(core.sendMail);
         .get(users.renderContact)
+
+    app.route('/reserve/:product_id')
+        .get(users.renderReserve)
 
     app.route('/testimonial')
         .get(users.renderTestimonial)
@@ -56,9 +63,6 @@ module.exports = function(app){
 
     app.route('/cart')
         .get(users.renderCart)
-
-    // app.route('/testCategory')
-    //     .get(users.renderProductCategory)
 
     app.route('/messageCandles')
         .get(users.renderMessageCandles) 
@@ -107,5 +111,33 @@ module.exports = function(app){
         failureRedirect: '/signin',
         successRedirect: '/'
     }));
+
+    app.get('/send',function(req,res){
+            var mailOptions={
+                to : req.query.to,
+                subject : req.query.subject,
+                text : req.query.text ,
+                // attachments:[  
+                //                 {   
+                //                     filename: req.query.attachment,    
+                //                     contents: new Buffer(data, 'base64'),   
+                //                     cid: cid    
+                //                 }   
+                //             ]  
+            }
+        if(req.query.to && req.query.subject && req.query.text ){
+        console.log(mailOptions);
+        smtpTransport.sendMail(mailOptions, function(error, response){
+            if(error){
+                console.log(error);
+                res.end("error");
+            }else{
+                console.log("Message sent: " + response.message);
+                res.end("sent");
+            }
+            });
+        }
+
+    });
 };
 

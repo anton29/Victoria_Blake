@@ -1,1 +1,1 @@
-angular.module('scotchProduct', ['productController', 'productService']);
+angular.module('griffinaProduct', ['productController', 'productService']);

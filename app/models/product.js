@@ -1,14 +1,10 @@
-// working doing anything ??
-
 var mongoose = require('mongoose');
-
-// module.exports = mongoose.model('Product', {
-// 	text : {type : String, default: ''}
-// });
-
-// was changed
+var ObjectId = mongoose.Schema.Types.ObjectId;
 var Product = mongoose.Schema({
 
+	// _id: {
+	// 	type : ObjectId,
+	// },
 	text: { 
 		type: String,
 		default : ''
@@ -16,7 +12,7 @@ var Product = mongoose.Schema({
 	
 	name : {
 		type: String,
-		default : 'this is being used'
+		default : ''
 	},
 
 	price : {
@@ -39,5 +35,40 @@ var Product = mongoose.Schema({
 	}
 
 });
+var Product = mongoose.model('Product', Product);
+
+var document = ({ 
+							//'_id': ObjectId("2599dagdsdadadsdsads"),
+ 							'name'   : 'name12345',
+ 							'price'  : 10,
+ 							'amount' :  1,
+ 							'photo'  : 'img/stones.png',
+ 							'category' : 'demo'}) ;
+
+ // Product.collection.insert({ 
+ // 							//'_id': ObjectId("25"),
+ // 							'name'   : 'A123',
+ // 							'price'  : 10,
+ // 							'amount' :  1,
+ // 							'photo'  : 'img/stones.png',
+ // 							'category' : 'demo'}
+ // 							,{$set:{name: {$exists : true }}}, { upsert: true })
+
+  Product.collection.insert({ 
+ 							//'_id': ObjectId("25"),
+ 							'name'   : 'precious Stones demo Item',
+ 							'price'  :  0,
+ 							'amount' :  1,
+ 							'photo'  : 'img/stones.png',
+ 							'category' : 'preciousStones'}) 
+// Product.collection.update(
+//    { "name" : { $exists : true } },
+//    document,
+//    {
+//      upsert: true,
+//    }
+// )
+
+
 
 module.exports = mongoose.model('Product', Product);

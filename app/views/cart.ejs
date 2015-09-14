@@ -1,7 +1,7 @@
 <!doctype html>
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="scotchProduct">
+<html ng-app="griffinaProduct">
 <head>
 <!-- META -->
 	<meta charset="utf-8">
@@ -14,6 +14,7 @@
 	<link href="../css/boilerplate.css" rel="stylesheet" type="text/css">
 	<link href="../css/style.css" rel="stylesheet" type="text/css">
 	<link href="../css/navigation.css" rel="stylesheet" type="text/css">
+	<link href="../css/contact_form.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
 	<!-- SPELLS -->
@@ -32,7 +33,7 @@
 	<script src="../js/core.js"></script> <!-- load our main application -->
 
 	<script type="text/javascript">
-		simpleCart = new cart("brett@wojodesign.com");
+		simpleCart = new cart("griblake@gmail.com");
 	</script>
 
 	    <!-- twitter needs its on js -->
@@ -55,6 +56,47 @@
 
 <!--twitter script end -->  
 
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script>// <![CDATA[
+            $(document).ready(function(){
+                var from,to,subject,text,phone;
+                $("#send_email").click(function(){      
+                to= "griblake@gmail.com";
+                subject=$("#subject").val();
+                //text1=$("#content").val()
+                firstName=$("#firstName").val();
+                lastName=$("#lastName").val();
+                address=$("#address").val();
+                city=$("#city").val();
+                zip=$("#zip").val();
+                phone=$("#phone").val();
+
+                //email body starts
+                text =  "Name: "    + firstName +" " + lastName + '\n' +
+                    "address: " + address + '\n' +
+                    "city: "    + city + '\n' + 
+                    "zip: "     + zip + '\n' +
+                    "phone: "   + phone +'\n' +
+                    "email: "   + subject ;
+                //email body ends
+                //alert("Sending E-mail...Please wait");
+
+                //$("#message").text("Sending E-mail...Please wait");
+               // $.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+               // $.get(“/send”,{to:to,subject:subject,text:text},function(data){
+                $.get("/send",{to:to,subject:subject,text:text},function(data){
+
+                    if(data=="sent")
+                {
+                    alert("Email has been sent to "+to+" . Thank You");
+                   // $("#message").empty().html("Email has been sent to "+to+" . Please check inbox !");
+                }
+
+            });
+                });
+            });
+        </script>
+
+
 	<!--google fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
@@ -73,22 +115,51 @@
 
 <section id="content">
 
-<div id="sidebar">
-				<h2>Your Cart</h2>
+<div id="contact_form">
+    <h4>Shipping</h4>   
+    <form>
+        <!-- <input id="to" type="text" placeholder="PayPal User Name" class="contact_bg" required autofocus/> -->
+
+        <input id="subject" type="email" placeholder="Email" class="contact_bg" required/>
+
+        <input id ="firstName" type="text" placeholder = "First Name" class="contact_bg" required/>
+
+        <input id = "lastName" type="text" placeholder = "Last Name" class="contact_bg" required/>
+
+        <textarea id="address" cols="40" rows="5" placeholder="Address" class="contact_details" required></textarea>
+
+        <input id = "city" type="text" placeholder = "City" class="contact_bg" required/>
+
+        <input id = "zip" type="text" placeholder = "zip" class="contact_bg" required/>
+
+        <input id = "phone" type="text" placeholder = "phone"  class="contact_bg"required/>
+
+        <div id="sidebar">
+				<h2>Your Items</h2>
 				
 				
 				<!--Add a Div with the class "simpleCart_items" to show your shopping cart area.-->
+			
 				<div class="simpleCart_items" >
 				</div>
-
+			
 				<!--Here's the Links to Checkout and Empty Cart-->
 				<a href="#" class="simpleCart_empty">empty cart</a>
 
-				<!-- no checkOut 
-				<a href="#" class="simpleCart_checkout">Checkout</a>
-				-->
+				
+				<a href="#" class="simpleCart_checkout" id="send_email">Checkout</a>
+				
 
 </div>
+
+        <!-- <button  name="submit" id="send_email">Send Email</button> -->
+        <!-- <input type="submit" name="submit" value="Send" id="send_email" /> -->
+    </form>
+<span id="message"></span>
+</div>
+</div>
+
+
 
 </section><!--end of content-->
 
