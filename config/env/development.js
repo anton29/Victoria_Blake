@@ -1,6 +1,6 @@
 module.exports = {
     //Development configuration options
-    db: 'mongodb://localhost/mean-orange',
+    db: 'mongodb://localhost/mean-oranges',     // db useded
     sessionSecret: ' developmentSessionSecret', //use any string you like.... just an example
     facebook: {
         clientID: '1036744756355416',   //application id

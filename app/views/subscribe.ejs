@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<!--<title>Node Email application</title>-->
+		<link href="../css/styles.css" rel="stylesheet" type="text/css">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script>// <![CDATA[
+			$(document).ready(function(){
+			    var from,to,subject,text,phone;
+			    $("#send_email").click(function(){      
+				to=$("#to").val();
+				subject=$("#subject").val();
+				$.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+					if(data=="sent")
+				{
+				   // $("#message").empty().html("Email has been sent to "+to+" . Please check inbox !");
+				}
+
+			});
+			    });
+			});
+		</script>
+	</head>
+<body>
+<div id="container">
+	<div style="color:#444;font-family:Open Sans;font-size:30px;text-align:center;">The Victoria Blake Collection</div>
+	<div style="text-align: center"> <img src="logo.png"> </div>
+	<div style="color:#444;font-family:Open Sans;font-size:24px;text-align:center;">Join the Victoria Blake community!</div>
+	<div style="color:#444;font-family:Open Sans;font-size:18px;text-align:center;">Sign-Up and be the first to know about our sales, 			special deals, and new Products!</div>
+	<div style="text-align: center">
+		<form>
+			<input id="to" type="text" placeholder="Email Address" required/>
+			<button id="send_email">Send Email</button>
+		</form>
+	</div>
+<span id="message"></span>
+</div>
+</div>
