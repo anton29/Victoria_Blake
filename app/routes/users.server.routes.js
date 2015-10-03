@@ -9,8 +9,8 @@ var nodemailer = require("nodemailer");
 var smtpTransport = nodemailer.createTransport("SMTP",{
     service: "Gmail",
     auth: {
-        user: "",
-        pass: ""
+        user: "test128892@gmail.com",
+        pass: "test?1992"
     }
 });
 
@@ -59,7 +59,7 @@ module.exports = function(app){
         .get(users.renderTestimonial)
 
     app.route('/admin')
-        .get(users.renderAdmin)
+         .get(users.renderAdmin)
 
     app.route('/cart')
         .get(users.renderCart)
@@ -112,20 +112,53 @@ module.exports = function(app){
         successRedirect: '/'
     }));
 
+    // app.get('/send',function(req,res){
+    //         var mailOptions={
+    //             to : req.query.to,
+    //             subject : req.query.subject,
+    //             text : req.query.text ,
+    //         }
+    //     if(req.query.to && req.query.subject && req.query.text ){
+    //     console.log(mailOptions);
+    //     smtpTransport.sendMail(mailOptions, function(error, response){
+    //         if(error){
+    //             console.log(error);
+    //             res.end("error");
+    //         }else{
+    //             console.log("Message sent: " + response.message);
+    //             res.end("sent");
+    //         }
+    //         });
+    //     }
+
+    // });
+
     app.get('/send',function(req,res){
-            var mailOptions={
-                to : req.query.to,
-                subject : req.query.subject,
-                text : req.query.text ,
-                // attachments:[  
-                //                 {   
-                //                     filename: req.query.attachment,    
-                //                     contents: new Buffer(data, 'base64'),   
-                //                     cid: cid    
-                //                 }   
-                //             ]  
+            var pixel = req.query.url;
+            var fullPath = req.query.file
+            //console.log(fullPath.split(/(\\|\/)/g).pop())
+            if(req.query.to && req.query.subject && req.query.text ){
+            if(fullPath){
+                    var mailOptions={
+                        to : req.query.to,
+                        subject : req.query.subject,
+                        text : req.query.text,
+                        attachments: [
+                                       {
+                                        fileName: req.query.file.split(/(\\|\/)/g).pop(),
+                                        contents: new Buffer(pixel.split("base64,")[1], "base64")
+                                        }
+                                    ]
+                    }
+            }else{
+                    var mailOptions={
+                        to : req.query.to,
+                        subject : req.query.subject,
+                        text : req.query.text
+                    }
             }
-        if(req.query.to && req.query.subject && req.query.text ){
+
+       
         console.log(mailOptions);
         smtpTransport.sendMail(mailOptions, function(error, response){
             if(error){

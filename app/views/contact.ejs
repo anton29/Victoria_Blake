@@ -2,6 +2,7 @@
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
 <html ng-app="griffinaProduct">
+
 <head>
 <!-- META -->
 	<meta charset="utf-8">
@@ -13,7 +14,7 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
 	<link href="../css/boilerplate.css" rel="stylesheet" type="text/css">
 	<link href="../css/style.css" rel="stylesheet" type="text/css">
-    <link href="../css/navigation.css" rel="stylesheet" type="text/css">
+  <link href="../css/navigation.css" rel="stylesheet" type="text/css">
 	<link href="../css/contact_form.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
@@ -26,6 +27,29 @@
 	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="../js/services/products.js"></script> <!-- load our product service -->
 	<script src="../js/core.js"></script> <!-- load our main application -->
+
+            <!-- image upload script-->
+     <script>
+       function previewFile(){
+           var preview = document.querySelectorAll('img')[1]; //selects the query named img
+           var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+           var reader  = new FileReader();
+           reader.onloadend = function () {
+               preview.src = reader.result;
+                console.log(preview.src.length);
+                var url = preview.src;
+                
+           }
+
+           if (file) {
+               reader.readAsDataURL(file); //reads the data as a URL
+           } else {
+               preview.src = "";
+           }
+      }
+      previewFile();  //calls the function named previewFile()    
+  </script>
+            <!-- image upload script end -->
 
             <!-- twitter needs its on js -->
     <script>window.twttr = (function(d, s, id) {
@@ -48,20 +72,23 @@
 <!--twitter script end -->  
 
 <!-- email script -->
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script>// <![CDATA[
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script>// <![CDATA[
             $(document).ready(function(){
-                var from,to,subject,text,phone;
+                var preview = document.querySelectorAll('img')[1];//selects the query named img
+
+                var from,to,subject,text,phone,url,file;
                 $("#send_email").click(function(){      
                 to= "griblake@gmail.com";
                 subject=$("#subject").val();
-                //text1=$("#content").val()
                 firstName=$("#firstName").val();
                 lastName=$("#lastName").val();
                 address=$("#address").val();
                 city=$("#city").val();
                 zip=$("#zip").val();
                 phone=$("#phone").val();
-
+                file =$("#upload").val(); 
+                url = preview.src;   
                 //email body starts
                 text =  "Name: "    + firstName +" " + lastName + '\n' +
                     "address: " + address + '\n' +
@@ -69,17 +96,14 @@
                     "zip: "     + zip + '\n' +
                     "phone: "   + phone +'\n' +
                     "email: "   + subject ;
-                //email body ends
-                //alert("Sending E-mail...Please wait");
 
-                //$("#message").text("Sending E-mail...Please wait");
-               // $.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
-               // $.get(“/send”,{to:to,subject:subject,text:text},function(data){
-                $.get("/send",{to:to,subject:subject,text:text},function(data){
+                $.get("/send",{to:to,subject:subject,text:text,url:url,file:file},function(data){
 
                     if(data=="sent")
                 {
                     alert("Email has been sent to "+to+" . Thank You");
+                    document.getElementById("form").reset();
+                    preview.src = "";
                    // $("#message").empty().html("Email has been sent to "+to+" . Please check inbox !");
                 }
 
@@ -111,7 +135,7 @@
 
 <div id="contact_form">
     <h4>Contact</h4>   
-    <form>
+    <form id="form">
         <!-- <input id="to" type="text" placeholder="PayPal User Name" class="contact_bg" required autofocus/> -->
 
         <input id="subject" type="email" placeholder="Email" class="contact_bg" required/>
@@ -129,55 +153,18 @@
         <input id = "phone" type="text" placeholder = "phone"  class="contact_bg"required/>
 
         <!-- <button  name="submit" id="send_email">Send Email</button> -->
+
+        <input id="upload" type="file" onchange="previewFile()"><br>
+
+        <img src="" height="200" alt="Image preview...">
+
+          <!-- <p id="demo"></p> -->
+
         <input type="submit" name="submit" value="Send" id="send_email" />
     </form>
 <span id="message"></span>
 </div>
 </div>
-
-
-<div id="contact_form">
-<h4>Contact</h4>
-<!-- Form -->
-<!-- <form action="/signup" method="post"> -->
-<form action="mailto:abr8892@yahoo" method="post" enctype="text/plain">
-
-        <div>
-            <!--<label>First Name:</label>-->
-            <input type="text" placeholder="Name" class="contact_bg" required autofocus/>
-        </div>
-        <div>
-            <!--<label>Last Name:</label>
-            <input type="text" name="lastName" placeholder="Last Name" class="bg" />-->
-        </div>
-        <div>
-            <!--<label>Email:</label>-->
-            <input type="email" name="email" placeholder="Email" class="contact_bg" required/>
-        </div>
-        <div>
-            <!--<label>Username:</label>
-            <input type="text" name="username" placeholder="Username" class="contact_bg" />-->
-        </div>
-        <div>
-            <!--<label>Password:</label>
-            <input type="password" name="password" placeholder="Password" class="bg" />-->
-            <input placeholder="Phone" type="tel" name="phone" class="contact_bg" optional>
-        </div>
-        <div>
-            <!--<label>Username:</label>-->
-            <input type="text" name="sample" placeholder="Upload sample image" class="contact_bg" />
-        </div>
-         <div>
-            <textarea placeholder="Include all the details you can" name="message" class="contact_details" required></textarea>
-        </div>
-        <div>
-            <input type="submit" name="submit" value="Send" id="contact_btn" />
-        </div>
-        
-    </form>
-
-</div><!--end of contact_form-->
-
 
 </section><!--end of content-->
 <footer>

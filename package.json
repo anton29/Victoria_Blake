@@ -1,12 +1,16 @@
 {
-  "name": "MEAN1",
-  "version": "0.0.3",
-  "description": "orange ch3",
-  "main": "index.js",
+  "name": "Victoria-Blake",
+  "version": "1.0.0",
+  "description": "Victoria Blake web page",
+  "repository": "https://github.com/anton29/Victoria_Blake",
+  "private": true,
   "scripts": {
+    "start": "node server.js",
+    "monitor": "nodemon server.js",
+    "deploy": "gcloud preview app deploy app.yaml",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Anton",
   "license": "ISC",
   "dependencies": {
     "assert": "^1.3.0",
