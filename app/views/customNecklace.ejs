@@ -31,7 +31,7 @@
 	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="../js/services/products.js"></script> <!-- load our product service -->
 	<script src="../js/core.js"></script> <!-- load our main application -->
-  <script src="../js/emailer.js"></script>
+  <script src="../js/customOrder.js"></script>
   <script src="../js/twitter.js"></script>
   <script src="../js/facebook.js"></script>
 
@@ -78,7 +78,7 @@
 
 
 <div id="contact_form">
-    <h4>Contact</h4>   
+    <h3>Show off your favorit item by adding personalized, signature touches </h3>   
     <form id="form">
         <!-- <input id="to" type="text" placeholder="PayPal User Name" class="contact_bg" required autofocus/> -->
 
@@ -88,14 +88,7 @@
 
         <input id = "lastName" type="text" placeholder = "Last Name" class="contact_bg" required/>
 
-        <textarea id="address" cols="40" rows="5" placeholder="Address" class="contact_details" required></textarea>
-
-        <input id = "city" type="text" placeholder = "City" class="contact_bg" required/>
-
-        <input id = "zip" type="text" placeholder = "zip" class="contact_bg" required/>
-
-        <input id = "phone" type="text" placeholder = "phone"  class="contact_bg"required/>
-
+        <textarea id="description" cols="40" rows="5" placeholder="How would you like to customize your Item, you can include an image of your item below" class="contact_details" required></textarea>
         <!-- <button  name="submit" id="send_email">Send Email</button> -->
 
         <input id="upload" type="file" onchange="previewFile()"><br>

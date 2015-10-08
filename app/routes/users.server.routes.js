@@ -74,7 +74,13 @@ module.exports = function(app){
         .get(users.renderPreciousStones) 
 
     app.route('/statementNecklaces')
-        .get(users.renderStatementNecklaces)  
+        .get(users.renderStatementNecklaces) 
+
+    app.route('/customNecklace')
+        .get(users.renderCustomNecklace)
+
+    app.route('/social')
+        .get(users.renderSocial)
 
     app.route('/signup')
         .get(users.renderSignup)
@@ -89,6 +95,7 @@ module.exports = function(app){
         }));
         
     app.get('/signout', users.signout);
+
     
     app.get('/oauth/facebook', passport.authenticate('facebook', {  //starts the authentication process
         failureRedirect: '/signin'

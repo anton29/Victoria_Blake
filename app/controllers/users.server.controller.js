@@ -199,6 +199,13 @@ exports.renderProductId = function(req, res, next){
     });
 };
 
+exports.renderCustomNecklace = function(req,res){
+    res.render('customNecklace',
+        {
+            title: 'The Victoria Blake Collection',
+            userFullName: req.user ? req.user.fullName : ''
+        })
+};
 
 exports.renderTest= function(req,res,next){
     console.log('render Product Id was called')
@@ -250,6 +257,15 @@ exports.renderCart = function(req, res) {
     res.render('cart', 
         {title: 'The Victoria Blake Collection',
         userFullName: req.user ? req.user.fullName : ''})
+};
+
+exports.renderSocial = function(req,res){
+    res.render('social',
+        {
+            title: 'The Victoria Blake Collection',
+            userFullName: req.user ? req.user.fullName : ''
+        })
+        
 };
 
 exports.signin = function(req, res, next){

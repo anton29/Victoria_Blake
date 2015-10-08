@@ -25,7 +25,7 @@
 	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="../js/services/products.js"></script> <!-- load our product service -->
 	<script src="../js/core.js"></script> <!-- load our main application -->
-    <script src="../js/facebook.js"></script>
+  <script src="../js/facebook.js"></script>
 
 	<!--google fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
@@ -52,7 +52,7 @@
 <!--twitter script end -->  
 </head>
 <body ng-controller="mainController">
-
+<div id="fb-root"></div>
 
 <section id="wrapper">
 
@@ -63,49 +63,14 @@
 	<% include nav %>
 </nav>
 
-<section id="content">
+<!-- <section id="content">
+<div class="fb-page" data-href="https://www.facebook.com/VictoriaBlakeFashionDesigns" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/VictoriaBlakeFashionDesigns"><a href="https://www.facebook.com/VictoriaBlakeFashionDesigns">Victoria Blake  Global Collection LLC.</a></blockquote></div></div>
+ -->
 
-<div class="testimonials">
-    <!-- 
-     <iframe src="https://www.facebook.com/Microsoft" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:px"></ifram>  -->
+<!-- SnapWidget -->
+<script src="http://snapwidget.com/js/snapwidget.js"></script>
+<iframe src="http://snapwidget.com/in/?u=dmljdG9yaWFibGFrZWNvbGxlY3Rpb258aW58MTI1fDN8M3x8bm98NXxmYWRlT3V0fG9uU3RhcnR8eWVzfHllcw==&ve=310815" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="yes" style="border:none; overflow:hidden; width:100%;"></iframe>
 
-<!--         <iframe width="420" height="315" src="https://www.youtube.com/embed/hqiNL4Hn04A?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe> -->
-
-         <!-- <iframe src="https://player.vimeo.com/video/134153810?autoplay=1&loop=1&title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
-    
-        <h4>habitant morbi</h4>
-    </div><!--end of test_img-->
-    <div class="test_bio">
-        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-    </div><!--end of test_bio-->
-</div><!--end of testimonials-->
-
-<div class="testimonials">
-    <div class="test_img"><img src="img/test.jpg" /><br />
-        <h4>habitant morbi</h4>
-    </div><!--end of test_img-->
-    <div class="test_bio">
-        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-    </div><!--end of test_bio-->
-</div><!--end of testimonials-->
-
-<div class="testimonials">
-    <div class="test_img"><img src="img/test.jpg" /><br />
-        <h4>habitant morbi</h4>
-    </div><!--end of test_img-->
-    <div class="test_bio">
-        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-    </div><!--end of test_bio-->
-</div><!--end of testimonials-->
-
-<div class="testimonials">
-    <div class="test_img"><img src="img/test.jpg" /><br />
-        <h4>habitant morbi</h4>
-    </div><!--end of test_img-->
-    <div class="test_bio">
-        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-    </div><!--end of test_bio-->
-</div><!--end of testimonials-->
 
 </section><!--end of content-->
 <footer>
@@ -115,6 +80,7 @@
         href="https://twitter.com/seeuniqueness">
         Follow @Griffina blake</a>
     </div>
+
     <div id="facebook">
       <div class="fb-like" data-href="https://www.facebook.com/VictoriaBlakeFashionDesigns" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
     </div>
