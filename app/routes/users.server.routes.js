@@ -41,6 +41,9 @@ module.exports = function(app){
         //console.log("product Id  route was called")
         .get(users.renderTest)
 
+    app.route('/test')
+        .get(users.renderSignIn)
+
     app.route('/product/:product_id') 
         .get(users.renderProductId)
            // _id : req.params.product_id
@@ -58,8 +61,8 @@ module.exports = function(app){
     app.route('/testimonial')
         .get(users.renderTestimonial)
 
-    app.route('/admin')
-         .get(users.renderAdmin)
+     app.route('/admin')
+          .get(users.renderAdmin)
 
     app.route('/cart')
         .get(users.renderCart)
@@ -89,7 +92,7 @@ module.exports = function(app){
     app.route('/signin')
         .get(users.renderSignin)
         .post(passport.authenticate('local', {
-            successRedirect: '/',
+            successRedirect: '/admin',
             failureRedirect: '/signin',
             failureFlash: true
         }));

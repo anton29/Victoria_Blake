@@ -25,31 +25,13 @@
 	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="../js/services/products.js"></script> <!-- load our product service -->
 	<script src="../js/core.js"></script> <!-- load our main application -->
+  <script src="../js/twitter.js"></script>
   <script src="../js/facebook.js"></script>
 
 	<!--google fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
 
-    <!-- twitter needs its on js -->
-    <script>window.twttr = (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0],
-        t = window.twttr || {};
-        if (d.getElementById(id)) return t;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
- 
-        t._e = [];
-        t.ready = function(f) {
-            t._e.push(f);
-        };
- 
-        return t;
-    }(document, "script", "twitter-wjs"));</script>
-
-<!--twitter script end -->  
 </head>
 <body ng-controller="mainController">
 <div id="fb-root"></div>
@@ -63,9 +45,9 @@
 	<% include nav %>
 </nav>
 
-<!-- <section id="content">
-<div class="fb-page" data-href="https://www.facebook.com/VictoriaBlakeFashionDesigns" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/VictoriaBlakeFashionDesigns"><a href="https://www.facebook.com/VictoriaBlakeFashionDesigns">Victoria Blake  Global Collection LLC.</a></blockquote></div></div>
- -->
+<section id="content">
+<!-- <div class="fb-page" data-href="https://www.facebook.com/VictoriaBlakeFashionDesigns" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/VictoriaBlakeFashionDesigns"><a href="https://www.facebook.com/VictoriaBlakeFashionDesigns">Victoria Blake  Global Collection LLC.</a></blockquote></div></div> -->
+
 
 <!-- SnapWidget -->
 <script src="http://snapwidget.com/js/snapwidget.js"></script>

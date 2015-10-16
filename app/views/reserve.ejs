@@ -32,6 +32,7 @@
 	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="../js/services/products.js"></script> <!-- load our product service -->
 	<script src="../js/core.js"></script> <!-- load our main application -->
+    <script src="../js/twitter.js"></script>
     <script src="../js/facebook.js"></script>
 
 	
@@ -46,19 +47,12 @@
                 //text1=$("#content").val()
                 firstName=$("#firstName").val();
                 lastName=$("#lastName").val();
-                address=$("#address").val();
-                city=$("#city").val();
-                zip=$("#zip").val();
                 phone=$("#phone").val();
                 products=$("#products").val();
 
                 //email body starts
-                text =  "Name: "    + firstName +" " + lastName + '\n' +
-                    "products: "+ products + '\n' +
-                    "address: " + address + '\n' +
-                    "city: "    + city + '\n' + 
-                    "zip: "     + zip + '\n' +
-                    "phone: "   + phone +'\n' +
+                text =  "Name: "    + firstName +" " + lastName +
+                    "would like to Order "+ products + '\n' +
                     "email: "   + subject ;
                 //email body ends
 
@@ -120,26 +114,16 @@
 
 
 <div id="contact_form">
-    <h4>Reserve <%= product.name %> </h4>   
+    <h1>Order <%= product.name %> </h1>   
+    <p>I'll get back to you if it's available<p>
     <form>
-        <input id="to" type="text" placeholder="PayPal User Name" class="contact_bg" required autofocus/>
-
-        <input id="subject" type="email" placeholder="Email" class="contact_bg" required/>
+        <input id="subject" type="email" placeholder="Email" class="contact_bg" required autofocus/>
 
         <input id ="firstName" type="text" placeholder = "First Name" class="contact_bg" required/>
 
         <input id = "lastName" type="text" placeholder = "Last Name" class="contact_bg" required/>
 
-        <textarea id="address" cols="40" rows="5" placeholder="Address" class="contact_details" required></textarea>
-
-        <input id = "city" type="text" placeholder = "City" class="contact_bg" required/>
-
-        <input id = "zip" type="text" placeholder = "zip" class="contact_bg" required/>
-
-        <input id = "phone" type="text" placeholder = "phone"  class="contact_bg"required/>
-
-        <input id = "product" type="text" class="contact_bg"required value= "<%= product.name %>"/>
-
+        <input disabled id = "product" type="text" class="contact_bg"required value= "<%= product.name %>"/>
 
         <!-- <button  name="submit" id="send_email">Send Email</button> -->
         <input type="submit" name="submit" value="Send" id="send_email" />

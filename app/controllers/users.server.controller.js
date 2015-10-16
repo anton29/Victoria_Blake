@@ -126,6 +126,11 @@ exports.renderProductId = function(req, res, next){
 //     });
 // };
 //==================================================================
+ exports.renderSignIn = function(req,res){
+        res.render('signIn',
+        {title: 'The Victoria Blake Collection',
+        userFullName: req.user ? req.user.fullName : ''})
+ };
 
  exports.renderMessageCandles = function(req, res, next){
     Product.find({category:"messageCandles"}, function(err, result){
@@ -269,7 +274,7 @@ exports.renderSocial = function(req,res){
 };
 
 exports.signin = function(req, res, next){
-    if (!req.user || !req.password) {
+    if (!req.password || !req.user ) {
         res.render('signin', {
             title: 'The Victoria Blake Collection',
             messages: req.flash('error')

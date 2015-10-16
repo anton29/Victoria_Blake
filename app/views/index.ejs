@@ -156,12 +156,65 @@ function checkCookie() {
 </script>
 <!-- cookie script end-->
 
+<script >
+function bodyColor (form) {
+    this.document.getElementsByTagName("body")[0].style.backgroundColor = form.favcolor.value;
+    var textnode = document.createTextNode(form.favcolor.value);
+    var node = document.createElement("LI");
+    node.appendChild(textnode);
+    document.getElementById("p1").appendChild(node);
+   // return TestVar
+}
+function headerColor (form) {
+    var TestVar = form.favcolor.value;
+    this.document.getElementsByTagName("header")[0].style.backgroundColor = form.favcolor.value;
+    this.document.getElementsByTagName("footer")[0].style.backgroundColor = form.favcolor.value;
+    var textnode = document.createTextNode(form.favcolor.value);
+    var node = document.createElement("LI");
+    node.appendChild(textnode);
+    document.getElementById("p2").appendChild(node);
+
+   // return TestVar
+}
+function wrapperColor (form) {
+    var TestVar = form.favcolor.value;
+    document.getElementById("wrapper").style.backgroundColor = form.favcolor.value;   
+    var textnode = document.createTextNode(form.favcolor.value);
+    var node = document.createElement("LI");
+    node.appendChild(textnode);
+    document.getElementById("p3").appendChild(node);
+
+   // return TestVar
+}
+function T1Color (form) {
+    var TestVar = form.favcolor.value;
+    document.querySelectorAll("#top_row > div:nth-child(1) > h4 > a")[0].style.color = form.favcolor.value;   
+    var textnode = document.createTextNode(form.favcolor.value);
+    var node = document.createElement("LI");
+    node.appendChild(textnode);
+    document.getElementById("p4").appendChild(node);
+
+   // return TestVar
+}
+function navBar (form) {
+    var TestVar = form.favcolor.value;
+    document.querySelectorAll("#wrapper > nav > nav")[0].style.backgroundColor = form.favcolor.value;   
+    var textnode = document.createTextNode(form.favcolor.value);
+    var node = document.createElement("LI");
+    node.appendChild(textnode);
+    document.getElementById("p5").appendChild(node);
+
+   // return TestVar
+}
+
+</script>
+
         
 </head>
 <!-- SET THE CONTROLLER -->
 <!--added-->
 
-<body onload="timer=setTimeout(checkCookie(), 6000)" ng-controller="mainController">
+<body id ="body" onload="timer=setTimeout(checkCookie(), 6000)" ng-controller="mainController">
 
   <div id="openModal" class="modalDialog">
   <div>
@@ -204,6 +257,34 @@ function checkCookie() {
 		<img src="img/slide2.jpg" />
 	</ul>
 </section><!--end of slideshow-->
+
+
+<form action="" method="get">
+  <input type="color" name="favcolor" value="#ff0000">
+  <p id = "p1"> set BackGround color</p>
+  <input type="submit" onClick="bodyColor(this.form)">
+
+  <p>---------------------------------------------------------</p>
+  <p id = "p2"> set Header and footer color</p>
+  <input type="submit" onClick="headerColor(this.form)">
+
+  <p>---------------------------------------------------------</p>
+  <p id = "p3"> set foreground Color </p>
+  <input type="submit" onClick="wrapperColor(this.form)">
+
+  <p>---------------------------------------------------------</p>
+  <p id = "p4"> set link text Color only first will change </p>
+  <input type="submit" onClick="T1Color(this.form)">
+
+  <p>---------------------------------------------------------</p>
+  <p id = "p5"> set link text Color </p>
+  <input type="submit" onClick="navBar(this.form)">
+
+
+</form>
+
+
+
 <section id="top_row">
 	<div class="top_img"><h4><a href="/preciousStones">semi precious stone </h4><img src="img/stones.png" /></a></div><!--end of top_img-->
 	<div class="top_img"><h4><a href="/statementNecklaces">statement necklaces</h4><img src="img/statement.JPG" /></a></div></div><!--end of top_img-->
