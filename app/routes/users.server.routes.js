@@ -3,6 +3,10 @@ var passport = require('passport');
 // var core = require('../controllers/core.server.controller');
 //var core = require('../controllers/core.server.controller');
 var nodemailer = require("nodemailer");
+var bodyParser = require('body-parser');
+var fs = require('fs');
+var getUri = require('get-uri');
+//var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 /*-----------------SMPT----------------------------------*/
 
@@ -21,6 +25,8 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
     // };
 
 module.exports = function(app){
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
     app.route('/users')
         .post(users.create)     //post to create
         .get(users.list);       //get to find the list of users
@@ -142,6 +148,71 @@ module.exports = function(app){
     //     }
 
     // });
+
+    app.post('/send', function (req, res) {
+            var pixel = req.body.uri;
+            var stream = getUri("data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D", function (err, rs) {
+                    if (err) throw err;
+                    rs.pipe(process.stdout);
+            });
+
+            // console.log("called")
+            // console.log(req.body.file)
+            // console.log(req.body.uri)
+
+            //console.log(pixel.split("base64,")[1])
+
+            //console.log("next")
+            //console.log(pixel.split("base64,")[1], "base64")
+            
+            var fullPath = req.body.file
+            //console.log(fullPath.path)
+            //console.log(pixel.path)
+            //console.log(fullPath.split(/(\\|\/)/g).pop())
+            //console.log(pixel.split("base64,")[1], "base64")
+            if(req.body.email){
+            if(fullPath){
+                    var mailOptions={
+                        //to : "griblake@gmail.com",
+                        to= "griblake@gmail.com",
+                        subject : "test",
+                        text : "test",
+                        html: 'Embedded image: <img src="'+pixel+'"/>',
+                        // attachments: [
+                        //                {
+                        //                 fileName: req.body.file,
+                        //                 //contents: fs.createReadStream("stream")
+                        //                 //contents: stream
+                        //                 //contents: pixel
+                        //                 contents: new Buffer(pixel.split("base64,")[1], "base64")
+                        //                 }
+                        //             ]
+                    }
+            }else{
+                    var mailOptions={
+                        to= "griblake@gmail.com",
+                        subject : "no pic",
+                        text : "no pic test"
+                    }
+            }
+
+       
+        console.log(mailOptions);
+        smtpTransport.sendMail(mailOptions, function(error, response){
+            if(error){
+                console.log(error);
+                res.end("error");
+            }else{
+                console.log("Message sent: " + response.message);
+                res.end("sent");
+            }
+            });
+        }
+
+    });
+// };
+
+
 
     app.get('/send',function(req,res){
             var pixel = req.query.url;

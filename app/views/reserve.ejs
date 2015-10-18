@@ -22,7 +22,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
 
 
-	<script src="../js/simpleCart.js" type="text/javascript" charset="utf-8"></script>
+	<!---<script src="../js/simpleCart.js" type="text/javascript" charset="utf-8"></script>-->
 	
 
 	<script type="text/javascript" src="application.js"></script>
@@ -38,17 +38,27 @@
 	
 
 	<!-- email script -->
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script>// <![CDATA[
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script>// <![CDATA[
+
+            function msg(){
+                swal({
+                      title: "Thank You!",
+                      text: "Your Email has been sent. I'll get back to you soon",
+                      imageUrl:"img/logo.png"
+                });
+            }
+
             $(document).ready(function(){
                 var from,to,subject,text,phone;
                 $("#send_email").click(function(){      
-                to= "abr8892@yahoo.com";
+                to= "griblake@gmail.com";
                 subject=$("#subject").val();
                 //text1=$("#content").val()
                 firstName=$("#firstName").val();
                 lastName=$("#lastName").val();
                 phone=$("#phone").val();
-                products=$("#products").val();
+                products=$("#product").val();
 
                 //email body starts
                 text =  "Name: "    + firstName +" " + lastName +
@@ -63,6 +73,9 @@
 
                     if(data=="sent")
                 {
+                    msg();
+                    document.getElementById("form").reset();
+                    preview.src = "";
                    // $("#message").empty().html("Email has been sent to "+to+" . Please check inbox !");
                 }
 
@@ -116,7 +129,7 @@
 <div id="contact_form">
     <h1>Order <%= product.name %> </h1>   
     <p>I'll get back to you if it's available<p>
-    <form>
+    <form id="form" name="form">
         <input id="subject" type="email" placeholder="Email" class="contact_bg" required autofocus/>
 
         <input id ="firstName" type="text" placeholder = "First Name" class="contact_bg" required/>

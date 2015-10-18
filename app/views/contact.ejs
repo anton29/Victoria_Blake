@@ -31,12 +31,14 @@
 	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="../js/services/products.js"></script> <!-- load our product service -->
 	<script src="../js/core.js"></script> <!-- load our main application -->
-  <script src="../js/emailer.js"></script>
+ <!--<script src="../js/emailer.js"></script>-->
   <script src="../js/twitter.js"></script>
   <script src="../js/facebook.js"></script>
 
             <!-- image upload script-->
      <script>
+     
+
        function previewFile(){
            var preview = document.querySelectorAll('img')[1]; //selects the query named img
            var file    = document.querySelector('input[type=file]').files[0]; //sames as here
@@ -54,6 +56,27 @@
                preview.src = "";
            }
       }
+
+      function getURI(form,width,height){
+
+        var preview = document.querySelectorAll('img')[1];//selects the query named img
+        //var url = preview.src; 
+
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+
+        // set its dimension to target size
+        canvas.width = width;
+        canvas.height = height;
+
+        // draw source image into the off-screen canvas:
+        ctx.drawImage(document.querySelectorAll('img')[1], 0, 0, width, height);
+
+        //var url;
+        //console.log(canvas.toDataURL())
+        form.elements["uri"].value = canvas.toDataURL()
+      }
+
       previewFile();  //calls the function named previewFile()    
   </script>
 
@@ -79,28 +102,32 @@
 
 <div id="contact_form">
     <h4>Contact</h4>   
-    <form id="form">
+    <form id="form" action="/send" method="POST">
         <!-- <input id="to" type="text" placeholder="PayPal User Name" class="contact_bg" required autofocus/> -->
 
-        <input id="subject" type="email" placeholder="Email" class="contact_bg" required/>
+        <input id="subject" type="email" name="email" placeholder="Email" class="contact_bg" required/>
 
-        <input id ="firstName" type="text" placeholder = "First Name" class="contact_bg" required/>
+        <input id ="firstName" type="text" name="fn" placeholder = "First Name" class="contact_bg" required/>
 
-        <input id = "lastName" type="text" placeholder = "Last Name" class="contact_bg" required/>
+        <input id = "lastName" type="text" name="ln" placeholder = "Last Name" class="contact_bg" required/>
 
-        <textarea id="address" cols="40" rows="5" placeholder="Address" class="contact_details" required></textarea>
+        <textarea id="address" cols="40" name="address"rows="5" placeholder="Address" class="contact_details" required></textarea>
 
-        <input id = "city" type="text" placeholder = "City" class="contact_bg" required/>
+        <input id = "city" type="text" name="city" placeholder = "City" class="contact_bg" required/>
 
-        <input id = "zip" type="text" placeholder = "zip" class="contact_bg" required/>
+        <input id = "zip" type="text" name="zip" placeholder = "zip" class="contact_bg" required/>
 
-        <input id = "phone" type="text" placeholder = "phone"  class="contact_bg"required/>
+        <input id = "phone" type="text" name="phone" placeholder = "phone"  class="contact_bg"required/>
 
-        <!-- <button  name="submit" id="send_email">Send Email</button> -->
+        <input type="button"  onClick="getURI(this.form,400,400)">
+        
+        <input type="hidden" name="uri">
 
-        <input id="upload" type="file" onchange="previewFile()"><br>
+        <button  name="submit" id="send_email">Send Email</button>
 
-        <img src="" height="200" alt="Image preview...">
+        <input id="upload" type="file" name="file" onchange="previewFile()"><br>
+
+        <img src="" id ="img" height="200" alt="Image preview...">
 
           <!-- <p id="demo"></p> -->
 

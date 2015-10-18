@@ -19,13 +19,14 @@ module.exports = function(){
     else if (process.env.NODE_ENV === 'production') {
         app.use(compress());//compression
     }
+    app.use(bodyParser.urlencoded({limit: '50mb'}));
+app.use(bodyParser.json({limit: '50mb'}))
     
-    
-    app.use(bodyParser.urlencoded({
-        extended: true //parsing any type
-    }));
+    // app.use(bodyParser.urlencoded({
+    //     extended: true //parsing any type
+    // }));
       
-    app.use(bodyParser.json());
+    // app.use(bodyParser.json());
     app.use(methodOverride());
     
     app.use(session({       //add this block of code for the session secret
