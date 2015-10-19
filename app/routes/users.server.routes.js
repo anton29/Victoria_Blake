@@ -174,7 +174,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
             if(fullPath){
                     var mailOptions={
                         //to : "griblake@gmail.com",
-                        to= "griblake@gmail.com",
+                        to: "griblake@gmail.com",
                         subject : "test",
                         text : "test",
                         html: 'Embedded image: <img src="'+pixel+'"/>',
@@ -190,7 +190,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
                     }
             }else{
                     var mailOptions={
-                        to= "griblake@gmail.com",
+                        to: "griblake@gmail.com",
                         subject : "no pic",
                         text : "no pic test"
                     }
