@@ -75,6 +75,8 @@
         //var url;
         //console.log(canvas.toDataURL())
         form.elements["uri"].value = canvas.toDataURL()
+        form.elements["add"].value = "Picture added"
+
       }
 
       previewFile();  //calls the function named previewFile()    
@@ -119,11 +121,11 @@
 
         <input id = "phone" type="text" name="phone" placeholder = "phone"  class="contact_bg"required/>
 
-        <input type="button"  onClick="getURI(this.form,400,400)">
+        <input type="button"  onClick="getURI(this.form,400,400)" value= "Click to add Picture after uploading a file" name="add">
         
         <input type="hidden" name="uri">
 
-        <button  name="submit" id="send_email">Send Email</button>
+        <!-- <button  name="submit" id="send_email">Send Email</button> -->
 
         <input id="upload" type="file" name="file" onchange="previewFile()"><br>
 
