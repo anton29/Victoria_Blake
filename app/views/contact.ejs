@@ -45,7 +45,7 @@
            var reader  = new FileReader();
            reader.onloadend = function () {
                preview.src = reader.result;
-                console.log(preview.src.length);
+                //console.log(preview.src.length);
                 var url = preview.src;
                 
            }
@@ -58,25 +58,27 @@
       }
 
       function getURI(form,width,height){
+        //console.log(document.querySelector('input[type=file]').files[0])
+        //console.log(document.querySelectorAll('img')[1].src.length)
+        if(document.querySelector('input[type=file]').files[0]){
+          var preview = document.querySelectorAll('img')[1];//selects the query named img
+          //var url = preview.src; 
 
-        var preview = document.querySelectorAll('img')[1];//selects the query named img
-        //var url = preview.src; 
+          var canvas = document.createElement('canvas'),
+          ctx = canvas.getContext('2d');
 
-        var canvas = document.createElement('canvas'),
-        ctx = canvas.getContext('2d');
+          // set its dimension to target size
+          canvas.width = width;
+          canvas.height = height;
 
-        // set its dimension to target size
-        canvas.width = width;
-        canvas.height = height;
+          // draw source image into the off-screen canvas:
+          ctx.drawImage(document.querySelectorAll('img')[1], 0, 0, width, height);
 
-        // draw source image into the off-screen canvas:
-        ctx.drawImage(document.querySelectorAll('img')[1], 0, 0, width, height);
-
-        //var url;
-        //console.log(canvas.toDataURL())
-        form.elements["uri"].value = canvas.toDataURL()
-        form.elements["add"].value = "Picture added"
-
+          //var url;
+          //console.log(canvas.toDataURL())
+          form.elements["uri"].value = canvas.toDataURL()
+          form.elements["add"].value = "Picture added"
+          }
       }
 
       previewFile();  //calls the function named previewFile()    
