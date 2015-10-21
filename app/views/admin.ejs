@@ -49,6 +49,15 @@
 
 <header>
 	<% include header %>
+	<div id="login">
+      <% if(userFullName) { %>
+            <h2>Welcome, <%=userFullName%></h2>
+            <a href="/signout">Sign Out</a>
+           <%} else{%>
+
+        <%}%>
+ 
+</div>
 </header>
 
 		<!-- FORM TO CREATE Products -->

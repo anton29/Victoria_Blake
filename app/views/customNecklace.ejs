@@ -31,7 +31,7 @@
 	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="../js/services/products.js"></script> <!-- load our product service -->
 	<script src="../js/core.js"></script> <!-- load our main application -->
-  <script src="../js/customOrder.js"></script>
+  <!--<script src="../js/customOrder.js"></script>-->
   <script src="../js/twitter.js"></script>
   <script src="../js/facebook.js"></script>
 
@@ -43,7 +43,7 @@
            var reader  = new FileReader();
            reader.onloadend = function () {
                preview.src = reader.result;
-                console.log(preview.src.length);
+                //console.log(preview.src.length);
                 var url = preview.src;
                 
            }
@@ -54,6 +54,23 @@
                preview.src = "";
            }
       }
+
+      function getURI(form,width,height){
+        if(document.querySelector('input[type=file]').files[0]){
+
+          var canvas = document.createElement('canvas'),
+          ctx = canvas.getContext('2d');
+
+          canvas.width = width;
+          canvas.height = height;
+
+          ctx.drawImage(document.querySelectorAll('img')[1], 0, 0, width, height);
+          var fileName = document.getElementById('upload').value.split(/(\\|\/)/g).pop();
+          form.elements["uri"].value = canvas.toDataURL()
+          form.elements["add"].value =  fileName + " ready"
+          }
+      }
+
       previewFile();  //calls the function named previewFile()    
   </script>
 
@@ -79,26 +96,45 @@
 
 <div id="contact_form">
     <h3>Show off your favorit item by adding personalized, signature touches </h3>   
-    <form id="form">
-        <!-- <input id="to" type="text" placeholder="PayPal User Name" class="contact_bg" required autofocus/> -->
-
-        <input id="subject" type="email" placeholder="Email" class="contact_bg" required/>
+<!--     <form id="form">
+        <input id="subject" type="email" placeholder="Email" class="contact_bg" required autofocus/>
 
         <input id ="firstName" type="text" placeholder = "First Name" class="contact_bg" required/>
 
         <input id = "lastName" type="text" placeholder = "Last Name" class="contact_bg" required/>
 
         <textarea id="description" cols="40" rows="5" placeholder="How would you like to customize your Item, you can include an image of your item below" class="contact_details" required></textarea>
-        <!-- <button  name="submit" id="send_email">Send Email</button> -->
 
         <input id="upload" type="file" onchange="previewFile()"><br>
 
         <img src="" height="200" alt="Image preview...">
 
-          <!-- <p id="demo"></p> -->
+        <input type="submit" name="submit" value="Send" id="send_email" />
+    </form> -->
+
+    <form id="form" action="/send" method="POST">
+ 
+        <input id="subject" type="email" name="email" placeholder="Email" class="contact_bg" required autofocus/>
+
+        <input id ="firstName" type="text" name="fn" placeholder = "First Name" class="contact_bg" required/>
+
+        <input id = "lastName" type="text" name="ln" placeholder = "Last Name" class="contact_bg" required/>
+
+        <textarea id="Description" cols="40" name="Description"rows="5" placeholder="Description" class="contact_details" required></textarea>
+
+        <input id = "phone" type="text" name="phone" placeholder = "phone"  class="contact_bg"required/>
+        
+        <input type="hidden" name="uri">
+
+        <input id="upload" type="file" name="file" onchange="previewFile()"><br>
+
+        <img src="" id ="img" height="200" alt="Image preview...">
+
+        <input type="button"  onClick="getURI(this.form,400,400)" value= "Click to add Picture after uploading a file" name="add">
 
         <input type="submit" name="submit" value="Send" id="send_email" />
     </form>
+
 <span id="message"></span>
 </div>
 </div>

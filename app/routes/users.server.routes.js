@@ -27,6 +27,8 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
 module.exports = function(app){
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
+/*
     app.route('/users')
         .post(users.create)     //post to create
         .get(users.list);       //get to find the list of users
@@ -37,7 +39,8 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
         .delete(users.delete);  //delete single user by id //app.route('/users/:userId').delete(users.delete);
     
     app.param('userId', users.userByID); //to get single user by id
-    
+*/
+
     app.route('/product')
        // console.log("route /product was called")
         // .get(product.render);
@@ -67,8 +70,22 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
     app.route('/testimonial')
         .get(users.renderTestimonial)
 
-     app.route('/admin')
-          .get(users.renderAdmin)
+     // app.route('/admin')
+     //      .get(users.renderAdmin)
+
+    var isAuthenticated = function (req, res, next) {
+        if (req.isAuthenticated() && req.user.username === "admin")
+            return next();
+            res.redirect('/');
+    }
+
+    app.get('/admin', isAuthenticated, function(req, res){
+            res.render('admin', { user: req.user,title: 'The Victoria Blake Collection',
+            userFullName: req.user ? req.user.fullName : '' });
+    });
+
+
+
 
     app.route('/cart')
         .get(users.renderCart)
@@ -151,48 +168,35 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
     app.post('/send', function (req, res) {
             var pixel = req.body.uri;
-            var stream = getUri("data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D", function (err, rs) {
-                    if (err) throw err;
-                    rs.pipe(process.stdout);
-            });
-
-            // console.log("called")
-            // console.log(req.body.file)
-            // console.log(req.body.uri)
-
-            //console.log(pixel.split("base64,")[1])
-
-            //console.log("next")
-            //console.log(pixel.split("base64,")[1], "base64")
-            
             var fullPath = req.body.file
-            //console.log(fullPath.path)
-            //console.log(pixel.path)
-            //console.log(fullPath.split(/(\\|\/)/g).pop())
-            //console.log(pixel.split("base64,")[1], "base64")
             if(req.body.email){
             if(fullPath){
                     var mailOptions={
                         //to : "griblake@gmail.com",
-                        to: "griblake@gmail.com",
-                        subject : "test",
-                        text : "test",
-                        html: 'Embedded image: <img src="'+pixel+'"/>',
-                        // attachments: [
-                        //                {
-                        //                 fileName: req.body.file,
-                        //                 //contents: fs.createReadStream("stream")
-                        //                 //contents: stream
-                        //                 //contents: pixel
-                        //                 contents: new Buffer(pixel.split("base64,")[1], "base64")
-                        //                 }
-                        //             ]
+                        to:"abr8892@yahoo.com",
+                        subject : "Custom Item request from: " + req.body.email,
+                        text :  "Name: "    + req.body.fn +" " + req.body.fn + '\n' +
+                                "Description: " + req.body.Description + '\n' +
+                                "phone: "   + req.body.phone +'\n' +
+                                "email: "   + req.body.email,
+                        // html: 'Name: "'+req.body.fn+ " " + req.body.ln + '\n'+
+                        //     '" Embedded image: <img src="'+pixel+'"/>',
+                        attachments: [
+                                       {
+                                        fileName: req.body.file,
+                                        contents: new Buffer(pixel.split("base64,")[1], "base64")
+                                        }
+                                    ]
                     }
             }else{
                     var mailOptions={
                         to: "griblake@gmail.com",
-                        subject : "no pic",
-                        text : "no pic test"
+                        subject : "Custom Item request from: " + req.body.email,
+                        text :  "Name: "    + req.body.fn +" " + req.body.fn + '\n' +
+                                "Description: " + req.body.Description + '\n' +
+                                "phone: "   + req.body.phone +'\n' +
+                                "email: "   + req.body.email +'\n' +
+                                req.body.fn + " did not provide a picture"
                     }
             }
 
@@ -204,7 +208,8 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
                 res.end("error");
             }else{
                 console.log("Message sent: " + response.message);
-                res.end("sent");
+                //res.end("sent");
+                res.redirect("/");
             }
             });
         }

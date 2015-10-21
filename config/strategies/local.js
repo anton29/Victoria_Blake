@@ -5,7 +5,7 @@ var User = require('mongoose').model('User');
 module.exports = function(){
     passport.use(new LocalStrategy(function(username, password, done){ //register the Strategy with passport.use
             //console.log(user)
-            console.log(username)
+            //console.log(username)
         User.findOne({
             username: username
         }, function(err, user){

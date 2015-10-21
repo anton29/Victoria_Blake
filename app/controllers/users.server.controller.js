@@ -252,11 +252,11 @@ exports.renderTestimonial = function(req, res){
         userFullName: req.user ? req.user.fullName : ''})
 };
 
-exports.renderAdmin = function(req,res){
-    res.render('admin',
-        {title: 'The Victoria Blake Collection',
-        userFullName: req.user ? req.user.fullName : ''})
-};
+// exports.renderAdmin = function(req,res){
+//     res.render('admin',
+//         {title: 'The Victoria Blake Collection',
+//         userFullName: req.user ? req.user.fullName : ''})
+// };
 
 exports.renderCart = function(req, res) {
     res.render('cart', 

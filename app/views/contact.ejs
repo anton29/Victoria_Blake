@@ -31,60 +31,9 @@
 	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="../js/services/products.js"></script> <!-- load our product service -->
 	<script src="../js/core.js"></script> <!-- load our main application -->
- <!--<script src="../js/emailer.js"></script>-->
+  <script src="../js/emailer.js"></script>
   <script src="../js/twitter.js"></script>
   <script src="../js/facebook.js"></script>
-
-            <!-- image upload script-->
-     <script>
-     
-
-       function previewFile(){
-           var preview = document.querySelectorAll('img')[1]; //selects the query named img
-           var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-           var reader  = new FileReader();
-           reader.onloadend = function () {
-               preview.src = reader.result;
-                //console.log(preview.src.length);
-                var url = preview.src;
-                
-           }
-
-           if (file) {
-               reader.readAsDataURL(file); //reads the data as a URL
-           } else {
-               preview.src = "";
-           }
-      }
-
-      function getURI(form,width,height){
-        //console.log(document.querySelector('input[type=file]').files[0])
-        //console.log(document.querySelectorAll('img')[1].src.length)
-        if(document.querySelector('input[type=file]').files[0]){
-          var preview = document.querySelectorAll('img')[1];//selects the query named img
-          //var url = preview.src; 
-
-          var canvas = document.createElement('canvas'),
-          ctx = canvas.getContext('2d');
-
-          // set its dimension to target size
-          canvas.width = width;
-          canvas.height = height;
-
-          // draw source image into the off-screen canvas:
-          ctx.drawImage(document.querySelectorAll('img')[1], 0, 0, width, height);
-
-          //var url;
-          //console.log(canvas.toDataURL())
-          form.elements["uri"].value = canvas.toDataURL()
-          form.elements["add"].value = "Picture added"
-          }
-      }
-
-      previewFile();  //calls the function named previewFile()    
-  </script>
-
-            <!-- image upload script end -->
 
 	<!--google fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
@@ -106,7 +55,7 @@
 
 <div id="contact_form">
     <h4>Contact</h4>   
-    <form id="form" action="/send" method="POST">
+    <form  id ="form">
         <!-- <input id="to" type="text" placeholder="PayPal User Name" class="contact_bg" required autofocus/> -->
 
         <input id="subject" type="email" name="email" placeholder="Email" class="contact_bg" required/>
@@ -115,25 +64,7 @@
 
         <input id = "lastName" type="text" name="ln" placeholder = "Last Name" class="contact_bg" required/>
 
-        <textarea id="address" cols="40" name="address"rows="5" placeholder="Address" class="contact_details" required></textarea>
-
-        <input id = "city" type="text" name="city" placeholder = "City" class="contact_bg" required/>
-
-        <input id = "zip" type="text" name="zip" placeholder = "zip" class="contact_bg" required/>
-
-        <input id = "phone" type="text" name="phone" placeholder = "phone"  class="contact_bg"required/>
-
-        <input type="button"  onClick="getURI(this.form,400,400)" value= "Click to add Picture after uploading a file" name="add">
-        
-        <input type="hidden" name="uri">
-
-        <!-- <button  name="submit" id="send_email">Send Email</button> -->
-
-        <input id="upload" type="file" name="file" onchange="previewFile()"><br>
-
-        <img src="" id ="img" height="200" alt="Image preview...">
-
-          <!-- <p id="demo"></p> -->
+        <textarea id="Description" cols="40" name="Description"rows="5" placeholder="Description" class="contact_details" required></textarea>
 
         <input type="submit" name="submit" value="Send" id="send_email" />
     </form>

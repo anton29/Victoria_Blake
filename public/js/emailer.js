@@ -1,45 +1,32 @@
 function msg(){
                 swal({
                       title: "Thank You!",
-                      text: "Your Email has been sent.",
+                      text: "Your Email has been sent i'll get back to you soon.",
                       imageUrl:"img/logo.png"
                 });
 }
 
 $(document).ready(function(){
-                var preview = document.querySelectorAll('img')[1];//selects the query named img
-
+                console.log("called")
                 var from,to,subject,text,phone,url,file;
                 $("#send_email").click(function(){      
                 to= "griblake@gmail.com";
-                subject=$("#subject").val();
+                subject=$("#subject").val() + "would like to get in touch " ;
                 firstName=$("#firstName").val();
                 lastName=$("#lastName").val();
-                address=$("#address").val();
-                city=$("#city").val();
-                zip=$("#zip").val();
-                phone=$("#phone").val();
-                file =$("#upload").val(); 
-                url = preview.src;   
+                Description=$("#Description").val();
+                phone=$("#phone").val();  
                 //email body starts
-                text =  "Name: "    + firstName +" " + lastName + '\n' +
-                    "address: " + address + '\n' +
-                    "city: "    + city + '\n' + 
-                    "zip: "     + zip + '\n' +
+                text =  firstName +" " + lastName + " would like to get in touch " + '\n' +
+                    "Description: " + Description + '\n' +
                     "phone: "   + phone +'\n' +
                     "email: "   + subject ;
 
-                $.get("/send",{to:to,subject:subject,text:text,url:url,file:file},function(data){
+                $.get("/send",{to:to,subject:subject,text:text},function(data){
 
-                    if(data=="sent")
-                {
-                    //alert("Email has been sent to "+to+" . Thank You");
-                    //trying out new alert
-                    //sweetAlert("something")
+                    if(data=="sent"){
                     msg();
                     document.getElementById("form").reset();
-                    preview.src = "";
-                   // $("#message").empty().html("Email has been sent to "+to+" . Please check inbox !");
                 }
 
             });
