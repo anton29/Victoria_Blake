@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="application.js"></script>
 	<!--<script type="text/javascript" src="/lib/angular/angular.js"></script>-->
 	<script src="../js/respond.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="../js/services/products.js"></script> <!-- load our product service -->
@@ -28,7 +29,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="../js/responsiveslides.min.js"></script>
   <script src="../js/facebook.js"></script>
-
+<!--
   <script>
     // You can also use "$(window).load(function() {"
     $(function () {
@@ -40,6 +41,45 @@
       });
     });
 </script>
+-->
+
+     <script>
+       function previewFile(){
+           var preview = document.querySelectorAll('img')[1]; //selects the query named img
+           var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+           var reader  = new FileReader();
+           reader.onloadend = function () {
+               preview.src = reader.result;
+                //console.log(preview.src.length);
+                var url = preview.src;
+                
+           }
+
+           if (file) {
+               reader.readAsDataURL(file); //reads the data as a URL
+           } else {
+               preview.src = "";
+           }
+      }
+
+      function getURI(form,width,height){
+        if(document.querySelector('input[type=file]').files[0]){
+
+          var canvas = document.createElement('canvas'),
+          ctx = canvas.getContext('2d');
+
+          canvas.width = width;
+          canvas.height = height;
+
+          ctx.drawImage(document.querySelectorAll('img')[1], 0, 0, width, height);
+          var fileName = document.getElementById('upload').value.split(/(\\|\/)/g).pop();
+          form.elements["uri"].value = canvas.toDataURL()
+          form.elements["add"].value =  fileName + " ready"
+          }
+      }
+
+      previewFile();  //calls the function named previewFile()    
+  </script>
 
 </head>
 <!-- SET THE CONTROLLER -->
@@ -62,23 +102,44 @@
 
 		<!-- FORM TO CREATE Products -->
 		<div id="product-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
+			<div  class="container">
 				<form>
 					<div class="form-group">
 
 						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
 						<!-- Temp simple way of adding data will not be used -->
-						<input type="name" class="form-control input-lg text-center"  placeholder="Name" ng-model="formData.name">
+					<div class="form-group">
+						<label for="name">Product Name:</label>
+						<input type="name" class="form-control input-lg text-center"  placeholder="Name" ng-model="formData.name" autofocus>
+					</div>
 
+					<div class="form-group">
+						<label for="des">Product Description:</label>
 						<input type="text" class="form-control input-lg text-center" placeholder="Description" ng-model="formData.text">
+					</div>
 
-						<input type ="text" class="form-control input-lg text-center" placeholder="Price"  ng-model="formData.price">
+					<div class="form-group">
+						<label for="price">Product Price:</label>
+						<input type ="number" class="form-control input-lg text-center" placeholder="Price"  ng-model="formData.price">
+					</div>
 
-						<input type ="text" class="form-control input-lg text-center" placeholder="amount"  ng-model="formData.amount">
+					<div class="form-group">
+						<label for="amount">Product amount:</label>
+						<input type ="number" class="form-control input-lg text-center" placeholder="amount"  ng-model="formData.amount">
+					</div>
 
-						<input type ="text" class="form-control input-lg text-center" placeholder="Photo"  ng-model="formData.photo">
+					<div class="form-group">
+						<label for"img"> Image for Product: </label>
+						<input id="upload" type="file" name="file" onchange="previewFile()"><br>
+
+        				<img src="" id ="img" height="200" alt="Image preview...">
+
+				        <input type="button"  onClick="getURI(this.form,400,400)" value= "Click to add Picture after uploading a file" name="add">
+
+				         <input type="text" class="form-control input-lg text-center" name="uri" ng-model="formData.photo">
 
 						<input type ="text" class="form-control input-lg text-center" placeholder="category"  ng-model="formData.category">
+					</div>
 
 					</div>
 					<button type="submit" class="btn btn-primary btn-lg" ng-click="createProducts()">Add</button>
@@ -93,7 +154,8 @@
 						<p>{{product.text}}</p>
 						<p>{{product.category}}</p>
 						<p>{{product._id}}</p>
-						<!-- <p><img src="{{product.photo}}"><p> -->
+						<!-- <p>{{product.photo}}</p> -->
+						<p><img src="{{product.photo}}"><p> 
 						<p>Delete {{product.name}}<input type="checkbox" ng-click="deleteProduct(product._id)"> </P>
 
 					</ol>	
