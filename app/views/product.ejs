@@ -48,16 +48,15 @@
         placeholder=" Search " autofocus>
     </form>
 
-<div class="checkbox" ng-repeat="product in products  | filter:{ name: query }">
+<!-- <div class="checkbox" ng-repeat="product in products  | filter:{ name: query }"> -->
+<div ng-repeat="product in products  | filter:{ name: query }">
+
 <div class="product_disp">
     <h4>Name: {{product.name}}</h4>
     <h4>Price: ${{product.price}}</h4>
     <h4>Description: {{product.text}}</h4>
     <div class="product_img"><img src="{{product.photo}}"></div> 
-    <!--<p>{{product._id}}</p>
-    <input type="checkbox" ng-click="deleteProduct(product._id)"> -->
     <h3><a href="/product/p?p={{product._id}}">Details</a></h3>
-    <!-- {{ product.text }} -->
 </div>
 </div>
     <!-- LOOP OVER THE Products IN $scope.products -->

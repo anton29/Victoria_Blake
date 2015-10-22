@@ -73,7 +73,9 @@
 				
 		<li>
 			<div class="the_name"><h4>Name: <%= product.name %></h4></div>
-			<div class="the_photo"><img src="../<%=product.photo%>" alt="<%= product.name %>" /></div>
+			<!-- <div class="the_photo"><img src="../<%=product.photo%>" alt="<%= product.name %>" /></div> -->
+			<div class="the_photo"><img src="<%=product.photo%>" alt="<%= product.name %>" /></div>
+
 			<div class="price"><h4>Price: $<%= product.price %></h4></div>
 			<h4><!-- <a href="#" onclick="simpleCart.add('name=<%= product.name %>','price=<%=product.price %>','image=../<%=product.photo%>');return false;"> add to cart</a> -->
 			<div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div>
@@ -82,19 +84,19 @@
 	</ul>
 
 	<div id="sidebar" class="checking">
-				<h3>Your Cart</h3>
+				<!-- <h3>Your Cart</h3> -->
 				
 				
 				<!--Add a Div with the class "simpleCart_items" to show your shopping cart area.-->
-				<div class="simpleCart_items" >
-				</div>
+				<!-- <div class="simpleCart_items" >
+				</div> -->
 				
 				
 				<!--Here's the Links to Checkout and Empty Cart-->
 				<!-- <div class="empty"><a href="#" class="simpleCart_empty">Empty Cart</a></div> -->
 				<!-- <div class="checkout"><a href="/cart">Checkout</a></div> -->
 				<!--<h1> show this "<%= product.id %>" </h1>-->
-				<div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div>
+				<!-- <div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div> -->
 				<!-- off for now -->
 				<!--
 				<div class="checkout"><a href="#" class="simpleCart_checkout">Checkout</a></div>
