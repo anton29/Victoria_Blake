@@ -186,6 +186,15 @@ function wrapperColor (form) {
 
    // return TestVar
 }
+
+function showValue(newValue)
+{
+  //document.querySelectorAll("#wrapper")[0].style.width = form.favcolor.value;   
+  document.getElementById("range").innerHTML=newValue;
+  document.getElementById("wrapper").style.width = document.getElementById("range").innerHTML + "%";
+  console.log(document.getElementById("range").innerHTML)
+}
+
 function T1Color (form) {
     var TestVar = form.favcolor.value;
     document.querySelectorAll("#top_row > div:nth-child(1) > h4 > a")[0].style.color = form.favcolor.value;   
@@ -206,6 +215,8 @@ function navBar (form) {
 
    // return TestVar
 }
+
+
 
 </script>
 
@@ -277,12 +288,15 @@ function navBar (form) {
   <input type="submit" onClick="T1Color(this.form)">
 
   <p>---------------------------------------------------------</p>
-  <p id = "p5"> set link text Color </p>
+  <p id = "p5"> set nav bar Color </p>
   <input type="submit" onClick="navBar(this.form)">
 
+  <p>---------------------------------------------------------</p>
+  <p id="p6">set wrapper size</p>
+  <input type="range" min="0" max="100" value="80" step="5" onchange="showValue(this.value)" />
+  <span id="range">80</span>
 
 </form>
-
 
 
 <section id="top_row">
