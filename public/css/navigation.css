@@ -5,6 +5,13 @@ nav{
 	background-color: #3f2860;
 }
 
+.navbar-fixed{
+	top:0;
+	z-index:100;
+	position:fixed;
+	width:inherit;
+}
+
 nav ul{
 	margin: 0;
 	padding: 0;
@@ -24,12 +31,12 @@ nav li{
 	margin-left: 3%;
 }
 
-nav a{
+/*nav a{
 	text-decoration: none;
 	color: #fff;
 	font-size: 75%;
 	font-family: 'Droid Sans Mono', sans-serif;
-}
+}*/
 
 nav a:link, nav a:visited{
 	text-decoration: none;
@@ -38,12 +45,19 @@ nav a:link, nav a:visited{
 	font-family: 'Droid Sans Mono', sans-serif;
 }
 
-nav li:hover a, nav li.over a{
+/*nav li:hover a, nav li.over a{
 
 	color: #ef6d38;
 	border: none;
 	text-decoration: none;
+}*/
+
+nav li a:hover{
+	color: #ef6d38;
+
 }
+
+
 	
    nav ul li ul.dropdown{
         min-width: 200px; /* Set width of the dropdown */
@@ -60,6 +74,8 @@ nav li:hover a, nav li.over a{
    nav ul li ul.dropdown li{
         display: block;
     }
+
+    
 
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */

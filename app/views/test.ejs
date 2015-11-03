@@ -19,6 +19,7 @@
 	<!-- SPELLS -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
 
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 	<script src="../js/simpleCart.js" type="text/javascript" charset="utf-8"></script>
 	
@@ -45,6 +46,48 @@
 	<style type="text/css">
 		.cartHeaders, .totalRow{display: none;}
 	</style>
+
+
+	<script>
+
+		function submitTwoForms(){
+			console.log("clicked")
+			 var dataObject = {
+			 	'id'	: document.querySelectorAll('input[type=text]')[0].value
+			 };
+			$.ajax({
+				url: "/lock",
+				data: dataObject,
+				type: "POST",
+				success: function(){
+					$("form1").submit
+				}
+			})
+			return false;
+			
+		}
+		// function reduce() {
+		// 	$.post( "ajax/test.html", function( data ) {
+  // 				$( ".result" ).html( data );
+		// 	});
+		//     document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+		// }
+		function myFunction(){
+			// $('#form2').submit(function(){
+				submitTwoForms();
+				// return false;
+			// });
+			// var file    = document.querySelectorAll('input[type=text]')[1].value;
+			// console.log(document.querySelectorAll('input[type=text]')[0].value)
+			// console.log(file)
+			// var form = document.getElementById("form");
+
+			// console.log("Clicked")
+			// form.submit();
+		}
+	</script>
+
+
 </head>
 <body ng-controller="mainController">
 
@@ -77,33 +120,78 @@
 			<div class="the_photo"><img src="<%=product.photo%>" alt="<%= product.name %>" /></div>
 
 			<div class="price"><h4>Price: $<%= product.price %></h4></div>
-			<h4><!-- <a href="#" onclick="simpleCart.add('name=<%= product.name %>','price=<%=product.price %>','image=../<%=product.photo%>');return false;"> add to cart</a> -->
+
+
+
+
+       <form id="form1" action="/lock" method="POST">
+
+       <div class="form-group">
+          <input type="text" name="id" class="form-control input-lg text-center" value = <%= product._id %> >
+
+          <input type="text" name="lock" class="form-control input-lg text-center" value=<%= product.available%> >
+          </div>
+          <button id ="form-submit" type="submit" class="btn btn-primary btn-lg" value="lock" id="lock">Update</button>
+
+        </form>
+
+
+
+			
+			<form id="form2" onclick="myFunction()" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+				<!-- Identify your business so that you can collect the payments. -->
+				<input type="hidden" name="business" value="griblake@gmail.com">
+
+				<!-- Specify a Buy Now button. -->
+				<input type="hidden" name="cmd" value="_xclick">
+
+				<!-- Specify details about the item that buyers purchase. -->
+				<input type="hidden" name="item_name" value="<%= product.name %>">
+				<input type="hidden" name="amount" value="<%= product.price %>">
+				<input type="hidden" name="currency_code" value="USD">
+
+
+				<!-- Display the payment button. -->
+				<input type="image" name="submit" border="0"
+				src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+				alt="PayPal - The safer, easier way to pay online">
+				<img alt="" border="0" width="1" height="1"
+				src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+
+		 </form>
+
+			
+<!-- 
+			<h4> <a href="#" onclick="simpleCart.add('name=<%= product.name %>','price=<%=product.price %>');return false;"> add to cart</a> 
 			<div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div>
-			</h4>
+			</h4> -->
 		</li>
 	</ul>
 
-	<div id="sidebar" class="checking">
-				<!-- <h3>Your Cart</h3> -->
+<!-- 	<div id="sidebar" class="checking">
+
+
+
+
+				<h3>Your Cart</h3>
 				
 				
-				<!--Add a Div with the class "simpleCart_items" to show your shopping cart area.-->
-				<!-- <div class="simpleCart_items" >
-				</div> -->
+				<div class="simpleCart_items" ></div> 
 				
 				
-				<!--Here's the Links to Checkout and Empty Cart-->
-				<!-- <div class="empty"><a href="#" class="simpleCart_empty">Empty Cart</a></div> -->
-				<!-- <div class="checkout"><a href="/cart">Checkout</a></div> -->
-				<!--<h1> show this "<%= product.id %>" </h1>-->
-				<!-- <div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div> -->
-				<!-- off for now -->
-				<!--
-				<div class="checkout"><a href="#" class="simpleCart_checkout">Checkout</a></div>
+				<div class="empty"><a href="#" class="simpleCart_empty">Empty Cart</a></div>
+
+				<div class="checkout"><a href="/cart">Checkout</a></div>
+
+				<div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div>
+				
+				<div class="checkout"><a href="#" class="simpleCart_checkout">Checkout</a></div> 
 				
 				
-			</div>
-	</div><!--end of productItem-->
+	</div>  -->
+	</div>
+	<!--end of productItem
 
 </section><!--end of content-->
 <footer>
@@ -117,7 +205,6 @@
       <div class="fb-like" data-href="https://www.facebook.com/VictoriaBlakeFashionDesigns" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
     </div>
 </div>
-</div><!--end of skype-->
 </footer><!--end of footer-->
 </section><!--end of wrapper-->
 </body>

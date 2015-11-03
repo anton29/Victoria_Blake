@@ -32,10 +32,20 @@ var Product = mongoose.Schema({
 	category : {
 		type : String,
 		default: ''
+	},
+
+	available : {
+		type: Boolean,
+		default: 'true'
+	},
+
+	inCart : {
+		type: Boolean,
+		default: 'false'
 	}
 
 });
-var Product = mongoose.model('Product', Product);
+//var Product = mongoose.model('Product', Product);
 //var name12345 = Product.collection.findOne({name: 'name12345'})
 
 // var document = ({ 

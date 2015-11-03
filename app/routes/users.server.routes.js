@@ -20,9 +20,6 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
 
 /*------------------SMTP End-----------------------------*/
 
-    // var index = function(req, res){
-    //     res.render('index.ejs');
-    // };
 
 module.exports = function(app){
 app.use(bodyParser.json({limit: '50mb'}));
@@ -46,16 +43,19 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
         // .get(product.render);
         .get(users.renderProduct)
 
-    app.route('/test')
-        //console.log("product Id  route was called")
-        .get(users.renderTest)
+    // app.route('/test')
+    //     //console.log("product Id  route was called")
+    //     .get(users.renderTest)
 
-    app.route('/test')
-        .get(users.renderSignIn)
+    // app.route('/test')
+    //     .get(users.renderSignIn)
 
     app.route('/product/:product_id') 
         .get(users.renderProductId)
            // _id : req.params.product_id
+
+    app.route('/admin/:product_id')
+        .get(users.renderAdminEdit)
     
     app.route('/about')
         .get(users.renderAbout)
@@ -79,9 +79,11 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
             res.redirect('/');
     }
 
-    app.get('/admin', isAuthenticated, function(req, res){
-            res.render('admin', { user: req.user,title: 'The Victoria Blake Collection',
-            userFullName: req.user ? req.user.fullName : '' });
+    app.get('/admin', isAuthenticated, function(req, res, product){
+            res.render('admin', { user: req.user,
+                title: 'The Victoria Blake Collection',
+                userFullName: req.user ? req.user.fullName : '',
+                product: product });
     });
 
 
@@ -215,9 +217,79 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
         }
 
     });
-// };
 
+    var Product = require('../models/product');
 
+    app.post('/updateProduct', function (req, res){
+ 
+        Product.update({_id: req.body.id},{
+            text: req.body.text  ,
+            name : req.body.name   ,
+            price : req.body.price  ,
+            amount : req.body.amount   ,
+            category : req.body.category,
+            available: req.body.available   
+        }, function(err, num, raw){
+            if (err) {
+                res.send(err);
+            } else {
+                res.redirect("/admin");
+            };
+        });
+
+    });
+
+       app.post('/lock', function (req, res){
+        console.log("called")
+        Product.update({_id: req.body.id},{
+            available: "false" 
+ 
+        }, function(err, num, raw){
+            if (err) {
+                res.send(err);
+            } else {
+                res.redirect("/admin");
+            };
+        });
+
+    });
+
+    // app.post('/lock',function (req, res){
+
+    //     Product.findOne({_id: req.query.p}, function(err, product) {
+
+    //     }
+
+    //     console.log(req.body.id)
+    //     console.log(req.product.name)
+    //     Product.update({id: req.body.id},{
+    //         available: "false"
+    //     }, function(err, num, raw){
+    //         if(err){
+    //             res.send(err);
+    //         } else {
+    //             res.redirect("/")
+    //         };
+    //     });
+    // });
+
+    // app.post('/lock', function(req,res){
+    //     var x = "false"
+    //     Product.findOne({_id: req.body.id}, function(err,product){
+    //         console.log(product.available)
+    //         Product.update({id: product._id},{
+    //             available: x
+    //             // available: "false"
+
+    //         }, function(err, num, raw){
+    //             if(err){
+    //                 res.send(err);
+    //             }else{
+    //                 res.redirect("/product")
+    //             };
+    //         });
+    //     });
+    // });
 
     app.get('/send',function(req,res){
             var pixel = req.query.url;

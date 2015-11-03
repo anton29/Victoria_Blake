@@ -13,6 +13,7 @@ angular.module('productService', [])
 			delete : function(id) {
 				return $http.delete('/api/products/' + id);
 			},
+			
 
 		}
 	}]);

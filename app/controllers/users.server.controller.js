@@ -90,6 +90,28 @@ exports.renderProduct = function(req, res, next){
        
 };
 
+// update product
+exports.saveEditProduct = function (req, res){
+    console.log(req.params.productId) 
+
+    Product.update({_id: req.params.productId},{
+    // text: req.body.product.text  ,
+    // name : req.body.product.name   ,
+    // price : req.body.product.price  ,
+    // amount : req.body.product.amount   ,
+    // category : req.body.product.category   
+    }, function(err, num, raw){
+        if (err) {
+            res.send(err);
+        } else {
+            //res.json(num);
+            //console.log("ID is" + req.params.productId + "YAY!")
+            //res.redirect("/products");
+        };
+    });
+
+};
+
 exports.renderTakeForm = function(req,res,next){
     res.render('takeform')
 }
@@ -110,6 +132,24 @@ exports.renderProductId = function(req, res, next){
         }   
      })
 };
+
+exports.renderAdminEdit = function(req, res, next){
+     <!--//console.log('id was found' + req.product ? req.product._id:'');-->
+     Product.findOne({_id: req.query.p}, function(err, product) {
+
+        if (err) {
+            res.send(err);
+        } else {
+            res.render('edit', {
+                product: product, 
+                title:'The Victoria Blake Collection', 
+                userFullName: req.user ? req.user.fullName : ''
+            });
+                 
+        }   
+     })
+};
+
 
 //update ===========================================================
 // exports.updateProduct = function (req, res){
@@ -212,10 +252,10 @@ exports.renderCustomNecklace = function(req,res){
         })
 };
 
-exports.renderTest= function(req,res,next){
-    console.log('render Product Id was called')
-    res.render('test')
-};
+// exports.renderTest= function(req,res,next){
+//     console.log('render Product Id was called')
+//     res.render('test')
+// };
 
 exports.renderAbout = function(req, res){
     res.render('about', 

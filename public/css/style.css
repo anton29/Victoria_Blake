@@ -476,6 +476,10 @@ span#image{
 	margin-right: 20%;
 }
 
+.form{
+	float:right;
+}
+
 .the_photo{
 	width: 100%;
 	float: left;

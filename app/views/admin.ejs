@@ -81,6 +81,43 @@
       previewFile();  //calls the function named previewFile()    
   </script>
 
+
+  <script>
+	function myFunction() {
+	    document.forms[1].elements["name"].value = "worked"
+	   	document.forms[1].elements["text"].value = "worked"
+	   	document.forms[1].elements["price"].value = "0"
+	   	document.forms[1].elements["amount"].value = "0"
+	   	document.forms[1].elements["category"].value = "worked"
+	}
+
+  </script>
+  <style>
+
+  #sectionA
+{
+   float:left;
+   width: 50%;
+   border: 1px solid gray;
+   margin: 0;
+}
+#sectionB
+{
+   float:left;
+   border: 1px solid gray;
+   margin: 0;
+   width: 50%;
+}
+
+#sectionC
+{
+   clear:both;
+   border: 1px solid gray;
+   margin: 0;
+   width: 100%;
+}
+  </style>
+
 </head>
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
@@ -103,6 +140,9 @@
 		<!-- FORM TO CREATE Products -->
 		<div id="product-form" class="row">
 			<div  class="container">
+				<div id = "sectionA">
+					<h1> Create </h1>
+
 				<form>
 					<div class="form-group">
 
@@ -144,22 +184,73 @@
 					</div>
 					<button type="submit" class="btn btn-primary btn-lg" ng-click="createProducts()">Add</button>
 				</form>
-
-
-			<div ng-repeat="product in products">
+			</div>
+		<div id="sectionB">
+				<h1> Edit </h1>
+				<div ng-repeat="product in products">
 					<ol>
 						<p>{{product.name}} </p>
-						<p>{{product.price}}</p>
-						<p>{{product.amount}}</p>
-						<p>{{product.text}}</p>
-						<p>{{product.category}}</p>
-						<p>{{product._id}}</p>
-						<!-- <p>{{product.photo}}</p> -->
-						<p><img src="{{product.photo}}"><p> 
-						<p>Delete {{product.name}}<input type="checkbox" ng-click="deleteProduct(product._id)"> </P>
+						<button id="myBtn" name="myname" ng-click="deleteProduct(product._id)">Delete {{product.name}}</button>
+
+						<!-- <p>UpDate{{product.name}}<input type="checkbox" > -->
+						<!-- <button onclick="myFunction()">Click me</button> -->
+						 <a href="/product/p?p={{product._id}}">| Page for {{product.name}}| </a>
+						 <a href="/admin/p?p={{product._id}}">| Edit {{product.name}}| </a>
+
 
 					</ol>	
 				</div>
+
+
+		<!-- 	<form id="form" action="/updateProduct" method="POST">
+					<div class="form-group">
+
+					<div class="form-group"> 
+						<label for="name">Product Name:</label>
+						<input type="text" name="name" class="form-control input-lg text-center"  placeholder="Name"autofocus>
+					</div>
+
+					<div class="form-group">
+						<label for="des">Product Description:</label>
+						<input type="text" name="text" class="form-control input-lg text-center" placeholder="Description" >
+					</div>
+
+					<div class="form-group">
+						<label for="price">Product Price:</label>
+						<input type ="number" name="price" class="form-control input-lg text-center" placeholder="Price"  >
+					</div>
+
+					<div class="form-group">
+						<label for="amount">Product amount:</label>
+						<input type ="number" name="amount" class="form-control input-lg text-center" placeholder="amount"  ng-model="formData.amount">
+					</div>
+
+					<div class="form-group">
+						<label for"img"> Product Category: </label>
+						<input type ="text" name="category" class="form-control input-lg text-center" placeholder="Category">
+					</div>
+
+					</div> -->
+					<!-- <button type="submit" class="btn btn-primary btn-lg" value="updateProduct" id="updateProduct">Update</button>
+				</form> -->
+		</div>
+
+		<div id= "sectionC"> 
+			<div ng-repeat="product in products">
+					<ol>
+						<p> Name: {{product.name}} </p>
+						<p> Price: {{product.price}}</p>
+						<p>amount: {{product.amount}}</p>
+						<p> Text: {{product.text}}</p>
+						<p>Category: {{product.category}}</p>
+						<p>available: {{product.available}}</p>
+						<p>InCart: {{product.inCart}}</p>
+						<p>Id: {{product._id}}</p>
+						<p><img src="{{product.photo}}"><p> 
+						
+					</ol>	
+				</div>
+			<div>
 			</div>
 		</div>
 

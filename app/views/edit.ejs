@@ -1,0 +1,185 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="griffinaProduct">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Node/Angular Product App</title>
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+	<script type="text/javascript" src="application.js"></script>
+	<!--<script type="text/javascript" src="/lib/angular/angular.js"></script>-->
+	<script src="../js/respond.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="../js/services/products.js"></script> <!-- load our product service -->
+	<script src="../js/core.js"></script> <!-- load our main application -->
+
+	<!--google fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+
+	<!--slideshow-->
+     <link rel="stylesheet" href="../css/responsiveslides.css">
+  <!--<link rel="stylesheet" href="demo.css">-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="../js/responsiveslides.min.js"></script>
+<!--
+  <script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+
+      // Slideshow 1
+      $("#slider1").responsiveSlides({
+        maxwidth: 1200,
+        speed: 800
+      });
+    });
+</script>
+-->
+
+     <script>
+       function previewFile(){
+           var preview = document.querySelectorAll('img')[1]; //selects the query named img
+           var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+           var reader  = new FileReader();
+           reader.onloadend = function () {
+               preview.src = reader.result;
+                //console.log(preview.src.length);
+                var url = preview.src;
+                
+           }
+
+           if (file) {
+               reader.readAsDataURL(file); //reads the data as a URL
+           } else {
+               preview.src = "";
+           }
+      }
+
+      function getURI(form,width,height){
+        if(document.querySelector('input[type=file]').files[0]){
+
+          var canvas = document.createElement('canvas'),
+          ctx = canvas.getContext('2d');
+
+          canvas.width = width;
+          canvas.height = height;
+
+          ctx.drawImage(document.querySelectorAll('img')[1], 0, 0, width, height);
+          var fileName = document.getElementById('upload').value.split(/(\\|\/)/g).pop();
+          form.elements["uri"].value = canvas.toDataURL()
+          form.elements["add"].value =  fileName + " ready"
+          }
+      }
+
+      previewFile();  //calls the function named previewFile()    
+  </script>
+
+
+  <script>
+	function myFunction() {
+	    document.forms[1].elements["name"].value = "worked"
+	   	document.forms[1].elements["text"].value = "worked"
+	   	document.forms[1].elements["price"].value = "0"
+	   	document.forms[1].elements["amount"].value = "0"
+	   	document.forms[1].elements["category"].value = "worked"
+	}
+
+  </script>
+  <style>
+
+  #sectionA
+{
+   float:left;
+   width: 50%;
+   border: 1px solid gray;
+   margin: 0;
+}
+#sectionB
+{
+   float:left;
+   border: 1px solid gray;
+   margin: 0;
+   width: 50%;
+}
+
+#sectionC
+{
+   clear:both;
+   border: 1px solid gray;
+   margin: 0;
+   width: 100%;
+}
+  </style>
+
+</head>
+<body ng-controller="mainController">
+
+<section id="wrapper">
+
+<header>
+<div id="logo"><img src="../img/logo.png" /></div><!--end of logo-->
+<div id="title"><h1><%= title %></h1></div><!--end of title-->
+</header>
+
+
+<section id="content">
+
+<div id="productItem">
+
+	<ul id="catalog">
+			<div class="the_name"><h4>Name: <%= product.name %></h4></div>
+			<div class="the_photo"><img src="<%=product.photo%>" alt="<%= product.name %>" /></div>
+	</ul>
+
+       <form id="form" action="/updateProduct" method="POST">
+          <div class="form-group">
+
+
+          <input type="hidden" name="id" class="form-control input-lg text-center" value = <%= product._id %> autofocus>
+          <div class="form-group"> 
+            <label for="name">Product Name:</label>
+            <input type="text" name="name" class="form-control input-lg text-center"  placeholder="Name"value = "name" autofocus>
+          </div>
+
+          <div class="form-group">
+            <label for="des">Product Description:</label>
+            <input type="text" name="text" class="form-control input-lg text-center" placeholder="Description" value = <%= product.text %> >
+          </div>
+
+          <div class="form-group">
+            <label for="price">Product Price:</label>
+            <input type ="number" name="price" class="form-control input-lg text-center" value = <%= product.price %> placeholder="Price"  >
+          </div>
+
+          <div class="form-group">
+            <label for="amount">Product amount:</label>
+            <input type ="number" name="amount" class="form-control input-lg text-center" placeholder="amount"  value = <%= product.amount %>>
+          </div>
+
+          <div class="form-group">
+            <label for"img"> Product Category: </label>
+            <input type ="text" name="category" class="form-control input-lg text-center" placeholder="Category" value = <%= product.category %>>
+          </div>
+
+          <div class="form-group">
+            <label for"img"> Product available: </label>
+            <input type ="text" name="available" class="form-control input-lg text-center" placeholder="available" value = <%= product.available %>>
+          </div>
+
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" value="updateProduct" id="updateProduct">Update</button>
+        </form>
+
+
+
+</section><!--end of content-->
+
+</section><!--end of wrapper-->
+</body>
+</html>

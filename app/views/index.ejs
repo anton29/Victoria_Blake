@@ -217,7 +217,21 @@ function navBar (form) {
 }
 
 
+</script>
 
+<script>
+  $(document).ready(function(){
+    $(window).scroll(function(){
+      // console.log($(window).scrollTop())
+      if($(window).scrollTop()> 125){
+        // console.log("called")
+        $('#nav').addClass('navbar-fixed');
+      }
+      if($(window).scrollTop() < 126){
+        $('#nav').removeClass('navbar-fixed');
+      }
+    })
+  })
 </script>
 
         
@@ -260,7 +274,7 @@ function navBar (form) {
 <header>
 	<% include header %>
 </header>
-<nav><% include nav %></nav>
+<nav id="nav"><% include nav %></nav>
 <section id="content">
 <section id="slideshow">
 	<ul class="rslides" id="slider1">
@@ -309,14 +323,12 @@ function navBar (form) {
 	<h4><a href="/customnecklace">Arrange for a Custom Statement Neclaces</a></h4>
 	<div class="bot_img"><img src="img/img5.jpg" /></div></div><!--end of bot_img-->
 	<div class="bot_img"><img src="img/img6.jpg" /></div></div><!--end of bot_img-->
-	<div class="home_testi"> 
-
-		<!-- <iframe src="https://player.vimeo.com/video/134153810?autoplay=1&loop=1&title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-		 -->
+	<!-- <div class="home_testi"> 
+    
 		<h4>Testimonial</h4>
 		<div class="testi_img"><img src="img/testimo.jpg" align="left" /></div> 
 		<div class="testi_bio"><h3>habitant morbi</h3><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p></div>
-	</div><!--end of home_testi-->
+	</div> --><!--end of home_testi-->
 </section><!--end of bottom_row-->
 
 
