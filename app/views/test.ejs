@@ -6,7 +6,8 @@
 <!-- META -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
-
+	<link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
 	<title>The Victoria Blake Collection</title>
 
 	<!-- SCROLLS -->
@@ -33,6 +34,8 @@
 	<script src="../js/core.js"></script> <!-- load our main application -->
 	<script src="../js/twitter.js"></script>
 	<script src="../js/facebook.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="../js/scripts.js"></script>
 
 
 
@@ -72,7 +75,7 @@
 		// 	});
 		//     document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
 		// }
-		function myFunction(){
+		function sendForms(){
 			// $('#form2').submit(function(){
 				submitTwoForms();
 				// return false;
@@ -106,7 +109,8 @@
 	<%}%>
 </div> --><!--end of login-->
 </header>
-<nav><% include nav %></nav>
+<nav id="nav"><% include nav %></nav>
+
 
 <section id="content">
 
@@ -118,8 +122,13 @@
 			<div class="the_name"><h4>Name: <%= product.name %></h4></div>
 			<!-- <div class="the_photo"><img src="../<%=product.photo%>" alt="<%= product.name %>" /></div> -->
 			<div class="the_photo"><img src="<%=product.photo%>" alt="<%= product.name %>" /></div>
+			<!-- <p>side</p> -->
+			<div><h4><%= product.text %></h4></div>
 
 			<div class="price"><h4>Price: $<%= product.price %></h4></div>
+			<div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div>
+
+
 
 
 
@@ -131,14 +140,14 @@
 
           <input type="text" name="lock" class="form-control input-lg text-center" value=<%= product.available%> >
           </div>
-          <button id ="form-submit" type="submit" class="btn btn-primary btn-lg" value="lock" id="lock">Update</button>
+          <!-- <button id ="form-submit" type="submit" class="btn btn-primary btn-lg" value="lock" id="lock">Update</button> -->
 
         </form>
 
 
 
 			
-			<form id="form2" onclick="myFunction()" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<form id="form2" onclick="sendForms()" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
 				<!-- Identify your business so that you can collect the payments. -->
 				<input type="hidden" name="business" value="griblake@gmail.com">
@@ -151,6 +160,18 @@
 				<input type="hidden" name="amount" value="<%= product.price %>">
 				<input type="hidden" name="currency_code" value="USD">
 
+				<!--fill out form-->
+				<input type="hidden" name="first_name" value="John">
+				<input type="hidden" name="last_name" value="Doe">
+				<input type="hidden" name="address1" value="9 Elm Street">
+				<input type="hidden" name="address2" value="Apt 5">
+				<input type="hidden" name="city" value="Berwyn">
+				<input type="hidden" name="state" value="PA">
+				<input type="hidden" name="zip" value="19312">
+				<input type="hidden" name="night_phone_a" value="610">
+				<input type="hidden" name="night_phone_b" value="555">
+				<input type="hidden" name="night_phone_c" value="1234">
+
 
 				<!-- Display the payment button. -->
 				<input type="image" name="submit" border="0"
@@ -162,10 +183,10 @@
 		 </form>
 
 			
-<!-- 
-			<h4> <a href="#" onclick="simpleCart.add('name=<%= product.name %>','price=<%=product.price %>');return false;"> add to cart</a> 
+
+			<!-- <h4> <a href="#" onclick="simpleCart.add('name=<%= product.name %>','price=<%=product.price %>');return false;"> add to cart</a>  
 			<div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div>
-			</h4> -->
+			</h4>-->
 		</li>
 	</ul>
 

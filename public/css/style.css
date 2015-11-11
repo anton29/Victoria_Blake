@@ -1102,6 +1102,8 @@ span#image{
 	}
 	/*---------------end of about page-------------------*/
 
+
+
 	/*---------------testimonial page-------------------*/
 	.testimonials{
 		width: 90%;
@@ -1230,3 +1232,21 @@ span#image{
 	}
 	/*---------------end of test page-------------------*/
 }
+@media only screen and (max-width: 500px) {
+		#nav{
+			font-size:85%;
+		}
+
+		.modalDialog > div {
+		width: 250px;
+		position: relative;
+		margin: 10% auto;
+		padding: 5px 20px 13px 20px;
+		border-radius: 10px;
+		background: #fff;
+		background: -moz-linear-gradient(#fff, #999);
+		background: -webkit-linear-gradient(#fff, #999);
+		background: -o-linear-gradient(#fff, #999);
+	}
+
+	}

@@ -22,8 +22,8 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
 
 
 module.exports = function(app){
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+// app.use(bodyParser.json({limit: '50mb'}));
+// app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 /*
     app.route('/users')
@@ -39,16 +39,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 */
 
     app.route('/product')
-       // console.log("route /product was called")
-        // .get(product.render);
         .get(users.renderProduct)
-
-    // app.route('/test')
-    //     //console.log("product Id  route was called")
-    //     .get(users.renderTest)
-
-    // app.route('/test')
-    //     .get(users.renderSignIn)
 
     app.route('/product/:product_id') 
         .get(users.renderProductId)
@@ -60,8 +51,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
     app.route('/about')
         .get(users.renderAbout)
 
-    // addede .post(core.sendMail);
-    app.route('/contact')//.post(core.sendMail);
+    app.route('/contact')
         .get(users.renderContact)
 
     app.route('/reserve/:product_id')
@@ -69,9 +59,6 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
     app.route('/testimonial')
         .get(users.renderTestimonial)
-
-     // app.route('/admin')
-     //      .get(users.renderAdmin)
 
     var isAuthenticated = function (req, res, next) {
         if (req.isAuthenticated() && req.user.username === "admin")
@@ -85,12 +72,6 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
                 userFullName: req.user ? req.user.fullName : '',
                 product: product });
     });
-
-
-
-
-    app.route('/cart')
-        .get(users.renderCart)
 
     app.route('/messageCandles')
         .get(users.renderMessageCandles) 
@@ -147,35 +128,14 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
         successRedirect: '/'
     }));
 
-    // app.get('/send',function(req,res){
-    //         var mailOptions={
-    //             to : req.query.to,
-    //             subject : req.query.subject,
-    //             text : req.query.text ,
-    //         }
-    //     if(req.query.to && req.query.subject && req.query.text ){
-    //     console.log(mailOptions);
-    //     smtpTransport.sendMail(mailOptions, function(error, response){
-    //         if(error){
-    //             console.log(error);
-    //             res.end("error");
-    //         }else{
-    //             console.log("Message sent: " + response.message);
-    //             res.end("sent");
-    //         }
-    //         });
-    //     }
-
-    // });
-
     app.post('/send', function (req, res) {
             var pixel = req.body.uri;
             var fullPath = req.body.file
             if(req.body.email){
             if(fullPath){
                     var mailOptions={
-                        //to : "griblake@gmail.com",
-                        to:"abr8892@yahoo.com",
+                        to : "griblake@gmail.com",
+                        // to:"abr8892@yahoo.com",
                         subject : "Custom Item request from: " + req.body.email,
                         text :  "Name: "    + req.body.fn +" " + req.body.fn + '\n' +
                                 "Description: " + req.body.Description + '\n' +
@@ -203,13 +163,13 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
             }
 
        
-        console.log(mailOptions);
+        // console.log(mailOptions);
         smtpTransport.sendMail(mailOptions, function(error, response){
             if(error){
-                console.log(error);
+                // console.log(error);
                 res.end("error");
             }else{
-                console.log("Message sent: " + response.message);
+                // console.log("Message sent: " + response.message);
                 //res.end("sent");
                 res.redirect("/");
             }
@@ -239,56 +199,27 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
     });
 
-       app.post('/lock', function (req, res){
-        console.log("called")
-        Product.update({_id: req.body.id},{
-            available: "false" 
+    // app.post('/lock', function (req, res){
+    //     console.log(req.body.firstName)
+    //     console.log(req.body.lastName)
+    //     console.log(req.body.address1)
+    //     console.log(req.body.address2)
+    //     console.log(req.body.state)
+    //     console.log(req.body.city)
+    //     console.log(req.body.zip)
+    //     console.log("called lock")
+    //     console.log("product id is: " + req.body.id)
+    //     Product.update({_id: req.body.id},{
+    //         available: "false" 
  
-        }, function(err, num, raw){
-            if (err) {
-                res.send(err);
-            } else {
-                res.redirect("/admin");
-            };
-        });
-
-    });
-
-    // app.post('/lock',function (req, res){
-
-    //     Product.findOne({_id: req.query.p}, function(err, product) {
-
-    //     }
-
-    //     console.log(req.body.id)
-    //     console.log(req.product.name)
-    //     Product.update({id: req.body.id},{
-    //         available: "false"
     //     }, function(err, num, raw){
-    //         if(err){
+    //         if (err) {
     //             res.send(err);
     //         } else {
-    //             res.redirect("/")
+    //             res.redirect("/");
     //         };
     //     });
-    // });
 
-    // app.post('/lock', function(req,res){
-    //     var x = "false"
-    //     Product.findOne({_id: req.body.id}, function(err,product){
-    //         console.log(product.available)
-    //         Product.update({id: product._id},{
-    //             available: x
-    //             // available: "false"
-
-    //         }, function(err, num, raw){
-    //             if(err){
-    //                 res.send(err);
-    //             }else{
-    //                 res.redirect("/product")
-    //             };
-    //         });
-    //     });
     // });
 
     app.get('/send',function(req,res){
@@ -317,17 +248,67 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
             }
 
        
-        console.log(mailOptions);
+        // console.log(mailOptions);
         smtpTransport.sendMail(mailOptions, function(error, response){
             if(error){
-                console.log(error);
+                // console.log(error);
                 res.end("error");
             }else{
-                console.log("Message sent: " + response.message);
+                // console.log("Message sent: " + response.message);
                 res.end("sent");
             }
             });
         }
+
+    });
+
+
+
+        app.post('/sendShipping', function (req, res) {
+
+            Product.update({_id: req.body.id},{
+                available: "false" 
+     
+            }, function(err, num, raw){
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.redirect("/");
+                };
+            });
+            // console.log("send shipping")
+            var pixel = req.body.uri;
+            var fullPath = req.body.file
+            // if(req.body.email){
+            
+                    var mailOptions={
+                        to : "griblake@gmail.com",
+                        // to:"abr8892@yahoo.com",
+                        subject : "Item bought by: " + req.body.email,
+                        text :  "Name: "    + req.body.firstName +" " + req.body.lastName + '\n' +
+                                "Address: " + req.body.address1 + '\n' +
+                                              req.body.address2 + '\n' +
+                                "state: " + req.body.state + '\n' +
+                                "city: " + req.body.city + '\n' +
+                                "zip: "   + req.body.zip +'\n' +
+                                "email: "   + req.body.email +'\n' +
+                                "check for payment email conformation"
+                    }
+            
+
+       
+        // console.log(mailOptions);
+        smtpTransport.sendMail(mailOptions, function(error, response){
+            if(error){
+                // console.log(error);
+                res.end("error");
+            }else{
+                // console.log("Message sent: " + response.message);
+                //res.end("sent");
+                res.redirect("/");
+            }
+            });
+        // }
 
     });
 };

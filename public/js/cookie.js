@@ -22,12 +22,10 @@ function getCookie(cname) {
 function checkCookie() {
     var user=getCookie("username");
     if (user != "") {
-        //cookie found do something
+        //cookie found donot show popup
 
-        console.log(user)
     } else {
-       // no cookie do something
-       console.log(user)
+      //no cookie found show popup and make a cookie
        setTimeout(function() {
             window.location='#openModal'
         }, 3000);

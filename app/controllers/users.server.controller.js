@@ -298,11 +298,11 @@ exports.renderTestimonial = function(req, res){
 //         userFullName: req.user ? req.user.fullName : ''})
 // };
 
-exports.renderCart = function(req, res) {
-    res.render('cart', 
-        {title: 'The Victoria Blake Collection',
-        userFullName: req.user ? req.user.fullName : ''})
-};
+// exports.renderCart = function(req, res) {
+//     res.render('cart', 
+//         {title: 'The Victoria Blake Collection',
+//         userFullName: req.user ? req.user.fullName : ''})
+// };
 
 exports.renderSocial = function(req,res){
     res.render('social',

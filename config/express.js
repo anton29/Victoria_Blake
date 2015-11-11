@@ -20,7 +20,7 @@ module.exports = function(){
         app.use(compress());//compression
     }
     app.use(bodyParser.urlencoded({limit: '50mb'}));
-app.use(bodyParser.json({limit: '50mb'}))
+    app.use(bodyParser.json({limit: '50mb'}))
     
     // app.use(bodyParser.urlencoded({
     //     extended: true //parsing any type
@@ -42,9 +42,13 @@ app.use(bodyParser.json({limit: '50mb'}))
     app.use(flash());
     app.use(passport.initialize()); //middleware that bootstraps the passport module
     app.use(passport.session());    //middleware using the express session to track user's session
+
+
     
     require('../app/routes/index.server.routes.js')(app);
     require('../app/routes/users.server.routes.js')(app); //add in route to users for REST API
+
+    
     
     app.use(express.static('./public'));//serve static files from public directory..
     //remember order matters looking through the files should be last because i/o is costly

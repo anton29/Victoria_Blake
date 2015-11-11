@@ -4,6 +4,9 @@
    <!-- META -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <title><%= title %></title>
     <!-- SCROLLS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
@@ -17,12 +20,14 @@
     <script type="text/javascript" src="application.js"></script>
     <!--<script type="text/javascript" src="/lib/angular/angular.js"></script>-->
     <script src="../js/respond.min.js"></script>
-
+    <script src="../js/scripts.js"></script>
     <script src="../js/controllers/main.js"></script> <!-- load up our controller -->
     <script src="../js/services/products.js"></script> <!-- load our product service -->
     <script src="../js/core.js"></script> <!-- load our main application -->
     <script src="../js/twitter.js"></script>
     <script src="../js/facebook.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="../js/scripts.js"></script>
 
     <!--google fonts-->
     <link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
@@ -34,9 +39,8 @@
 <header>
     <% include header %>
 </header>
-<nav>
-    <% include nav %>
-</nav>
+<nav id="nav"><% include nav %></nav>
+
 
 <section id="content">
 

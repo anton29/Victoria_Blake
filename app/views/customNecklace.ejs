@@ -8,6 +8,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
+
+  <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
 	<title>The Victoria Blake Collection</title>
 
 	<!-- SCROLLS -->
@@ -27,13 +30,15 @@
 	<script type="text/javascript" src="application.js"></script>
 	<!--<script type="text/javascript" src="/lib/angular/angular.js"></script>-->
 	<script src="../js/respond.min.js"></script>
-
+  <script src="../js/scripts.js"></script>
 	<script src="../js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="../js/services/products.js"></script> <!-- load our product service -->
 	<script src="../js/core.js"></script> <!-- load our main application -->
   <!--<script src="../js/customOrder.js"></script>-->
   <script src="../js/twitter.js"></script>
   <script src="../js/facebook.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="../js/scripts.js"></script>
 
             <!-- image upload script-->
      <script>
@@ -87,30 +92,12 @@
 <header>
 	<% include header %>
 </header>
-<nav>
-	<% include nav %>
-</nav>
-
+<nav id="nav"><% include nav %></nav>
 <section id="content">
 
 
 <div id="contact_form">
     <h3>Show off your favorit item by adding personalized, signature touches </h3>   
-<!--     <form id="form">
-        <input id="subject" type="email" placeholder="Email" class="contact_bg" required autofocus/>
-
-        <input id ="firstName" type="text" placeholder = "First Name" class="contact_bg" required/>
-
-        <input id = "lastName" type="text" placeholder = "Last Name" class="contact_bg" required/>
-
-        <textarea id="description" cols="40" rows="5" placeholder="How would you like to customize your Item, you can include an image of your item below" class="contact_details" required></textarea>
-
-        <input id="upload" type="file" onchange="previewFile()"><br>
-
-        <img src="" height="200" alt="Image preview...">
-
-        <input type="submit" name="submit" value="Send" id="send_email" />
-    </form> -->
 
     <form id="form" action="/send" method="POST">
  
