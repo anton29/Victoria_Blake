@@ -20,6 +20,8 @@
 	<link href="../css/contact_form.css" rel="stylesheet" type="text/css">
     <link href="../css/form.css" rel="stylesheet" type="text/css">
 
+     <link href="../css/tooltipster.css" rel="stylesheet" type="text/css">
+
 
 	<!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> -->
 
@@ -41,6 +43,9 @@
     <script src="../js/facebook.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="../js/scripts.js"></script>
+
+    <script src="../js/jquery.validate.js"></script>
+    <script src="../js/tooltipster.js"></script>
 
 	   <script>
 
@@ -110,6 +115,103 @@
                 submitTwoForms();
             }
         }
+
+        // $(document).ready(function () {
+        //     $('#form1 input[type="text"]').tooltipster({
+        //         trigger:'custom',
+        //         onlyOne: false,
+        //         position: 'right'
+        //     });
+        //     $('#form1').validate({
+        //        errorPlacement: function (error, element) {
+        //             $(element).tooltipster('update', $(error).text());
+        //             $(element).tooltipster('show'); 
+        //         },
+        //         success: function (label, element){
+        //             $(element).tooltipster('hide');
+        //         },
+        //         rules:{
+        //             firstName: {
+        //                 required: true,
+        //              },
+        //             lastName:{
+        //                 required: true,
+        //              },
+        //              email:{
+        //                 required: true,
+        //                 email: true
+        //              },
+        //              address1:{
+        //                 required: true,
+        //              },
+        //              city:{
+        //                 required: true,
+        //              },
+        //              state:{
+        //                 required: true,
+        //              },
+        //              zip:{
+        //                 required: true,
+        //              } 
+        //         },
+        //         submitHandler: function(form){
+        //             $.ajax({
+        //                 url: "/sendShipping",
+        //                 data: $("#form1").serialize(), // serializes the form's elements.
+        //                 type: "POST",
+        //                 success: function(){
+        //                     document.getElementById('form2').submit();
+        //             }
+        //         })
+        //             return false;
+        //         }
+
+        //     });
+        // });
+
+
+     $(document).ready(function () {
+
+     $("#form1").validate({
+         ignore: ":hidden",
+         rules: {
+             firstName: {
+                 required: true,
+             },
+             lastName:{
+                required: true,
+             },
+             email:{
+                required: true,
+                email: true
+             },
+             address1:{
+                required: true,
+             },
+             city:{
+                required: true,
+             },
+             state:{
+                required: true,
+             },
+             zip:{
+                required: true,
+             }
+         },
+         submitHandler: function (form) {
+            $.ajax({
+                url: "/sendShipping",
+                data: $("#form1").serialize(), // serializes the form's elements.
+                type: "POST",
+                success: function(){
+                    document.getElementById('form2').submit();
+                }
+            })
+            return false;
+         }
+     });
+
+ });
     </script>
 
 	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
@@ -125,7 +227,7 @@
 </header>
 <nav id="nav"><% include nav %></nav>
 
-
+    <img src="my-image.png" class="tooltip" title="This is my image's tooltip message!" />
 
     <div id="form_container">
     
@@ -151,11 +253,11 @@
         <li id="li_1" >
             <label class="description" for="Name">Name </label>
             <span>
-                <input id="firstName" name= "firstName" class="element text" maxlength="255" size="8" ng-model="first_name"/>
+                <input id="firstName" name= "firstName" class="element text" type="text" maxlength="255" size="8" ng-model="first_name"/>
                 <label>First</label>
             </span>
             <span>
-                <input id="lastName" name= "lastName" class="element text" maxlength="255" size="14" ng-model="last_name"/>
+                <input id="lastName" name= "lastName" class="element text" type="text" maxlength="255" size="14" ng-model="last_name"/>
                 <label>Last</label>
             </span> 
             <span>
@@ -249,7 +351,11 @@
         </li>       
         
         <input type="hidden" id="id" name="id" value = <%= product._id %> >
- 
+        <input type="image" name="submit" border="0"
+                src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+                alt="PayPal - The safer, easier way to pay online">
+                <img alt="" border="0" width="1" height="1"
+                src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
        
             </ul>
         </form> 
@@ -280,17 +386,18 @@
                 <input type="hidden" name="city" value="{{city}}">
                 <input type="hidden" name="state" value="{{data.state}}">
                 <input type="hidden" name="zip"value="{{zip}}">
+                <input type="hidden" name="email"value="{{email}}">
  
                 <!-- Display the payment button. -->
               
 
          </form>
-
+<!-- 
            <input onclick="sendForms()" type="image" name="submit" border="0"
                 src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
                 alt="PayPal - The safer, easier way to pay online">
                 <img alt="" border="0" width="1" height="1"
-                src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+                src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" > -->
     </div>
 
 <span id="message"></span>
