@@ -5,6 +5,18 @@ nav{
 	background-color: #3f2860;
 }
 
+.noscript {
+    width: 100%;
+	float: left;
+	height: 25px;
+	text-align: center;
+}
+.noscript #div100{
+       display:block;
+       height:100%;
+       background-color:red; 
+ }
+
 .navbar-fixed{
 	top:0;
 	z-index:100;

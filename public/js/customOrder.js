@@ -11,7 +11,8 @@ $(document).ready(function(){
 
                 var from,to,subject,text,phone,url,file;
                 $("#send_email").click(function(){      
-                to= "griblake@gmail.com";
+                // to= "griblake@gmail.com";
+                to="victoribgc@gmail.com";
                 subject=$("#subject").val();
                 firstName=$("#firstName").val();
                 lastName=$("#lastName").val();

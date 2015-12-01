@@ -44,113 +44,74 @@
 
 	   <script>
 
-        function submitTwoForms(){
-            // console.log("clicked two forms")
-             var dataObject = {
-                'id'         : document.getElementById('id').value,
-                'firstName'  : document.getElementById('firstName').value,
-                'lastName'   : document.getElementById('lastName').value,
-                'address1'   : document.getElementById('address1').value,
-                'address2'   : document.getElementById('address2').value,
-                'state'      : document.getElementById('state').value,
-                'city'       : document.getElementById('city').value,
-                'zip'        : document.getElementById('zip').value,
-                'email'      : document.getElementById('email').value
+        function validateEmail(email) { 
+          // http://stackoverflow.com/a/46181/11236
+          
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+         function checkForm(form){
+            if(this.firstName.value == "") {
+              alert("Please enter your First Name");
+              this.firstName.focus();
+              return false;
             }
+            if(this.lastName.value == "") {
+              alert("Please enter your Last Name");
+              this.lastName.focus();
+              return false;
+            }
+            if( !(validateEmail(this.email.value)) ) {
+              alert("Please enter a valid Email address");
+              this.email.focus();
+              return false;
+            }
+            if(this.address1.value == "") {
+              alert("Please enter your Address");
+              this.address1.focus();
+              return false;
+            }
+            if(this.city.value == "") {
+              alert("Please enter your City");
+              this.city.focus();
+              return false;
+            }
+            if(this.state.value == "") {
+              alert("Please enter your State");
+              this.state.focus();
+              return false;
+            }
+            if(this.zip.value == "") {
+              alert("Please enter your Zip");
+              this.zip.focus();
+              return false;
+            }
+            // alert("Success!  The form has been completed, validated and is ready to be submitted...");
+            return true;
+        }
+
+        function submitTwoForms(){
+            // $("#form1").validate();
             $.ajax({
                 url: "/sendShipping",
-                data: dataObject,
+                data: $("#form1").serialize(), // serializes the form's elements.
                 type: "POST",
                 success: function(){
-                    $("form1").submit
+                    document.getElementById('form2').submit();
                 }
             })
             return false;
             
         }
 
-        //     function submitTwoForms(){
-            // console.log("clicked two forms")
-            // console.log(document.getElementById('firstName').value);
-            // console.log(document.getElementById('lastName').value);
-            // console.log(document.getElementById('email').value);
-            // console.log(document.getElementById('address1').value);
-            // console.log(document.getElementById('address2').value);
-            // console.log(document.getElementById('state').value);
-            // console.log(document.getElementById('city').value);
-            // console.log(document.getElementById('zip').value);
-            // console.log(document.getElementById('zip').value);
-            // console.log(document.getElementById('id').value);
-        //     var frm= $('form1');
-            
-        //         $.ajax({
-        //             type: frm.attr('method'),
-        //             url: frm.attr('action'),
-        //             data: frm.serialize(),
-        //             success: function(){
-        //                 $("form1").submit
-        //             }
-        //         })
-        //         return false;
-            
-        // }
-
         function sendForms(){
-            // console.log("clicked")
-            submitTwoForms();
+            if(checkForm(document.getElementById('form1'))){
+                submitTwoForms();
+            }
         }
     </script>
 
-	<!-- email script -->
-         <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
-           <!-- <script>// <![CDATA[
-
-            function msg(){
-                swal({
-                      title: "Thank You!",
-                      text: "Your Email has been sent. I'll get back to you soon",
-                      imageUrl:"img/logo.png"
-                });
-            }
-
-            $(document).ready(function(){
-                var from,to,subject,text,phone;
-                $("#send_email").click(function(){      
-                to= "griblake@gmail.com";
-                subject=$("#subject").val();
-                //text1=$("#content").val()
-                firstName=$("#firstName").val();
-                lastName=$("#lastName").val();
-                phone=$("#phone").val();
-                products=$("#product").val();
-
-                //email body starts
-                text =  "Name: "    + firstName +" " + lastName +
-                    "would like to Order "+ products + '\n' +
-                    "email: "   + subject ;
-                //email body ends
-
-                //$("#message").text("Sending E-mail...Please wait");
-               // $.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
-               // $.get(“/send”,{to:to,subject:subject,text:text},function(data){
-                $.get("/send",{to:to,subject:subject,text:text},function(data){
-
-                    if(data=="sent")
-                {
-                    msg();
-                    document.getElementById("form").reset();
-                    preview.src = "";
-                   // $("#message").empty().html("Email has been sent to "+to+" . Please check inbox !");
-                }
-
-            });
-                });
-            });
-        </script>-->
-
-<!--email script end -->
-
-	<!--google fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
 </head>
@@ -159,17 +120,8 @@
 <section id="wrapper">
 
 <header>
-<div id="logo"><img src="../img/logo.png" /></div><!--end of logo-->
-<div id="title"><h1><%= title %></h1></div><!--end of title-->
-<!-- <div id="login">
-	<% if(userFullName) { %>
-	<h2>Log In Works, <%=userFullName%></h2>
-	<a href="/signout">Sign Out</a>
-	<%} else{%>
-	<a href="/signup" class="signs">Sign Up</a>
-	<a href="/signin" class="signs">Sign In</a>
-	<%}%>
-</div> --><!--end of login-->
+    <div id="logo"><img src="../img/logo.png" /></div><!--end of logo-->
+    <div id="title"><h1><%= title %></h1></div><!--end of title-->
 </header>
 <nav id="nav"><% include nav %></nav>
 
@@ -305,8 +257,8 @@
 
 	<section id="content">
 
-
-    <form id="form2" onclick="sendForms()" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <div id = "paypal">
+    <form id="form2" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
                 <!-- Identify your business so that you can collect the payments. -->
                 <input type="hidden" name="business" value="griblake@gmail.com">
@@ -318,7 +270,8 @@
                 <input type="hidden" name="item_name" value="<%= product.name %>">
                 <input type="hidden" name="amount" value="<%= product.price %>">
                 <input type="hidden" name="currency_code" value="USD">
-
+                <input type="hidden" name="tax_rate" value="8.875">
+                <input type="hidden" name="shipping" value="7.99">
                 <!--fill out form-->
                 <input type="hidden" name="first_name" value="{{first_name}}">
                 <input type="hidden" name="last_name" value="{{last_name}}">
@@ -329,13 +282,16 @@
                 <input type="hidden" name="zip"value="{{zip}}">
  
                 <!-- Display the payment button. -->
-                <input type="image" name="submit" border="0"
+              
+
+         </form>
+
+           <input onclick="sendForms()" type="image" name="submit" border="0"
                 src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
                 alt="PayPal - The safer, easier way to pay online">
                 <img alt="" border="0" width="1" height="1"
                 src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-
-         </form>
+    </div>
 
 <span id="message"></span>
 </div>

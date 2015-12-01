@@ -2,7 +2,7 @@
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
 <html ng-app="griffinaProduct">
-<head>
+<head >
 <!-- META -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
@@ -52,6 +52,37 @@
 
 
 	<script>
+		var available= console.log("<%= product.available %>")
+
+	// function set(){
+	// 	var available= console.log("<%= product.available %>")
+	// 	if(!available){
+	// 		 $('#catalog > li > div.the_photo > img').addClass('navbar-fixed')
+	// 		getElementsByClassName("the_photo").className += 'navbar-fixed';
+	// 		console.log("available")
+	// 	}else{
+	// 		 $('#catalog > li > div.the_photo > img').removeClass('navbar-fixed');
+	// 		console.log("not")
+	// 	}
+
+	// }
+	// set();
+
+	 $(document).ready(function(){
+	 	if(!available){
+         console.log("called")
+        $('#catalog > li > div.the_photo').addClass('Sold');
+      }
+    $(window).scroll(function(){
+    	console.log("<%= product.available %>")
+
+       // console.log($(window).scrollTop())
+ 
+      // if($(window).scrollTop() < 126){
+      //   $('#catalog > li > div.the_photo > img').removeClass('Sold');
+      // }
+    })
+  })
 
 		function submitTwoForms(){
 			console.log("clicked")
@@ -99,15 +130,7 @@
 <header>
 <div id="logo"><img src="../img/logo.png" /></div><!--end of logo-->
 <div id="title"><h1><%= title %></h1></div><!--end of title-->
-<!-- <div id="login">
-	<% if(userFullName) { %>
-	<h2>Log In Works, <%=userFullName%></h2>
-	<a href="/signout">Sign Out</a>
-	<%} else{%>
-	<a href="/signup" class="signs">Sign Up</a>
-	<a href="/signin" class="signs">Sign In</a>
-	<%}%>
-</div> --><!--end of login-->
+
 </header>
 <nav id="nav"><% include nav %></nav>
 
@@ -115,102 +138,31 @@
 <section id="content">
 
 <div id="productItem">
+	<div id="leftDiv">
+		<ul id="catalog">
+			<li>
+				<div class="the_name"><h4>Name: <%= product.name %></h4></div>
+				<div class="the_photo"><img src="<%=product.photo%>" alt="<%= product.name %>" />
+					
+				<div style="position: absolute; width: 100%; bottom:0;">
+						<p class="Sold">SOLD OUT</p></div>
+				</div>
+				<div><h4><%= product.text %></h4></div>
+				<div>
+    				<input type="hidden" id="available" value="<%= product.available %>"/>
+				</div>
 
-	<ul id="catalog">
-				
-		<li>
-			<div class="the_name"><h4>Name: <%= product.name %></h4></div>
-			<!-- <div class="the_photo"><img src="../<%=product.photo%>" alt="<%= product.name %>" /></div> -->
-			<div class="the_photo"><img src="<%=product.photo%>" alt="<%= product.name %>" /></div>
-			<!-- <p>side</p> -->
-			<div><h4><%= product.text %></h4></div>
-
-			<div class="price"><h4>Price: $<%= product.price %></h4></div>
-			<div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div>
-
-
-
-
-
-
-       <form id="form1" action="/lock" method="POST">
-
-       <div class="form-group">
-          <input type="text" name="id" class="form-control input-lg text-center" value = <%= product._id %> >
-
-          <input type="text" name="lock" class="form-control input-lg text-center" value=<%= product.available%> >
-          </div>
-          <!-- <button id ="form-submit" type="submit" class="btn btn-primary btn-lg" value="lock" id="lock">Update</button> -->
-
-        </form>
-
-
-
-			
-			<form id="form2" onclick="sendForms()" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-
-				<!-- Identify your business so that you can collect the payments. -->
-				<input type="hidden" name="business" value="griblake@gmail.com">
-
-				<!-- Specify a Buy Now button. -->
-				<input type="hidden" name="cmd" value="_xclick">
-
-				<!-- Specify details about the item that buyers purchase. -->
-				<input type="hidden" name="item_name" value="<%= product.name %>">
-				<input type="hidden" name="amount" value="<%= product.price %>">
-				<input type="hidden" name="currency_code" value="USD">
-
-				<!--fill out form-->
-				<input type="hidden" name="first_name" value="John">
-				<input type="hidden" name="last_name" value="Doe">
-				<input type="hidden" name="address1" value="9 Elm Street">
-				<input type="hidden" name="address2" value="Apt 5">
-				<input type="hidden" name="city" value="Berwyn">
-				<input type="hidden" name="state" value="PA">
-				<input type="hidden" name="zip" value="19312">
-				<input type="hidden" name="night_phone_a" value="610">
-				<input type="hidden" name="night_phone_b" value="555">
-				<input type="hidden" name="night_phone_c" value="1234">
-
-
-				<!-- Display the payment button. -->
-				<input type="image" name="submit" border="0"
-				src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
-				alt="PayPal - The safer, easier way to pay online">
-				<img alt="" border="0" width="1" height="1"
-				src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-
-		 </form>
-
-			
-
-			<!-- <h4> <a href="#" onclick="simpleCart.add('name=<%= product.name %>','price=<%=product.price %>');return false;"> add to cart</a>  
-			<div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div>
-			</h4>-->
-		</li>
-	</ul>
-
-<!-- 	<div id="sidebar" class="checking">
-
-
-
-
-				<h3>Your Cart</h3>
-				
-				
-				<div class="simpleCart_items" ></div> 
-				
-				
-				<div class="empty"><a href="#" class="simpleCart_empty">Empty Cart</a></div>
-
-				<div class="checkout"><a href="/cart">Checkout</a></div>
-
+			</li>
+		</ul>
+	</div>
+	<div id="rightDiv">
+		<ul id="catalog">
+			<li>
+				<div class="price"><h4>Price: $<%= product.price %></h4></div>
 				<div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div>
-				
-				<div class="checkout"><a href="#" class="simpleCart_checkout">Checkout</a></div> 
-				
-				
-	</div>  -->
+			</li>
+		</ul>
+	</div>
 	</div>
 	<!--end of productItem
 

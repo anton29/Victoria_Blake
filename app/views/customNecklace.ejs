@@ -19,7 +19,9 @@
 	<link href="../css/style.css" rel="stylesheet" type="text/css">
   <link href="../css/navigation.css" rel="stylesheet" type="text/css">
 	<link href="../css/contact_form.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link href="../css/form.css" rel="stylesheet" type="text/css">
+
+	<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> -->
   <link rel="stylesheet" type="text/css" href="../css/sweetalert.css">
 	<!-- SPELLS -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
@@ -95,6 +97,73 @@
 <nav id="nav"><% include nav %></nav>
 <section id="content">
 
+    <div id="form_container">
+  
+    <h1><a>Custom Jewelry</a></h1>
+    <form id="form_1072003" class="appnitro"  method="post" action="">
+    <div class="form_description">
+      <h2>Custom Jewelry</h2>
+      <p>specify the type of Custom Jewelry you would like</p>
+    </div>            
+      <ul >
+      
+        <li id="li_1" >
+        <label class="description" for="element_1">Name </label>
+        <span>
+          <input id="element_1_1" name= "element_1_1" class="element text" maxlength="255" size="8" value=""/>
+          <label>First</label>
+        </span>
+        <span>
+          <input id="element_1_2" name= "element_1_2" class="element text" maxlength="255" size="14" value=""/>
+          <label>Last</label>
+        </span> 
+        <span>
+          <input id="element_1_3" name= "element_1_3" class="element text" maxlength="255" size="14" value=""/>
+          <label>email</label>
+        </span> 
+        </li>   
+        <li id="li_3" >
+        <label class="description" for="element_3">Jewelry Types </label>
+        <span>
+          <input id="element_3_1" name="element_3" class="element radio" type="radio" value="1" />
+            <label class="choice" for="element_3_1">Anklet</label>
+          <input id="element_3_2" name="element_3" class="element radio" type="radio" value="2" />
+            <label class="choice" for="element_3_2">Bracelet</label>
+          <input id="element_3_3" name="element_3" class="element radio" type="radio" value="3" />
+            <label class="choice" for="element_3_3">Necklace</label>
+
+        </span> 
+        </li>   
+        <li id="li_4" >
+        <label class="description" for="element_4">Stone </label>
+        <span>
+          <input id="element_4_1" name="element_4" class="element radio" type="radio" value="1" />
+            <label class="choice" for="element_4_1">Gold Plated</label>
+          <input id="element_4_2" name="element_4" class="element radio" type="radio" value="2" />
+            <label class="choice" for="element_4_2">Brass</label>
+          <input id="element_4_3" name="element_4" class="element radio" type="radio" value="3" />
+            <label class="choice" for="element_4_3">Silver</label>
+          <input id="element_4_4" name="element_4" class="element radio" type="radio" value="4" />
+            <label class="choice" for="element_4_4">Stainless Steel</label>
+
+        </span> 
+        </li>   
+        <li id="li_2" >
+        <label class="description" for="element_2">Size </label>
+        <div>
+          <input id="element_2" name="element_2" class="element text small" type="text" maxlength="255" value=""/> 
+        </div> 
+        </li>
+      
+              <li class="buttons">
+              <input type="hidden" name="form_id" value="1072003" />
+              
+              <input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+        </li>
+      </ul>
+    </form> 
+  </div>
+
 
 <div id="contact_form">
     <h3>Show off your favorit item by adding personalized, signature touches </h3>   
@@ -121,6 +190,18 @@
 
         <input type="submit" name="submit" value="Send" id="send_email" />
     </form>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <span id="message"></span>
 </div>

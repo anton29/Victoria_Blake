@@ -126,7 +126,8 @@ exports.renderProductId = function(req, res, next){
             res.render('test', {
                 product: product, 
                 title:'The Victoria Blake Collection', 
-                userFullName: req.user ? req.user.fullName : ''
+                userFullName: req.user ? req.user.fullName : '',
+                variable: product.available
             });
                  
         }   

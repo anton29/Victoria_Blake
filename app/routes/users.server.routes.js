@@ -134,7 +134,8 @@ module.exports = function(app){
             if(req.body.email){
             if(fullPath){
                     var mailOptions={
-                        to : "griblake@gmail.com",
+                        to:"victoribgc@gmail.com",
+                        // to : "griblake@gmail.com",
                         // to:"abr8892@yahoo.com",
                         subject : "Custom Item request from: " + req.body.email,
                         text :  "Name: "    + req.body.fn +" " + req.body.fn + '\n' +
@@ -152,7 +153,8 @@ module.exports = function(app){
                     }
             }else{
                     var mailOptions={
-                        to: "griblake@gmail.com",
+                        // to: "griblake@gmail.com",
+                        to: "victoribgc@gmail.com",
                         subject : "Custom Item request from: " + req.body.email,
                         text :  "Name: "    + req.body.fn +" " + req.body.fn + '\n' +
                                 "Description: " + req.body.Description + '\n' +
@@ -282,8 +284,9 @@ module.exports = function(app){
             // if(req.body.email){
             
                     var mailOptions={
-                        to : "griblake@gmail.com",
-                        // to:"abr8892@yahoo.com",
+                        // to: "victoribgc@gmail.com",
+                        // to : "griblake@gmail.com",
+                         to:"abr8892@yahoo.com",
                         subject : "Item bought by: " + req.body.email,
                         text :  "Name: "    + req.body.firstName +" " + req.body.lastName + '\n' +
                                 "Address: " + req.body.address1 + '\n' +
@@ -297,15 +300,15 @@ module.exports = function(app){
             
 
        
-        // console.log(mailOptions);
+         console.log(mailOptions);
         smtpTransport.sendMail(mailOptions, function(error, response){
             if(error){
                 // console.log(error);
-                res.end("error");
+                //res.end("error");
             }else{
-                // console.log("Message sent: " + response.message);
-                //res.end("sent");
-                res.redirect("/");
+                 console.log("Message sent: " + response.message);
+                 res.end("sent");
+              //  res.redirect("/");
             }
             });
         // }
