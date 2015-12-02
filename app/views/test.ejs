@@ -142,12 +142,17 @@
 		<ul id="catalog">
 			<li>
 				<div class="the_name"><h4>Name: <%= product.name %></h4></div>
+			</li>
+			<li>
 				<div class="the_photo"><img src="<%=product.photo%>" alt="<%= product.name %>" />
 					
-				<div style="position: absolute; width: 100%; bottom:0;">
+				<!-- <div style="position: absolute; width: 100%; bottom:0;">
 						<p class="Sold">SOLD OUT</p></div>
-				</div>
+				</div> -->
+			</li>
+			<li>
 				<div><h4><%= product.text %></h4></div>
+			</li>
 				<div>
     				<input type="hidden" id="available" value="<%= product.available %>"/>
 				</div>
