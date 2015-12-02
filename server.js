@@ -20,9 +20,11 @@ require('./app/routes.js')(app);
   //     res.status(500);
   //    res.render('500.ejs');
   // });
-
-
-app.listen(8080);
+app  = require('http').createServer(app);
+app.listen(8080, function(err) {
+        console.log(err, app.address());
+});
+// app.listen(8080);
 module.exports = app;
 
 console.log('server is running on localhost:8080');
