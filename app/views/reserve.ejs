@@ -45,7 +45,7 @@
     <script src="../js/scripts.js"></script>
 
     <script src="../js/jquery.validate.js"></script>
-    <script src="../js/tooltipster.js"></script>
+    <script src="../js/jquery.tooltipster.js"></script>
 
 	   <script>
 
@@ -116,102 +116,118 @@
             }
         }
 
-        // $(document).ready(function () {
-        //     $('#form1 input[type="text"]').tooltipster({
-        //         trigger:'custom',
-        //         onlyOne: false,
-        //         position: 'right'
-        //     });
-        //     $('#form1').validate({
-        //        errorPlacement: function (error, element) {
-        //             $(element).tooltipster('update', $(error).text());
-        //             $(element).tooltipster('show'); 
-        //         },
-        //         success: function (label, element){
-        //             $(element).tooltipster('hide');
-        //         },
-        //         rules:{
-        //             firstName: {
-        //                 required: true,
-        //              },
-        //             lastName:{
-        //                 required: true,
-        //              },
-        //              email:{
-        //                 required: true,
-        //                 email: true
-        //              },
-        //              address1:{
-        //                 required: true,
-        //              },
-        //              city:{
-        //                 required: true,
-        //              },
-        //              state:{
-        //                 required: true,
-        //              },
-        //              zip:{
-        //                 required: true,
-        //              } 
-        //         },
-        //         submitHandler: function(form){
-        //             $.ajax({
-        //                 url: "/sendShipping",
-        //                 data: $("#form1").serialize(), // serializes the form's elements.
-        //                 type: "POST",
-        //                 success: function(){
-        //                     document.getElementById('form2').submit();
-        //             }
-        //         })
-        //             return false;
-        //         }
-
-        //     });
-        // });
-
-
-     $(document).ready(function () {
-
-     $("#form1").validate({
-         ignore: ":hidden",
-         rules: {
-             firstName: {
-                 required: true,
-             },
-             lastName:{
-                required: true,
-             },
-             email:{
-                required: true,
-                email: true
-             },
-             address1:{
-                required: true,
-             },
-             city:{
-                required: true,
-             },
-             state:{
-                required: true,
-             },
-             zip:{
-                required: true,
-             }
-         },
-         submitHandler: function (form) {
-            $.ajax({
-                url: "/sendShipping",
-                data: $("#form1").serialize(), // serializes the form's elements.
-                type: "POST",
-                success: function(){
-                    document.getElementById('form2').submit();
+        $(document).ready(function () {
+            console.log($('#form1 select[name="state"]'))
+            $('#form1 input[type="text"]').tooltipster({
+                trigger:'custom',
+                onlyOne: false,
+                maxWidth: '100',
+                position: 'top'
+            });
+            $('#form1 select[name="state"]').tooltipster({
+                trigger:'custom',
+                onlyOne: false,
+                maxWidth: '100',
+                position: 'right'
+            });
+            $('#form1').validate({
+         errorPlacement: function (error, element) {
+                        
+            var lastError = $(element).data('lastError'),
+                newError = $(error).text();
+            
+            $(element).data('lastError', newError);
+                            
+            if(newError !== '' && newError !== lastError){
+                $(element).tooltipster('content', newError);
+                $(element).tooltipster('show');
+            }
+        },
+        success: function (label, element) {
+            $(element).tooltipster('hide');
+        },
+                rules:{
+                    firstName: {
+                        required: true,
+                     },
+                    lastName:{
+                        required: true,
+                     },
+                     email:{
+                        required: true,
+                        email: true
+                     },
+                     address1:{
+                        required: true,
+                     },
+                     city:{
+                        required: true,
+                     },
+                     state:{
+                        required: true,
+                     },
+                     zip:{
+                        required: true,
+                     } 
+                },
+                submitHandler: function(form){
+                    $.ajax({
+                        url: "/sendShipping",
+                        data: $("#form1").serialize(), // serializes the form's elements.
+                        type: "POST",
+                        success: function(){
+                            document.getElementById('form2').submit();
+                    }
+                })
+                    return false;
                 }
-            })
-            return false;
-         }
-     });
 
- });
+            });
+        });
+
+
+ //     $(document).ready(function () {
+
+ //     $("#form1").validate({
+ //         ignore: ":hidden",
+ //         rules: {
+ //             firstName: {
+ //                 required: true,
+ //             },
+ //             lastName:{
+ //                required: true,
+ //             },
+ //             email:{
+ //                required: true,
+ //                email: true
+ //             },
+ //             address1:{
+ //                required: true,
+ //             },
+ //             city:{
+ //                required: true,
+ //             },
+ //             state:{
+ //                required: true,
+ //             },
+ //             zip:{
+ //                required: true,
+ //             }
+ //         },
+ //         submitHandler: function (form) {
+ //            $.ajax({
+ //                url: "/sendShipping",
+ //                data: $("#form1").serialize(), // serializes the form's elements.
+ //                type: "POST",
+ //                success: function(){
+ //                    document.getElementById('form2').submit();
+ //                }
+ //            })
+ //            return false;
+ //         }
+ //     });
+
+ // });
     </script>
 
 	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
@@ -227,7 +243,7 @@
 </header>
 <nav id="nav"><% include nav %></nav>
 
-    <img src="my-image.png" class="tooltip" title="This is my image's tooltip message!" />
+    <!-- <img src="my-image.png" class="tooltip" title="This is my image's tooltip message!" /> -->
 
     <div id="form_container">
     
@@ -261,7 +277,7 @@
                 <label>Last</label>
             </span> 
             <span>
-                <input id="email" name= "email" class="element text" maxlength="255" size="14" ng-model="email"/>
+                <input id="email" name= "email" class="element text" type="text" maxlength="255" size="14" ng-model="email"/>
                 <label>email</label>
             </span> 
         </li>      
@@ -269,7 +285,7 @@
             <label class="description" for="Address">Address </label>
             
             <div>
-                <input id="address1" name="address1" class="element text large" ng-model="address1" type="text">
+                <input id="address1" name="address1" class="element text large" type="text" ng-model="address1" type="text">
                 <label for="address1">Street Address</label>
             </div>
         
@@ -279,7 +295,7 @@
             </div>
         
             <div class="left">
-                <input id="city" name="city" class="element text medium" ng-model="city" type="text">
+                <input id="city" name="city" class="element text medium" type="text" ng-model="city" type="text">
                 <label for="city">City</label>
             </div>
         
@@ -343,7 +359,7 @@
             </div> 
         
             <div class="left">
-                <input id="zip" name="zip" class="element text medium" maxlength="15" ng-model="zip" >
+                <input id="zip" name="zip" class="element text medium" maxlength="15" type="text" ng-model="zip" >
                 <label for="zip">Postal / Zip Code</label>
             </div>
     

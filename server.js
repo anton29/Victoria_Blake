@@ -15,11 +15,11 @@ require('./app/routes.js')(app);
      res.render('404.ejs');
   });
   
-  // Handle 500
-  // app.use(function(error, req, res, next) {
-  //     res.status(500);
-  //    res.render('500.ejs');
-  // });
+  //Handle 500
+  app.use(function(error, req, res, next) {
+      res.status(500);
+     res.render('500.ejs');
+  });
 app  = require('http').createServer(app);
 app.listen(8080, function(err) {
         console.log(err, app.address());

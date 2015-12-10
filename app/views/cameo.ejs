@@ -50,7 +50,7 @@
       <input ng-model="query" type="text"
         placeholder="Filter by" autofocus>
     </form>
-<div class="checkbox" ng-repeat="product in products | filter:{ name: query } | filter:{category: 'candles'}:true |  orderBy: 'name' ">
+<div class="checkbox" ng-repeat="product in products | filter:{ name: query } | filter:{category: 'cameo'}:true |  orderBy: 'name' ">
 <div class="product_disp">
     <%if (product.name == 'test') {%>  TEXT PRINTED  <%}%>
 

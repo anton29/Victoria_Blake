@@ -73,8 +73,8 @@ module.exports = function(app){
                 product: product });
     });
 
-    app.route('/messageCandles')
-        .get(users.renderMessageCandles) 
+    app.route('/cameo')
+        .get(users.renderCameo) 
 
     app.route('/pearlJewelry')
         .get(users.renderPearlJewelry)

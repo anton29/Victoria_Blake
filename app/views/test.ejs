@@ -52,7 +52,7 @@
 
 
 	<script>
-		var available= console.log("<%= product.available %>")
+		var available= <%= product.available %>
 
 	// function set(){
 	// 	var available= console.log("<%= product.available %>")
@@ -67,6 +67,16 @@
 
 	// }
 	// set();
+
+	$(document).ready(function(){
+		console.log(available)
+		if(available){
+			document.getElementById('reserve').style.display = 'inline-block'; 
+			document.getElementById('SoldMes').style.display='none';
+		}else{
+			document.getElementById('SoldMes').style.display='inline-block';
+		}
+	})
 
 	 $(document).ready(function(){
 	 	if(!available){
@@ -164,7 +174,9 @@
 		<ul id="catalog">
 			<li>
 				<div class="price"><h4>Price: $<%= product.price %></h4></div>
-				<div class="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div>
+				<div class="reserve" id="reserve"><a href="/reserve/p?p=<%= product.id %>">Order</a></div>
+				<div class="SoldMes" id="SoldMes"><p>SOLD OUT</p></div>
+
 			</li>
 		</ul>
 	</div>

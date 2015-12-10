@@ -2,7 +2,7 @@ nav{
 	width: 100%;
 	float: left;
 	height: 25px;
-	background-color: #3f2860;
+	background-color: #800080;
 }
 
 .noscript {
@@ -74,7 +74,7 @@ nav li a:hover{
    nav ul li ul.dropdown{
         min-width: 200px; /* Set width of the dropdown */
         /*background: #f2f2f2;*/
-        background: #3f2860;
+        background: #800080;
         display: none;
         position: absolute;
         z-index: 999;
@@ -98,7 +98,7 @@ nav li a:hover{
 		float: left;
 		display: block;
 		height: 30px;
-		background-color: #3f2860;
+		background-color: #800080;
 	}
 
 	nav li{
@@ -121,7 +121,7 @@ nav li a:hover{
 		width: 100%;
 		float: left;
 		height: 30px;
-		background-color: #3f2860;
+		background-color: #800080;
 	}
 
 	nav li{

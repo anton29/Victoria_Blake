@@ -173,14 +173,14 @@ exports.renderAdminEdit = function(req, res, next){
         userFullName: req.user ? req.user.fullName : ''})
  };
 
- exports.renderMessageCandles = function(req, res, next){
-    Product.find({category:"messageCandles"}, function(err, result){
+ exports.renderCameo = function(req, res, next){
+    Product.find({category:"cameo"}, function(err, result){
 
         if (err) {
             res.send(err);
         } else {
 
-                res.render('messageCandles', {
+                res.render('cameo', {
                 product: result, 
                 title:'The Victoria Blake Collection', 
                 userFullName: req.user ? req.user.fullName : ''
@@ -210,13 +210,13 @@ exports.renderAdminEdit = function(req, res, next){
 };
 
  exports.renderPearlJewelry = function(req, res, next){
-    Product.find({category:"messageCandles"}, function(err, result){
+    Product.find({category:"pearlJewelry"}, function(err, result){
 
         if (err) {
             res.send(err);
         } else {
 
-                res.render('messageCandles', {
+                res.render('pearlJewelry', {
                 product: result, 
                 title:'The Victoria Blake Collection', 
                 userFullName: req.user ? req.user.fullName : ''
@@ -228,13 +228,13 @@ exports.renderAdminEdit = function(req, res, next){
 };
 
  exports.renderStatementNecklaces = function(req, res, next){
-    Product.find({category:"statementNecklaces"}, function(err, result){
+    Product.find({category:"cameo"}, function(err, result){
 
         if (err) {
             res.send(err);
         } else {
 
-                res.render('statementNecklaces', {
+                res.render('cameo', {
                 product: result, 
                 title:'The Victoria Blake Collection', 
                 userFullName: req.user ? req.user.fullName : ''
