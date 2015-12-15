@@ -32,6 +32,10 @@ header{
 	background-color: #ffbdff;
 }
 
+#content > h1{
+	text-align: center;
+}
+
 #logo{
 	width: 12%;
 	float: left;
@@ -114,15 +118,16 @@ footer{
 	width: 1000px;
 	overflow: hidden;
 	margin: 50px auto;
-	background: white;
+	background: #ffe8ff;
 }
 
 /*photobanner*/
+
  
 .photobanner {
 	height: 233px;
  	width: 3550px;
-	 /*margin-bottom: 80px;*/
+	/*margin-bottom: 80px;*/
 }
 
 .photobanner img {

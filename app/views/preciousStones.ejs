@@ -42,13 +42,39 @@
 
 <section id="content">
 
+    <h1> Semi Precious Stone </h1>
+<!--        <form class="form-inline">
+      <input ng-model="query" type="text"
+        placeholder="Filter by" autofocus>
+    </form> -->
+
+    <div id="container">
+<!--     <header>
+        <h1>Animated Photo Banner</h1>
+        <p>Lorem ipsum dolor...</p>
+    </header>
+     -->
+    <!-- Each image is 350px by 233px -->
+    <div class="photobanner">
+        <img class="first" src="img/IMG_1.JPG" alt="" />
+        <img src="img/IMG_2.JPG" alt="" />
+        <img src="img/IMG_3.JPG" alt="" />
+        <img src="img/IMG_4.JPG" alt="" />
+        <img src="img/IMG_5.JPG" alt="" />
+        <img src="img/IMG_6.JPG" alt="" />
+        <img src="img/IMG_1.JPG" alt="" />
+        <img src="img/IMG_2.JPG" alt="" />
+        <img src="img/IMG_3.JPG" alt="" />
+    </div>
+</div>
+
 
 <div id="product-list">
 <div class="categories">
-        <form class="form-inline">
+<!--         <form class="form-inline">
       <input ng-model="query" type="text"
         placeholder="Filter by" autofocus>
-    </form>
+    </form> -->
 <div class="checkbox" ng-repeat="product in products | filter:{ name: query } | filter:{category: 'preciousStones'}:true |  orderBy: 'name' ">
 <div class="product_disp">
     <%if (product.name == 'test') {%>  TEXT PRINTED  <%}%>
