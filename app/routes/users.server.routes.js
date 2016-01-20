@@ -91,9 +91,9 @@ module.exports = function(app){
     app.route('/social')
         .get(users.renderSocial)
 
-    app.route('/signup')
-        .get(users.renderSignup)
-        .post(users.signup);
+    // app.route('/signup')
+    //     .get(users.renderSignup)
+    //     .post(users.signup);
     
     app.route('/signin')
         .get(users.renderSignin)
@@ -138,9 +138,13 @@ module.exports = function(app){
                         // to : "griblake@gmail.com",
                         // to:"abr8892@yahoo.com",
                         subject : "Custom Item request from: " + req.body.email,
-                        text :  "Name: "    + req.body.fn +" " + req.body.fn + '\n' +
-                                "Description: " + req.body.Description + '\n' +
-                                "phone: "   + req.body.phone +'\n' +
+                        text :  "Name: "    + req.body.firstName +" " + req.body.lastName + '\n' +
+                                "Type: "    + req.body.types + '\n' +
+                                "Finishing: " + req.body.finishing + '\n' +
+                                "Stone Type: " + req.body.stone_type + '\n' +
+                                "Color: " + req.body.color + '\n' +
+                                "Size: " + req.body.size + '\n' +
+                                "Description: " + req.body.comments + '\n' +
                                 "email: "   + req.body.email,
                         // html: 'Name: "'+req.body.fn+ " " + req.body.ln + '\n'+
                         //     '" Embedded image: <img src="'+pixel+'"/>',
@@ -153,25 +157,31 @@ module.exports = function(app){
                     }
             }else{
                     var mailOptions={
+                        // to:"abr8892@yahoo.com",
                         // to: "griblake@gmail.com",
                         to: "victoribgc@gmail.com",
                         subject : "Custom Item request from: " + req.body.email,
-                        text :  "Name: "    + req.body.fn +" " + req.body.fn + '\n' +
-                                "Description: " + req.body.Description + '\n' +
-                                "phone: "   + req.body.phone +'\n' +
-                                "email: "   + req.body.email +'\n' +
-                                req.body.fn + " did not provide a picture"
+                        text :  "Name: "    + req.body.firstName +" " + req.body.lastName + '\n' +
+                                "Type: "    + req.body.types + '\n' +
+                                "Finishing: " + req.body.finishing + '\n' +
+                                "Stone Type: " + req.body.stone_type + '\n' +
+                                "Color: " + req.body.color + '\n' +
+                                "Size: " + req.body.size + '\n' +
+                                "Adornments: " + req.body.adornments + '\n' +
+                                "Description: " + req.body.comments + '\n' +
+                                "email: "   + req.body.email + '\n' +
+                                req.body.firstName + " did not provide a picture",
                     }
             }
 
        
-        // console.log(mailOptions);
+        console.log(mailOptions);
         smtpTransport.sendMail(mailOptions, function(error, response){
             if(error){
                 // console.log(error);
                 res.end("error");
             }else{
-                // console.log("Message sent: " + response.message);
+                console.log("Message sent: " + response.message);
                 //res.end("sent");
                 res.redirect("/");
             }
@@ -284,11 +294,12 @@ module.exports = function(app){
             // if(req.body.email){
             
                     var mailOptions={
-                        // to: "victoribgc@gmail.com",
+                         to: "victoribgc@gmail.com",
                         // to : "griblake@gmail.com",
-                         to:"abr8892@yahoo.com",
+                         // to:"abr8892@yahoo.com",
                         subject : "Item bought by: " + req.body.email,
-                        text :  "Name: "    + req.body.firstName +" " + req.body.lastName + '\n' +
+                        text :  "Item: "    + req.body.productName + " " + req.body.productPrice + '\n' +
+                                "Name: "    + req.body.firstName +" " + req.body.lastName + '\n' +
                                 "Address: " + req.body.address1 + '\n' +
                                               req.body.address2 + '\n' +
                                 "state: " + req.body.state + '\n' +

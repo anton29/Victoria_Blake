@@ -99,7 +99,8 @@
 
     <div id="form_container">
   
-    <form id="form_1072003" class="appnitro" enctype="multipart/form-data" method="post" action="/send">
+    <!-- <form id="form_1072003" class="appnitro" enctype="multipart/form-data" method="post" action="/send"> -->
+    <form id="form" action="/send" method="POST">
     <div class="form_description">
       <h2>Custom Jewelry</h2>
       <p>specify the type of Custom Jewelry you would like</p>
@@ -124,24 +125,24 @@
       <li id="li_2" >
         <label class="description" for="Types">Jewelry Types </label>
         <span>
-          <input id="anklet" name="Types" class="element radio" type="radio" value="1" />
+          <input id="anklet" name="types" class="element radio" type="radio" value="Anklet" />
             <label class="choice" for="anklet">Anklet</label>
-          <input id="bracelet" name="Types" class="element radio" type="radio" value="2" />
+          <input id="bracelet" name="types" class="element radio" type="radio" value="Bracelet" />
             <label class="choice" for="bracelet">Bracelet</label>
-          <input id="necklace" name="Types" class="element radio" type="radio" value="3" />
+          <input id="necklace" name="types" class="element radio" type="radio" value="Necklace" />
             <label class="choice" for="necklace">Necklace</label>
-          <input id="necklace" name="Types" class="element radio" type="radio" value="3" />
-            <label class="choice" for="necklace">EarRing</label>
+          <input id="earRing" name="types" class="element radio" type="radio" value="EarRing" />
+            <label class="choice" for="earRing">EarRing</label>
         </span> 
         </li>   
       <li id="li_3" >
         <label class="description" for="Finishing">Finishing </label>
         <span>
-          <input id="clasp" name="finishing" class="element radio" type="radio" value="1" />
+          <input id="clasp" name="finishing" class="element radio" type="radio" value="Clasp" />
             <label class="choice" for="clasp">Clasp</label>
-          <input id="beads" name="finishing" class="element radio" type="radio" value="2" />
+          <input id="beads" name="finishing" class="element radio" type="radio" value="Beads" />
             <label class="choice" for="beads">Beads</label>
-          <input id="sapcers" name="finishing" class="element radio" type="radio" value="3" />
+          <input id="sapcers" name="finishing" class="element radio" type="radio" value="Sapcers" />
             <label class="choice" for="sapcers">Sapcers</label>
         </span> 
       </li> 
