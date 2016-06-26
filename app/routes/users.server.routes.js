@@ -1,7 +1,7 @@
 var users = require('../../app/controllers/users.server.controller');
 var passport = require('passport');
-// var core = require('../controllers/core.server.controller');
-//var core = require('../controllers/core.server.controller');
+
+
 var nodemailer = require("nodemailer");
 var bodyParser = require('body-parser');
 var fs = require('fs');
@@ -22,21 +22,6 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
 
 
 module.exports = function(app){
-// app.use(bodyParser.json({limit: '50mb'}));
-// app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
-
-/*
-    app.route('/users')
-        .post(users.create)     //post to create
-        .get(users.list);       //get to find the list of users
-
-    app.route('/users/:userId')
-        .get(users.read)        //get single user by id //app.route('/users/:userId').get(users.read);
-        .put(users.update)      //update single user by id //app.route('/users/:userId').put(users.update);
-        .delete(users.delete);  //delete single user by id //app.route('/users/:userId').delete(users.delete);
-    
-    app.param('userId', users.userByID); //to get single user by id
-*/
 
     app.route('/product')
         .get(users.renderProduct)
@@ -135,8 +120,6 @@ module.exports = function(app){
             if(fullPath){
                     var mailOptions={
                         to:"victoribgc@gmail.com",
-                        // to : "griblake@gmail.com",
-                        // to:"abr8892@yahoo.com",
                         subject : "Custom Item request from: " + req.body.email,
                         text :  "Name: "    + req.body.firstName +" " + req.body.lastName + '\n' +
                                 "Type: "    + req.body.types + '\n' +
@@ -146,8 +129,7 @@ module.exports = function(app){
                                 "Size: " + req.body.size + '\n' +
                                 "Description: " + req.body.comments + '\n' +
                                 "email: "   + req.body.email,
-                        // html: 'Name: "'+req.body.fn+ " " + req.body.ln + '\n'+
-                        //     '" Embedded image: <img src="'+pixel+'"/>',
+
                         attachments: [
                                        {
                                         fileName: req.body.file,
@@ -157,8 +139,7 @@ module.exports = function(app){
                     }
             }else{
                     var mailOptions={
-                        // to:"abr8892@yahoo.com",
-                        // to: "griblake@gmail.com",
+
                         to: "victoribgc@gmail.com",
                         subject : "Custom Item request from: " + req.body.email,
                         text :  "Name: "    + req.body.firstName +" " + req.body.lastName + '\n' +
@@ -181,7 +162,7 @@ module.exports = function(app){
                 // console.log(error);
                 res.end("error");
             }else{
-                console.log("Message sent: " + response.message);
+                // console.log("Message sent: " + response.message);
                 //res.end("sent");
                 res.redirect("/");
             }
@@ -210,29 +191,6 @@ module.exports = function(app){
         });
 
     });
-
-    // app.post('/lock', function (req, res){
-    //     console.log(req.body.firstName)
-    //     console.log(req.body.lastName)
-    //     console.log(req.body.address1)
-    //     console.log(req.body.address2)
-    //     console.log(req.body.state)
-    //     console.log(req.body.city)
-    //     console.log(req.body.zip)
-    //     console.log("called lock")
-    //     console.log("product id is: " + req.body.id)
-    //     Product.update({_id: req.body.id},{
-    //         available: "false" 
- 
-    //     }, function(err, num, raw){
-    //         if (err) {
-    //             res.send(err);
-    //         } else {
-    //             res.redirect("/");
-    //         };
-    //     });
-
-    // });
 
     app.get('/send',function(req,res){
             var pixel = req.query.url;
@@ -296,7 +254,6 @@ module.exports = function(app){
                     var mailOptions={
                          to: "victoribgc@gmail.com",
                         // to : "griblake@gmail.com",
-                         // to:"abr8892@yahoo.com",
                         subject : "Item bought by: " + req.body.email,
                         text :  "Item: "    + req.body.productName + " " + req.body.productPrice + '\n' +
                                 "Name: "    + req.body.firstName +" " + req.body.lastName + '\n' +
@@ -311,19 +268,16 @@ module.exports = function(app){
             
 
        
-         console.log(mailOptions);
+         // console.log(mailOptions);
         smtpTransport.sendMail(mailOptions, function(error, response){
             if(error){
                 // console.log(error);
                 //res.end("error");
             }else{
-                 console.log("Message sent: " + response.message);
+                 // console.log("Message sent: " + response.message);
                  res.end("sent");
-              //  res.redirect("/");
             }
             });
-        // }
-
     });
 };
 

@@ -1,8 +1,0 @@
-              { 
-             //'_id': ObjectId("2599dagdsdadadsdsads"),
-               'name'   : 'name12345',
-               'price'  : 10,
-               'amount' :  1,
-               'photo'  : 'img/stones.png',
-               'category' : 'demo'
-              }

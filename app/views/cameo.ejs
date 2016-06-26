@@ -46,15 +46,14 @@
 
 <div id="product-list">
 <div class="categories">
-        <form class="form-inline">
+     <!--    <form class="form-inline">
       <input ng-model="query" type="text"
         placeholder="Filter by" autofocus>
-    </form>
-<div class="checkbox" ng-repeat="product in products | filter:{ name: query } | filter:{category: 'cameo'}:true |  orderBy: 'name' ">
+    </form> -->
+<!-- <div class="checkbox" ng-repeat="product in products | filter:{ name: query } | filter:{category: 'cameo'}:true |  orderBy: 'name' "> -->
+
+<div class="checkbox" ng-repeat="product in results = (products | filter:{category: 'cameo'}:true) "> 
 <div class="product_disp">
-    <%if (product.name == 'test') {%>  TEXT PRINTED  <%}%>
-
-
     <h4>Name: {{product.name}}</h4>
     <h4>Price: ${{product.price}}</h4>
     <h4>Description: {{product.text}}</h4>
@@ -64,6 +63,7 @@
     <h3><a href="/product/p?p={{product._id}}">Details</a></h3>
     <!-- {{ product.text }} -->
 </div>
+
 </div>
     <!-- LOOP OVER THE Products IN $scope.products -->
     
@@ -77,6 +77,18 @@
             <li><img src="{{product.photo}}"></li>
         </ol>   
     </div> -->
+        <div ng-show="!(results).length">
+             <div style="color:#444;font-family:Open Sans;font-size:30px;text-align:center;">Cameo coming Soon toThe Victoria Blake Collection </div>
+            <div style="text-align: center"> <img src="../img/logo.png"> </div>
+            <div style="color:#444;font-family:Open Sans;font-size:24px;text-align:center;">New Cameo items Comeing Soon!! </div>
+            <div style="color:#444;font-family:Open Sans;font-size:18px;text-align:center;"> Would you like to <a href="javascript:history.back()">go back</a> to where you were or go straight back to the <a href="/">home page</a></div>
+        </div>
+
+<!-- 
+      <div style="color:#444;font-family:Open Sans;font-size:30px;text-align:center;">Cameo coming Soon toThe Victoria Blake Collection </div>
+  <div style="text-align: center"> <img src="../img/logo.png"> </div>
+  <div style="color:#444;font-family:Open Sans;font-size:24px;text-align:center;">New Cameo items Comeing Soon!! </div>
+  <div style="color:#444;font-family:Open Sans;font-size:18px;text-align:center;"> Would you like to <a href="javascript:history.back()">go back</a> to where you were or go straight back to the <a href="/">home page</a></div> -->
 
     <p class="text-center" ng-show="loading">
         <span class="fa fa-spinner fa-spin fa-3x"></span>
@@ -87,29 +99,7 @@
 
 </section><!--end of content-->
 <footer>
-    <!--<div id="copyRight"><p>&copy;Copyright</p></div>-->
-    <div id ="twitter">
-    <a class="twitter-follow-button"
-        href="https://twitter.com/seeuniqueness">
-        Follow @Griffina blake</a>
-    </div>
-
-    <div id="facebook">
-      <div class="fb-like" data-href="https://www.facebook.com/VictoriaBlakeFashionDesigns" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-    </div>
-    <!-- 
-<div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
-<div id="SkypeButton_Call_abdulrahman_bah_1">
-  <script type="text/javascript">
-    Skype.ui({
-      "name": "call",
-      "element": "SkypeButton_Call_abdulrahman_bah_1",
-      "participants": ["abdulrahman_bah"],
-      "imageSize": 32
-    });
-  </script>
-</div>
-</div> --><!--end of skype-->
+ <% include footer %>
 </footer><!--end of footer-->
 </section><!--end of wrapper-->
 </body>

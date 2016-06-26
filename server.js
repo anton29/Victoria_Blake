@@ -24,7 +24,14 @@ app  = require('http').createServer(app);
 app.listen(8080, function(err) {
         console.log(err, app.address());
 });
-// app.listen(8080);
+
 module.exports = app;
 
 console.log('server is running on localhost:8080');
+
+
+//cat
+//cameo
+//statementNecklaces
+//pearlJewelry
+//preciousStones

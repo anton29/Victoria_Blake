@@ -147,15 +147,7 @@
 
 
 <section id="wrapper">
-<!-- how to check if someOne is loged in 
-<p> See index.ejs line ~33 for how to check if the user is loged in in ejs </p>
 
-<% if(userFullName) { %>
-<p> you are loged in </p>
-<%} else{%>
-<p> No One is loged in </p>
-<%}%>
---> 
 <header>
 	<% include header %>
 </header>
@@ -176,35 +168,6 @@
 
 
 
-<!-- <form action="" method="get">
-  <input type="color" name="favcolor" value="#ff0000">
-  <p id = "p1"> set BackGround color</p>
-  <input type="submit" onClick="bodyColor(this.form)">
-
-  <p>---------------------------------------------------------</p>
-  <p id = "p2"> set Header and footer color</p>
-  <input type="submit" onClick="headerColor(this.form)">
-
-  <p>---------------------------------------------------------</p>
-  <p id = "p3"> set foreground Color </p>
-  <input type="submit" onClick="wrapperColor(this.form)">
-
-  <p>---------------------------------------------------------</p>
-  <p id = "p4"> set link text Color only first will change </p>
-  <input type="submit" onClick="T1Color(this.form)">
-
-  <p>---------------------------------------------------------</p>
-  <p id = "p5"> set nav bar Color </p>
-  <input type="submit" onClick="navBar(this.form)">
-
-  <p>---------------------------------------------------------</p>
-  <p id="p6">set wrapper size</p>
-  <input type="range" min="0" max="100" value="80" step="5" onchange="showValue(this.value)" />
-  <span id="range">80</span>
-
-</form> -->
-
-
 <section id="top_row">
 	<div class="top_img"><h4><a href="/preciousStones">semi precious stone </h4><img src="img/stones.png" /></a></div><!--end of top_img-->
 	<!-- <div class="top_img"><h4><a href="/statementNecklaces">statement necklaces</h4><img src="img/statement.JPG" /></a></div></div> -->
@@ -213,41 +176,13 @@
 </section><!--end of top_row-->
 <section id="bottom_row">
 	<h4><a href="/customnecklace">Order a piece of custom jewelry</a></h4>
-<!-- 	<div class="bot_img"><img src="img/img5.jpg" /></div></div>
-	<div class="bot_img"><img src="img/img6.jpg" /></div></div> -->
-	<!-- <div class="home_testi"> 
-    
-		<h4>Testimonial</h4>
-		<div class="testi_img"><img src="img/testimo.jpg" align="left" /></div> 
-		<div class="testi_bio"><h3>habitant morbi</h3><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p></div>
-	</div> --><!--end of home_testi-->
 </section><!--end of bottom_row-->
 
 
 
 </section><!--end of content-->
 <footer>
-    <div id ="twitter">
-    <a class="twitter-follow-button"
-        href="https://twitter.com/seeuniqueness">
-        Follow @Griffina blake</a>
-    </div>
-    <div id="facebook">
-      <div class="fb-like" data-href="https://www.facebook.com/VictoriaBlakeFashionDesigns" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-    </div>
-	<!-- <div id="copyRight"><p>&copy;Copyright</p></div> -->
-<!-- <div id="skype"><script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
-<div id="SkypeButton_Call_abdulrahman_bah_1">
-  <script type="text/javascript">
-    Skype.ui({
-      "name": "call",
-      "element": "SkypeButton_Call_abdulrahman_bah_1",
-      "participants": ["abdulrahman_bah"],
-      "imageSize": 32
-    });
-  </script>
-</div>
-</div> --><!--end of skype-->
+  <% include footer %>
 </footer><!--end of footer-->
 </section><!--end of wrapper-->
 </body>

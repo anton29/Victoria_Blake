@@ -11,12 +11,11 @@ var UserSchema = new Schema({
         type: String,
         required:true
     },
-    email: {
-        type: String,
-        trim: true//,
-        //match: [/.+\@+\.+/, "a valid email is needed"]
-       , index: true
-    },
+    // email: {
+    //     type: String,
+    //     trim: true//,
+    //    , index: true
+    // },
     username: {
         type: String,
         trim: true,
@@ -112,19 +111,19 @@ UserSchema.pre('save', function(next){
    if(this.password){ // we do not want to store password as plain text .. EVER!
     this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
     this.password = this.hashPassword(this.password);
-    console.log("time to save");
+    // console.log("time to save");
    }
    next();
 });
 
 
-UserSchema.post('save', function(next){
-    if (this.isNew){
-        console.log('A new user was created.');
-    }else{
-        console.log('A user udated its info');
-    }
-});
+// UserSchema.post('save', function(next){
+//     if (this.isNew){
+//         console.log('A new user was created.');
+//     }else{
+//         console.log('A user udated its info');
+//     }
+// });
 
 UserSchema.set('toJSON', {
     getters: true,

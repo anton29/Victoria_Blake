@@ -185,49 +185,6 @@
             });
         });
 
-
- //     $(document).ready(function () {
-
- //     $("#form1").validate({
- //         ignore: ":hidden",
- //         rules: {
- //             firstName: {
- //                 required: true,
- //             },
- //             lastName:{
- //                required: true,
- //             },
- //             email:{
- //                required: true,
- //                email: true
- //             },
- //             address1:{
- //                required: true,
- //             },
- //             city:{
- //                required: true,
- //             },
- //             state:{
- //                required: true,
- //             },
- //             zip:{
- //                required: true,
- //             }
- //         },
- //         submitHandler: function (form) {
- //            $.ajax({
- //                url: "/sendShipping",
- //                data: $("#form1").serialize(), // serializes the form's elements.
- //                type: "POST",
- //                success: function(){
- //                    document.getElementById('form2').submit();
- //                }
- //            })
- //            return false;
- //         }
- //     });
-
- // });
     </script>
 
 	<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
@@ -408,12 +365,7 @@
               
 
          </form>
-<!-- 
-           <input onclick="sendForms()" type="image" name="submit" border="0"
-                src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
-                alt="PayPal - The safer, easier way to pay online">
-                <img alt="" border="0" width="1" height="1"
-                src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" > -->
+
     </div>
 
 <span id="message"></span>
@@ -424,17 +376,7 @@
 
 
 <footer>
-	<!-- <div id="copyRight"><p>&copy;Copyright</p></div> -->
-    <div id ="twitter">
-    <a class="twitter-follow-button"
-        href="https://twitter.com/seeuniqueness">
-        Follow @Griffina blake</a>
-    </div>
-    <div id="facebook">
-      <div class="fb-like" data-href="https://www.facebook.com/VictoriaBlakeFashionDesigns" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-    </div>
-</div>
-</div><!--end of skype-->
+    <% include footer %>
 </footer><!--end of footer-->
 </section><!--end of wrapper-->
 </body>
